@@ -130,7 +130,7 @@ def should_banker_draw(banker_hand, player_third_card):
         return False
     
     
-def determine_winner(player_hand,banker_hand)    :
+def determine_winner(player_score,banker_score)    :
     """
     최종 승자 판정
 
@@ -146,9 +146,6 @@ def determine_winner(player_hand,banker_hand)    :
     None.
 
     """
-    
-    player_score = hand_score(player_hand)
-    banker_score = hand_score(banker_hand)
     
     if player_score > banker_score:
         return 'PLAYER'

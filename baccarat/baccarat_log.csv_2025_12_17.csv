@@ -1,0 +1,2 @@
+round,bet_type,bet_amount,winner,payout,player_score,banker_score,player_hand,banker_hand,player_money,banker_money,natural,last_round
+1,PLAYER,1000,PLAYER,1000.0,8,4,5 5 8,2 2,101000.0,99000.0,False,False
