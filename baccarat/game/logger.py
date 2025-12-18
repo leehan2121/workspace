@@ -10,15 +10,20 @@ import os
 from datetime import datetime
 
 class GameLogger:
-    def __init__(self , base_filename="baccarat_log.csv"):
+    def __init__(self):
         """
-        날짜별 csv 로그파일 생성
-        ex : baccarat_2025_12_16.csv
+        logs/baccarat_YYYY_MM_DD.csv 형태로 로그 생성
         """
-        date_str = datetime.now().strftime("%Y_%m_%d")
-        self.filename = f"{base_filename}_{date_str}.csv"
-        self._init_file()
+        base_dir = os.path.dirname(os.path.dirname(__file__))  # baccarat/
+        logs_dir = os.path.join(base_dir, "logs")
+        os.makedirs(logs_dir, exist_ok=True)
         
+        date_str = datetime.now().strftime("%Y_%m_%d")
+        self.filename = os.path.join(
+            logs_dir, f"baccarat_{date_str}.csv"
+        )
+        
+        self._init_file()
     def _init_file(self):
         """
         파일 없으면 헤더 생성
@@ -38,7 +43,7 @@ class GameLogger:
                     "player_hand",
                     "banker_hand",
                     "player_money",
-                    "banker_money",
+                    "casino_money",
                     "natural",
                     "last_round"
                     ])
@@ -57,10 +62,10 @@ class GameLogger:
                 result["payout"],
                 result.get("player_score"),
                 result.get("banker_score"),
-                " ".join(result["player_hand"]),
-                " ".join(result["banker_hand"]),
+                " ".join(f"{suit}{rank}" for suit, rank in result["player_hand"]),
+                " ".join(f"{suit}{rank}" for suit, rank in result["banker_hand"]),
                 bankroll.player_money,
-                bankroll.banker_money,
+                bankroll.casino_money,
                 result["natural"],
                 result["last_round"]
                 ])

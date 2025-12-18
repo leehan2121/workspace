@@ -5,8 +5,8 @@ Created on Tue Dec 16 15:05:52 2025
 @author: hyunilPark
 """
 
-from logger import GameLogger
-from rules import (
+from game.logger import GameLogger
+from game.rules import (
     hand_score,
     is_natural,
     should_player_draw,
@@ -25,21 +25,44 @@ PAYOUT_RATES = {
 
 MIN_CARDS_FOR_ROUND = 6
 
-
 def calculate_payout(winner, bet_type, bet_amount):
-    """
-    베팅 정산 공통 로직
-    """
-    if winner == "TIE" and bet_type != "TIE":
-        return 0
-    elif bet_type == winner:
-        return bet_amount * PAYOUT_RATES[bet_type]
+    if bet_type == "PLAYER":
+        if winner == "PLAYER":
+            payout_player = bet_amount
+            payout_casino = -bet_amount
+        elif winner == "BANKER":
+            payout_player = -bet_amount
+            payout_casino = bet_amount
+        else:  # TIE
+            payout_player = 0
+            payout_casino = 0
+    elif bet_type == "BANKER":
+        if winner == "BANKER":
+            payout_player = bet_amount * 0.95  # 커미션 5%
+            payout_casino = -payout_player
+        elif winner == "PLAYER":
+            payout_player = -bet_amount
+            payout_casino = bet_amount
+        else:  # TIE
+            payout_player = 0
+            payout_casino = 0
+    elif bet_type == "TIE":
+        if winner == "TIE":
+            payout_player = bet_amount * 8
+            payout_casino = -payout_player
+        else:  # PLAYER / BANKER 승
+            payout_player = -bet_amount
+            payout_casino = bet_amount
     else:
-        return bet_amount
+        # 안전 장치
+        payout_player = 0
+        payout_casino = 0
+
+    # 함수 끝에서 항상 return
+    return payout_player, payout_casino
 
 
-
-def play_round(round_no , deck, bet_type, bet_amount , bankroll):
+def play_round(round_no , deck, bet_type, bet_amount , bankroll , reveal=True):
     # 1. 플레이어 / 뱅커 패 초기화
     player_hand = []
     banker_hand = []
@@ -49,26 +72,28 @@ def play_round(round_no , deck, bet_type, bet_amount , bankroll):
 
     # 3. 카드 배분
     for _ in range(2):
-        player_hand.append(deck.draw())
-        banker_hand.append(deck.draw())
+        now_card = deck.draw()
+        player_hand.append(now_card)
+        now_card = deck.draw()
+        banker_hand.append(now_card)
 
     # 4. 내추럴 체크
     if is_natural(player_hand, banker_hand):
         player_score = hand_score(player_hand)
         banker_score = hand_score(banker_hand)
         winner = determine_winner(player_score, banker_score)
-        payout = calculate_payout(winner, bet_type, bet_amount)
+        # 정산
+        payout_player, payout_casino = calculate_payout(winner, bet_type, bet_amount)
+        bankroll.player_money += payout_player
+        bankroll.casino_money += payout_casino
 
-        bankroll.player_money += payout
-        bankroll.banker_money -= payout
-        
         result = {
             "player_hand": player_hand,
             "banker_hand": banker_hand,
             "player_score": player_score,
             "banker_score": banker_score,
             "winner": winner,
-            "payout": payout,
+            "payout": payout_player,
             "natural": True,
             "last_round": last_round
         }
@@ -99,10 +124,9 @@ def play_round(round_no , deck, bet_type, bet_amount , bankroll):
     winner = determine_winner(player_score, banker_score)
 
     # 8. 베팅 정산
-    payout = calculate_payout(winner, bet_type, bet_amount)
-
-    bankroll.player_money += payout
-    bankroll.banker_money -= payout
+    payout_player, payout_casino = calculate_payout(winner, bet_type, bet_amount)
+    bankroll.player_money += payout_player
+    bankroll.casino_money += payout_casino
   
     # 9. 결과 반환
     result = {
@@ -111,7 +135,7 @@ def play_round(round_no , deck, bet_type, bet_amount , bankroll):
         "player_score": player_score,
         "banker_score": banker_score,
         "winner": winner,
-        "payout": payout,
+        "payout": payout_player,
         "natural": False,
         "last_round": last_round
     }

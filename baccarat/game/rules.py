@@ -9,25 +9,17 @@ Created on Tue Dec 16 11:45:25 2025
 
 def card_value(card):
     """
-    카드 한잔의 점수 반환
-    A=1 , 2~9 = 그대로 , 10/J/Q/K = 10
-    
-    Parameters
-    ----------
-    card : TYPE
-        DESCRIPTION.
-    Returns int
-    
-    -------
-    None.
-
+    카드 한 장의 점수 반환
+    A=1, 2~9 = 그대로, 10/J/Q/K = 0
     """
+    # 카드가 ('♠','A') 형태면 rank만 추출
+    if isinstance(card, tuple):
+        card = card[1]
+
     if card == 'A':
         return 1
-    
     if card in ['10','J','Q','K']:
         return 0
-    
     return int(card)
 
 def hand_score(hand):
