@@ -1,6 +1,6 @@
 # config.py
 
-# ===== 계정 (요청대로 코드에 유지) =====
+# ===== 계정 =====
 KAKAO_ID = "leehan2121@kakao.com"
 KAKAO_PW = "fnzktm21@!"
 
@@ -8,16 +8,36 @@ KAKAO_PW = "fnzktm21@!"
 TISTORY_LOGIN_URL = "https://www.tistory.com/auth/login"
 TISTORY_WRITE_URL = "https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F"
 
-# ===== RSS =====
-RSS_URL = "https://news.ycombinator.com/rss"
-MAX_ITEMS = 5
-
 # ===== 발행 옵션 =====
-# 임시저장 이어쓰기 alert 처리:
-# False = 취소(dismiss) -> 새 글로 진행되는 경우가 많음
-# True  = 확인(accept) -> 이어서 작성
 DRAFT_ALERT_ACCEPT = False
+VISIBILITY_ID = "open0"   # 비공개 고정
 
-# 발행 레이어 공개 설정 (value 기준)
-# 공개: open20 / 보호: open15 / 비공개: open0
-VISIBILITY_ID = "open0"   # 지금은 비공개 고정
+# ===== LLM 모드 =====
+USE_LLM = True
+OLLAMA_URL = "http://127.0.0.1:11434"
+OLLAMA_MODEL = "llama3.1:8b"     # 네가 설치한 모델명과 동일해야 함
+LLM_TIMEOUT = 600   # 120 -> 600 (10분)
+
+# ===== Google News RSS (4개 주제) =====
+GOOGLE_NEWS_REGION = "hl=ko&gl=KR&ceid=KR:ko"
+GOOGLE_NEWS_LIMIT_PER_TOPIC = 1   # 각 주제당 1개씩만 발행(테스트 목적)
+
+GOOGLE_NEWS_FEEDS = {
+    # 최근 1일(when:1d)
+    "politics": f"https://news.google.com/rss/search?q=%EC%A0%95%EC%B9%98%20when%3A1d&{GOOGLE_NEWS_REGION}",
+    "gossip":   f"https://news.google.com/rss/search?q=%EC%97%B4%EC%95%A0%20OR%20%EC%97%B0%EC%95%A0%20when%3A1d&{GOOGLE_NEWS_REGION}",
+    "kpop":     f"https://news.google.com/rss/search?q=KPOP%20OR%20%EC%BC%80%EC%9D%B4%ED%8C%9D%20when%3A1d&{GOOGLE_NEWS_REGION}",
+    "hot":      f"https://news.google.com/rss/search?q=%EC%9D%B4%EC%8A%88%20OR%20%EB%85%BC%EB%9E%80%20OR%20%EC%86%8D%EB%B3%B4%20when%3A1d&{GOOGLE_NEWS_REGION}",
+}
+
+# prompts.py의 카테고리 키와 맞춰야 함: politics/gossip/social
+# hot, kpop은 gossip 또는 social로 매핑해서 사용
+PROMPT_CATEGORY_MAP = {
+    "politics": "politics",
+    "gossip":   "gossip",
+    "kpop":     "gossip",
+    "hot":      "social",
+}
+
+# ===== (선택) RSS 원문(XML) 상단 출력 =====
+DEBUG_PRINT_RSS_SOURCE = False

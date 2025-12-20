@@ -1,0 +1,118 @@
+[2025-12-20 19:14:51][STEP] 프로그램 시작
+[2025-12-20 19:14:51][STEP] make_driver() 호출 직전
+[2025-12-20 19:14:55][STEP] make_driver() 리턴 직후
+[2025-12-20 19:14:55][STEP] 로그인 시작
+[2025-12-20 19:14:59][INFO] ===== TOPIC START: politics =====
+[2025-12-20 19:14:59][STEP] RSS 수집 (politics)
+[2025-12-20 19:15:00][INFO] politics: 기사 제목 = 전체 - 시사저널
+[2025-12-20 19:15:00][STEP] LLM 글 생성 (politics)
+[2025-12-20 19:19:35][ERROR] LLM 글 생성 (politics) 실패: JSONDecodeError('Invalid control character at: line 2 column 10 (char 49)')
+[2025-12-20 19:19:35][ERROR] Traceback (most recent call last):
+  File "D:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "D:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\workspace\auto_tistory_blog\generator.py", line 40, in generate_post_with_ollama
+    data = _extract_json(raw)
+  File "D:\workspace\auto_tistory_blog\generator.py", line 27, in _extract_json
+    return json.loads(m.group(1))
+           ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\json\__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Invalid control character at: line 2 column 10 (char 49)
+
+[2025-12-20 19:21:34][STEP] 프로그램 시작
+[2025-12-20 19:21:34][STEP] make_driver() 호출 직전
+[2025-12-20 19:21:38][STEP] make_driver() 리턴 직후
+[2025-12-20 19:21:38][STEP] 로그인 시작
+[2025-12-20 19:21:46][INFO] ===== TOPIC START: politics =====
+[2025-12-20 19:21:46][STEP] RSS 수집 (politics)
+[2025-12-20 19:21:47][INFO] politics: 기사 제목 = 전체 - 시사저널
+[2025-12-20 19:21:47][STEP] LLM 글 생성 (politics)
+[2025-12-20 19:22:29][ERROR] LLM 글 생성 (politics) 실패: ValueError('LLM 응답에서 JSON을 추출하지 못함')
+[2025-12-20 19:22:29][ERROR] Traceback (most recent call last):
+  File "D:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "D:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\workspace\auto_tistory_blog\generator.py", line 42, in generate_post_with_ollama
+    data = _extract_json(raw)
+  File "D:\workspace\auto_tistory_blog\generator.py", line 29, in _extract_json
+    raise ValueError("LLM 응답에서 JSON을 추출하지 못함")
+ValueError: LLM 응답에서 JSON을 추출하지 못함
+
+[2025-12-20 19:24:34][STEP] 프로그램 시작
+[2025-12-20 19:24:34][STEP] make_driver() 호출 직전
+[2025-12-20 19:24:37][STEP] make_driver() 리턴 직후
+[2025-12-20 19:24:37][STEP] 로그인 시작
+[2025-12-20 19:24:40][INFO] ===== TOPIC START: politics =====
+[2025-12-20 19:24:40][STEP] RSS 수집 (politics)
+[2025-12-20 19:24:42][INFO] politics: 기사 제목 = 전체 - 시사저널
+[2025-12-20 19:24:42][STEP] LLM 글 생성 (politics)
+[2025-12-20 19:29:06][INFO] politics: 생성된 제목 = {
+[2025-12-20 19:29:06][INFO] politics: 본문 미리보기 = "title": "넷플릭스, 유튜브와 합병설에 대한 반응", "body": "넷플릭스에서 유튜브와의 합병설이 최근에 불거졌습니다. 기사에 따르면, 넷플릭스는 유튜브에 대한 인수 가능성을 언급했습니다. 하지만 이는 아직까지 공식적으로 발표된 사항은 아닙니다. 네티즌들은 이 뉴스에 대해 다양한 반응을 보이고 있습니다. 일부는 합병의 필요성에 대해 언급하고 있지 ...
+[2025-12-20 19:29:06][STEP] 글쓰기 입력 (politics)
+[2025-12-20 19:29:17][STEP] 발행 처리 (politics)
+[2025-12-20 19:29:19][INFO] ✅ 완료: politics 1건 발행
+[2025-12-20 19:29:19][INFO] ===== TOPIC START: gossip =====
+[2025-12-20 19:29:19][STEP] RSS 수집 (gossip)
+[2025-12-20 19:29:20][INFO] gossip: 기사 제목 = 김우빈·신민아, ‘10년 열애’ 끝에 오늘 결혼 - 조선비즈 - Chosunbiz
+[2025-12-20 19:29:20][STEP] LLM 글 생성 (gossip)
+[2025-12-20 19:31:53][INFO] gossip: 생성된 제목 = {
+[2025-12-20 19:31:53][INFO] gossip: 본문 미리보기 = "title": "김우빈·신민아, 열애 끝에 결혼한다", "body": "기사에 따르면 배우 김우빈과 신민아가 10년간의 열애를 끝으로 결혼을 한다고 전해졌다. 이들은 서로를 지지하며 함께하는 모습이 인스타그램을 통해 공개되면서 많은 이들의 관심을 끌었다. 1. 결혼 소식에 대한 의견은 어떠합니까? 결혼이라는 것은 새로운 시작인 동시에 두 사람의 약속과 맺 ...
+[2025-12-20 19:31:53][STEP] 글쓰기 입력 (gossip)
+[2025-12-20 19:32:03][STEP] 발행 처리 (gossip)
+[2025-12-20 19:32:05][INFO] ✅ 완료: gossip 1건 발행
+[2025-12-20 19:32:05][INFO] ===== TOPIC START: kpop =====
+[2025-12-20 19:32:05][STEP] RSS 수집 (kpop)
+[2025-12-20 19:32:07][INFO] kpop: 기사 제목 = 케이팝 데몬 헌터스 OST, 26주 연속 차트인…英 오피셜 차트서 장기 흥행 - v.daum.net
+[2025-12-20 19:32:07][STEP] LLM 글 생성 (kpop)
+[2025-12-20 19:35:10][INFO] kpop: 생성된 제목 = 제목: 케이팝 데몬 헌터스 OST, 英 오피셜 차트서 장기 흥행에 대한 보도
+[2025-12-20 19:35:10][INFO] kpop: 본문 미리보기 = 3줄 요약 - 케이팝 데몬 헌터스 OST는 26주 연속 영국 오피셜 차트에서 상위 순위를 유지하고 있다. - 이 시리즈의 음악은 국제적으로 인기를 끌고 있으며, 다양한 장르와 스타일을 결합하는 것이 특징이다. - 데몬 헌터스 OST는 케이팝 팬들에게 큰 반향을 일으키며, 영국 오피셜 차트에서 장기 흥행 중인 것에 대한 관심이 높아지고 있다. 본문 케이팝 데 ...
+[2025-12-20 19:35:10][STEP] 글쓰기 입력 (kpop)
+[2025-12-20 19:35:20][STEP] 발행 처리 (kpop)
+[2025-12-20 19:35:53][ERROR] 발행 처리 (kpop) 실패: TimeoutException()
+[2025-12-20 19:35:53][ERROR] Traceback (most recent call last):
+  File "D:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "D:\workspace\auto_tistory_blog\main.py", line 167, in <lambda>
+    lambda: publish_with_visibility(
+            ~~~~~~~~~~~~~~~~~~~~~~~^
+        driver,
+        ^^^^^^^
+    ...<2 lines>...
+        config.VISIBILITY_ID
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\workspace\auto_tistory_blog\tistory_bot.py", line 158, in publish_with_visibility
+    wait.until(EC.element_to_be_clickable((By.ID, visibility_id))).click()
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\support\wait.py", line 122, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
