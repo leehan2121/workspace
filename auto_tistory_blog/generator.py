@@ -25,6 +25,7 @@ def _clean_weird_lang(text: str) -> str:
     """
     - 일본어(히라가나/가타카나) 제거
     - 라틴 확장 일부 제거
+    - 한자(중국어/한자) 제거
     - 제어문자 제거
     - 공백 정리
     """
@@ -32,11 +33,29 @@ def _clean_weird_lang(text: str) -> str:
         return text
 
     text = re.sub(r"[\u3040-\u30FF]+", "", text)          # Japanese
-    text = re.sub(r"[\u0100-\u024F]+", "", text)          # Latin ext
+    text = re.sub(r"[\u0100-\u024F]+", "", text)          # Latin ext (accented)
+    text = re.sub(r"[\u4E00-\u9FFF]+", "", text)          # CJK ideographs (Hanja)
     text = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F]", "", text)  # controls
     text = re.sub(r"[ \t]+\n", "\n", text)
     text = re.sub(r"\n{4,}", "\n\n\n", text)
     return text.strip()
+
+
+def _build_retry_prompt_kor(base_prompt: str, fail_reason: str) -> str:
+    """가드 실패 시, 초안(draft)을 주지 않고 '처음부터 재생성'시키는 리트라이 프롬프트.
+
+    Retry prompt that forces regeneration from scratch (no draft leakage).
+    - leakage (유출): 이전 출력에 섞인 한자/잡문자가 다음 출력으로 전염되는 문제
+    """
+    return (
+        base_prompt
+        + "\n\n[추가 지시: 1차 출력이 규칙 위반으로 실패했다]\n"
+        + f"- 실패 사유: {fail_reason}\n"
+        + "- 위 사유를 반드시 해결하라.\n"
+        + "- 특히 title/body에 한글 외 문자가 1개라도 섞이면 실패다.\n"
+        + "- 본문 길이가 부족하면 각 섹션에 구체 사실/수치/배경을 추가해 확장하라.\n"
+        + "- 결과는 반드시 JSON 1개만 출력하라.\n"
+    )
 
 
 def _extract_first_json_object(text: str):
@@ -111,6 +130,11 @@ def _make_fail_preview_html(topic_tag: str, title: str, body: str, reason: str) 
     return p
 
 
+def _contains_cjk_ideographs(text: str) -> bool:
+    # 한자 영역(중국어/한자 포함 여부). 한국어-only 정책이면 걸러야 함
+    return bool(re.search(r"[\u4E00-\u9FFF]", text or ""))
+
+
 def _validate_post_quality(title: str, body: str, topic_tag: str):
     import config
 
@@ -150,10 +174,8 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
         raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
 
     # ===== 문단 카운트 강화 =====
-    # 1) 빈 줄(\n\n) 기준
     paras_blank = [p.strip() for p in re.split(r"\n\s*\n", b) if p.strip()]
 
-    # 2) 헤딩(##) 기준(빈 줄 안 넣는 모델 대응)
     parts_by_heading = []
     if "##" in b:
         chunks = re.split(r"(?m)^\s*##\s+", b)
@@ -162,7 +184,6 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
             if ch:
                 parts_by_heading.append(ch)
 
-    # 3) 줄바꿈만 있는 경우(빈 줄 없이 \n만)
     lines = [ln.strip() for ln in b.split("\n") if ln.strip()]
     estimated_by_lines = []
     if len(lines) >= 10:
@@ -183,6 +204,12 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
         raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
 
     combined = f"{t}\n{b}"
+
+    # ✅ 한자 섞이면 실패 처리 (중국어/한자 출력 방지)
+    if _contains_cjk_ideographs(combined):
+        fail = _make_fail_preview_html(topic_tag, title, body, "contains CJK ideographs (Chinese characters)")
+        raise RuntimeError(f"E_GUARD_LANG_CJK: saved={fail}")
+
     for pat in banned_patterns:
         if re.search(pat, combined):
             fail = _make_fail_preview_html(topic_tag, title, body, f"banned pattern matched: {pat}")
@@ -192,6 +219,14 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
     if brace_count >= 8:
         fail = _make_fail_preview_html(topic_tag, title, body, f"suspicious JSON/braces count ({brace_count})")
         raise RuntimeError(f"E_GUARD_JSON_LEAK: saved={fail}")
+
+
+def _fallback_title_from_article(article_title: str, max_len: int = 80) -> str:
+    t = (article_title or "").strip()
+    t = re.sub(r"\s+", " ", t)
+    if len(t) > max_len:
+        t = t[:max_len].rstrip()
+    return t if t else "뉴스 요약"
 
 
 def generate_post_with_ollama(
@@ -204,7 +239,6 @@ def generate_post_with_ollama(
 ):
     import config
 
-    # 출처 URL 정리
     if article.get("link"):
         article["link"] = _resolve_final_url(article["link"])
 
@@ -262,7 +296,6 @@ def generate_post_with_ollama(
     last_raw_path = None
     last_mode = None
 
-    # ===== 1차/2차 생성 =====
     parsed = None
     for attempt in range(1, max_retries + 1):
         if attempt == 1:
@@ -290,22 +323,27 @@ def generate_post_with_ollama(
 
     title = _clean_weird_lang((parsed.get("title") or "").strip())
     body = _clean_weird_lang((parsed.get("body") or "").strip())
-
     body = re.sub(r'^\|\s*\n', '', body).strip()
 
+    # ✅ 출처 링크는 자동화 파이프라인에서 중요한 메타데이터
+    # Source link (metadata): helpful for attribution and transparency
     src = article.get("source") or "출처"
     url = article.get("link") or ""
-    if url:
+    append_src_url = getattr(config, "APPEND_SOURCE_URL", True)
+    if append_src_url and url:
         body = body.rstrip() + f"\n\n출처: {src} ({url})\n"
 
-    if not title:
-        title = (article.get("title") or "제목 없음").strip()
+    # ✅ title이 비거나 너무 짧으면 기사 제목으로 1차 보정
+    if not title or len(title.strip()) < getattr(config, "LLM_MIN_TITLE_CHARS", 8):
+        title = _fallback_title_from_article(article.get("title", ""), getattr(config, "LLM_MAX_TITLE_CHARS", 80))
+
     if not body:
         raise RuntimeError(f"E_LLM_BODY_EMPTY({last_mode}): saved={last_raw_path}")
 
     rewrite_on_short = getattr(config, "LLM_REWRITE_ON_SHORT", True)
-    rewrite_max_tries = getattr(config, "LLM_REWRITE_MAX_TRIES", 1)
+    rewrite_max_tries = getattr(config, "LLM_REWRITE_MAX_TRIES", 2)
 
+    # 1) 일단 검증
     try:
         _validate_post_quality(title, body, topic_tag)
         return title, body
@@ -315,23 +353,25 @@ def generate_post_with_ollama(
         if not rewrite_on_short:
             raise
 
-        if ("E_GUARD_BODY_SHORT" not in msg) and ("E_GUARD_PARA_FEW" not in msg):
+        # ✅ title 관련 실패면 기사 제목으로 보정하고 재검증
+        if "E_GUARD_TITLE_SHORT" in msg or "E_GUARD_TITLE_LONG" in msg:
+            title = _fallback_title_from_article(article.get("title", ""), getattr(config, "LLM_MAX_TITLE_CHARS", 80))
+            _validate_post_quality(title, body, topic_tag)
+            return title, body
+
+        # ✅ 언어/본문/문단 실패면 rewrite
+        allowed = (
+            ("E_GUARD_BODY_SHORT" in msg) or
+            ("E_GUARD_PARA_FEW" in msg) or
+            ("E_GUARD_LANG_CJK" in msg)
+        )
+        if not allowed:
             raise
 
+        # ✅ rewrite는 '초안'을 주면 오염(한자/잡문자)이 전염되기 쉬움
+        # ✅ 그래서 실패 사유만 주고, base_prompt로 처음부터 재생성한다.
         for k in range(rewrite_max_tries):
-            min_body = getattr(config, "LLM_MIN_BODY_CHARS", 450)
-            min_para = getattr(config, "LLM_MIN_PARAGRAPHS", 3)
-
-            rewrite_prompt = (
-                "Return ONLY a JSON object.\n"
-                "Rewrite the draft into a longer Korean blog post.\n"
-                f"- At least {min_para} paragraphs\n"
-                f"- At least {min_body} characters\n"
-                "- No HTML tags. Use blank lines between paragraphs.\n"
-                "- Must include headings: ## 핵심 요약 / ## 내용 정리 / ## 의미와 관전 포인트 / ## 한 줄 결론\n"
-                "JSON format: {\"title\":\"...\",\"body\":\"...\"}\n\n"
-                f"DRAFT_TITLE:\n{title}\n\nDRAFT_BODY:\n{body}\n"
-            )
+            rewrite_prompt = _build_retry_prompt_kor(base_prompt, msg)
 
             options2 = {
                 "temperature": 0,
@@ -350,12 +390,15 @@ def generate_post_with_ollama(
             if not isinstance(parsed2, dict):
                 continue
 
-            title2 = _clean_weird_lang((parsed2.get("title") or title).strip())
+            title2 = _clean_weird_lang((parsed2.get("title") or "").strip())
             body2 = _clean_weird_lang((parsed2.get("body") or "").strip())
             body2 = re.sub(r'^\|\s*\n', '', body2).strip()
 
-            if url:
+            if append_src_url and url:
                 body2 = body2.rstrip() + f"\n\n출처: {src} ({url})\n"
+
+            if not title2 or len(title2) < getattr(config, "LLM_MIN_TITLE_CHARS", 8):
+                title2 = _fallback_title_from_article(article.get("title", ""), getattr(config, "LLM_MAX_TITLE_CHARS", 80))
 
             if not body2:
                 continue

@@ -1,0 +1,9 @@
+{
+  "prompt": "celebrity magazine cover style illustration, clean composition, high quality, modern, minimal text, headline area, ̦ ㄯ호 ㅍㅣㄫ ㄵㅍ ㅊㅍㅁ ㄲㅍㅁ ㄰ㅍㅁ",
+  "negative_prompt": "low quality, blurry, watermark, logo, distorted face, gibberish text, extra fingers",
+  "width": 768,
+  "height": 512,
+  "steps": 18,
+  "cfg_scale": 7.0,
+  "seed": -1
+}

@@ -1,504 +1,420 @@
-[2025-12-21 15:19:30][STEP] 프로그램 시작
-[2025-12-21 15:19:30][STEP] make_driver() 호출 직전
-[2025-12-21 15:19:35][STEP] make_driver() 리턴 직후
-[2025-12-21 15:19:35][STEP] 로그인 시작
-[2025-12-21 15:19:40][INFO] ===== TOPIC START: politics =====
-[2025-12-21 15:19:40][STEP] RSS 수집 (politics)
-[2025-12-21 15:19:41][INFO] politics: 기사 제목 = 與, 대전·충남 통합 추진에 "선거용 정치행위 아냐…가급적 빨리 진행" - v.daum.net
-[2025-12-21 15:19:41][STEP] LLM 글 생성 (politics)
-[2025-12-21 15:19:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:20:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:20:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:20:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:20:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:20:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:20:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:21:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:21:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:21:17][INFO] politics: 생성된 제목 = 정치 뉴스 추가 규칙에 따라 블로그 작성
-[2025-12-21 15:21:17][INFO] politics: 본문 미리보기 = 정치 뉴스를 보다 중립적으로 작성하고, 특정 정당/인물에 대한 평가적 단정은 피해야 합니다. 또한, 추측성 내부 사정, 의도 분석은 피할 것이고 감정적 표현을 최소화해야 합니다.  정치 뉴스 추가 규칙에 따라 블로그를 작성하는 것은 중립적인 ton과 해설형의 tone을 유지하여야 합니다. 이를 위해, 기사 제목이 clear하고, 3줄 요약이 있어야 합니다. ...
-[2025-12-21 15:21:17][STEP] SD 이미지 생성 (politics)
-[2025-12-21 15:21:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:21:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:21:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:21:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:22:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:22:17][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:22:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:22:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:22:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:22:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:23:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:23:17][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:23:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:23:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:23:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:23:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:24:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:24:10][ERROR] SD 이미지 생성 (politics) 실패: HTTPError('500 Server Error: Internal Server Error for url: http://localhost:7860/sdapi/v1/txt2img')
-[2025-12-21 15:24:10][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 257, in _make_img
-    img = build_sd_prompt(topic_key, title_text)
-  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 27, in build_sd_prompt
-    return sd_txt2img(
-        prompt=prompt,
-    ...<10 lines>...
-        file_prefix=f"{topic_key}_cover",
-    )
-  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 52, in sd_txt2img
-    r.raise_for_status()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http://localhost:7860/sdapi/v1/txt2img
-
-[2025-12-21 15:28:46][STEP] 프로그램 시작
-[2025-12-21 15:28:46][STEP] make_driver() 호출 직전
-[2025-12-21 15:28:51][STEP] make_driver() 리턴 직후
-[2025-12-21 15:28:51][STEP] 로그인 시작
-[2025-12-21 15:28:55][INFO] ===== TOPIC START: politics =====
-[2025-12-21 15:28:55][STEP] RSS 수집 (politics)
-[2025-12-21 15:28:57][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
-[2025-12-21 15:28:57][STEP] LLM 글 생성 (politics)
-[2025-12-21 15:29:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:29:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:29:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:29:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:29:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:29:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:30:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:30:18][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:30:21][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_politics_20251221_153021.html')
-[2025-12-21 15:30:21][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<10 lines>...
-        topic_tag=topic_key,          # ✅ 디버그 파일명용
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ),
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 334, in generate_post_with_ollama
-    _validate_post_quality(title, body, topic_tag)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 172, in _validate_post_quality
-    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
-RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_politics_20251221_153021.html
-
-[2025-12-21 15:44:00][STEP] 프로그램 시작
-[2025-12-21 15:44:00][STEP] make_driver() 호출 직전
-[2025-12-21 15:44:05][STEP] make_driver() 리턴 직후
-[2025-12-21 15:44:05][STEP] 로그인 시작
-[2025-12-21 15:44:09][INFO] ===== TOPIC START: politics =====
-[2025-12-21 15:44:09][STEP] RSS 수집 (politics)
-[2025-12-21 15:44:11][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
-[2025-12-21 15:44:11][STEP] LLM 글 생성 (politics)
-[2025-12-21 15:44:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:44:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:44:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:44:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:45:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:45:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:45:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:45:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:45:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:45:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:46:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:46:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:46:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:46:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:46:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:46:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:47:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:47:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=181s tick=18 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:47:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=191s tick=19 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:47:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=201s tick=20 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:47:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=211s tick=21 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:47:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=221s tick=22 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:48:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=231s tick=23 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:48:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=241s tick=24 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:48:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=251s tick=25 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:48:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=261s tick=26 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:48:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=271s tick=27 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:48:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=281s tick=28 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:49:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=292s tick=29 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:49:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=302s tick=30 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:49:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=312s tick=31 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:49:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=322s tick=32 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:49:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=332s tick=33 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:49:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=342s tick=34 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:50:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=352s tick=35 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:50:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=362s tick=36 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:50:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=372s tick=37 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:50:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=382s tick=38 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:50:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=392s tick=39 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:50:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=402s tick=40 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:51:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=412s tick=41 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:51:14][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=422s tick=42 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:51:24][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=432s tick=43 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:51:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=442s tick=44 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:51:44][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=452s tick=45 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:51:54][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=462s tick=46 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:52:04][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=472s tick=47 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:52:14][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=483s tick=48 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:52:24][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=493s tick=49 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:52:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=503s tick=50 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 15:52:40][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_politics_20251221_154531.html')
-[2025-12-21 15:52:40][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<10 lines>...
-        topic_tag=topic_key,          # ✅ 디버그 파일명용
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ),
-    ^
+[2025-12-21 18:13:23][STEP] 프로그램 시작
+[2025-12-21 18:13:23][STEP] make_driver() 호출 직전
+[2025-12-21 18:13:25][STEP] make_driver() 리턴 직후
+[2025-12-21 18:13:25][STEP] 로그인 시작
+[2025-12-21 18:13:26][INFO] ===== TOPIC START: politics =====
+[2025-12-21 18:13:26][STEP] RSS 수집 (politics)
+[2025-12-21 18:13:26][INFO] politics: 후보 기사[1/2] = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 18:13:26][STEP] LLM 글 생성 (politics) [article 1]
+[2025-12-21 18:13:36][INFO] politics: ✅ 선택된 기사 = [1] [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 18:13:36][INFO] politics: 생성된 제목 = 인터뷰
+서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야"
+[2025-12-21 18:13:36][INFO] politics: 본문 미리보기 = ## 핵심 요약 서왕진은 "정치개혁이 국가 미래를 위한 필수적인 단계입니다. 극단적 진영 정치가 완화되어야 합니다.  ## 내용 정리 서왕진은 "정치개혁을 통해 국가의 안정성과 안정성을 높일 수 있습니다.  ## 의미와 관전 포인트 서왕진은 "정치개혁이 국가 미래를 위한 필수적인 단계입니다. 극단적 진영 정치가 완화되어야 합니다.  ## 한 줄 결론 서왕진 ...
+[2025-12-21 18:13:36][STEP] SD 이미지 생성 (politics)
+[2025-12-21 18:13:46][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 18:13:56][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://accounts.kakao.com/login/?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fclient_id%3D3e6ddd834b023f24221217e370daed18%26prompt%3Dselect_account%26redirect_uri%3Dhttps%253A%252F%252Fwww.tistory.com%252Fauth%252Fkakao%252Fredirect%26response_type%3Dcode%26auth_tran_id%3D8d9q2fph9p3e6ddd834b023f24221217e370daed18mjfifr5r%26ka%3Dsdk%252F1.43.6%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FWin32%2520origin%252Fhttps%25253A%25252F%25252Fwww.tistory.com%26is_popup%3Dfalse%26through_account%3Dtrue#login title=카카오계정
+[2025-12-21 18:14:06][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 18:14:16][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 18:14:26][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 18:14:36][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 18:14:46][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 18:14:56][WARN] politics: SD 이미지 생성 실패(빈 경로) → 이미지 없이 진행
+[2025-12-21 18:14:56][STEP] 글쓰기 입력 (politics)
+[2025-12-21 18:15:06][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:15:16][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:15:26][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:15:36][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:15:46][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:15:56][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:16:06][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:16:16][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:16:26][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:16:36][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:16:46][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:16:56][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:17:06][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:17:08][STEP] 발행 처리 (politics)
+[2025-12-21 18:17:10][INFO] ✅ 완료: politics 1건 발행
+[2025-12-21 18:17:10][INFO] ===== TOPIC START: gossip =====
+[2025-12-21 18:17:10][STEP] RSS 수집 (gossip)
+[2025-12-21 18:17:11][INFO] gossip: 후보 기사[1/2] = ‘AI 아바타’가 나 대신 연애·결혼 미리 해본다면 - 조선일보
+[2025-12-21 18:17:11][STEP] LLM 글 생성 (gossip) [article 1]
+[2025-12-21 18:17:21][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:17:24][INFO] gossip: ✅ 선택된 기사 = [1] ‘AI 아바타’가 나 대신 연애·결혼 미리 해본다면 - 조선일보
+[2025-12-21 18:17:24][INFO] gossip: 생성된 제목 = AI 아바타가 나 대신 연애·결혼 미리 해본다면
+[2025-12-21 18:17:24][INFO] gossip: 본문 미리보기 = ## 핵심 요약 AI 아바타가 나 대신 연애와 결혼을 미리 해본다는 소식이 나왔습니다.  ## 내용 정리 조선일보는 AI 아바타가 나의 연애와 결혼을 미리 해본다는 소식을 알게되었습니다. 이 소식은 나에게 큰 충격을 주고 있습니다.  ## 의미와 관전 포인트 이 소식은 나에게 큰 의미를 지닙니다. 나의 연애와 결혼에 대한 미래를 미리 보는 것은 나에게 큰  ...
+[2025-12-21 18:17:24][STEP] SD 이미지 생성 (gossip)
+[2025-12-21 18:17:34][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:17:44][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:17:54][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:18:04][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:18:14][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:18:25][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:18:35][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:18:39][WARN] gossip: SD 이미지 생성 실패(빈 경로) → 이미지 없이 진행
+[2025-12-21 18:18:39][STEP] 글쓰기 입력 (gossip)
+[2025-12-21 18:18:49][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:18:59][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:19:09][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:19:19][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:19:29][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:19:39][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:19:49][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:19:59][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:20:09][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:20:19][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:20:29][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:20:39][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:20:49][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 18:20:53][STEP] 발행 처리 (gossip)
+[2025-12-21 18:20:55][INFO] ✅ 완료: gossip 1건 발행
+[2025-12-21 18:20:55][INFO] ===== TOPIC START: kpop =====
+[2025-12-21 18:20:55][STEP] RSS 수집 (kpop)
+[2025-12-21 18:20:56][INFO] kpop: 후보 기사[1/2] = [케이팝 베트남⑤] IP는 어떻게 자산이 되는가 - 케이트렌디뉴스
+[2025-12-21 18:20:56][STEP] LLM 글 생성 (kpop) [article 1]
+[2025-12-21 18:21:06][INFO] [HB] step='LLM 글 생성 (kpop) [article 1]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:21:16][INFO] [HB] step='LLM 글 생성 (kpop) [article 1]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:21:20][ERROR] LLM 글 생성 (kpop) [article 1] 실패: RuntimeError('E_GUARD_LANG_CJK: saved=debug\\fail_guard_kpop_a1_20251221_182120.html')
+[2025-12-21 18:21:20][ERROR] Traceback (most recent call last):
   File "C:\workspace\auto_tistory_blog\generator.py", line 326, in generate_post_with_ollama
     _validate_post_quality(title, body, topic_tag)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 173, in _validate_post_quality
-    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
-RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_politics_20251221_154531.html
+  File "C:\workspace\auto_tistory_blog\generator.py", line 192, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_LANG_CJK: saved={fail}")
+RuntimeError: E_GUARD_LANG_CJK: saved=debug\fail_guard_kpop_a1_20251221_182109.html
 
-[2025-12-21 15:59:36][STEP] 프로그램 시작
-[2025-12-21 15:59:36][STEP] make_driver() 호출 직전
-[2025-12-21 15:59:41][STEP] make_driver() 리턴 직후
-[2025-12-21 15:59:41][STEP] 로그인 시작
-[2025-12-21 15:59:45][INFO] ===== TOPIC START: politics =====
-[2025-12-21 15:59:45][STEP] RSS 수집 (politics)
-[2025-12-21 15:59:46][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
-[2025-12-21 15:59:46][STEP] LLM 글 생성 (politics)
-[2025-12-21 15:59:56][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:00:06][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:00:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:00:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:00:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:00:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:00:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:01:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:01:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:01:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:01:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:01:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:01:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:02:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:02:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:02:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:02:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:02:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=180s tick=18 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:02:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=191s tick=19 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:03:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=201s tick=20 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:03:18][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=211s tick=21 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:03:28][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=221s tick=22 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:03:38][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=231s tick=23 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:03:48][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=241s tick=24 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:03:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=251s tick=25 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:04:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=261s tick=26 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:04:18][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=271s tick=27 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:04:28][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=281s tick=28 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:04:38][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=291s tick=29 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:04:48][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=301s tick=30 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:04:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=312s tick=31 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:05:09][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=322s tick=32 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:05:19][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=332s tick=33 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:05:29][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=342s tick=34 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:05:39][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=352s tick=35 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:05:49][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=362s tick=36 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:05:59][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=372s tick=37 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:06:09][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=382s tick=38 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:06:19][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=393s tick=39 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:06:29][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=403s tick=40 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:06:39][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=413s tick=41 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:06:49][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=423s tick=42 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:07:00][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=433s tick=43 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:07:10][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=443s tick=44 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:07:20][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=453s tick=45 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:07:30][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=463s tick=46 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:07:40][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=473s tick=47 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:07:50][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=483s tick=48 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:08:00][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=493s tick=49 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:08:10][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=503s tick=50 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:08:20][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=513s tick=51 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:08:30][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=523s tick=52 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:08:40][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=533s tick=53 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:08:50][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=543s tick=54 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:09:00][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=553s tick=55 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:09:10][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=563s tick=56 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:09:20][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=574s tick=57 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:09:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=584s tick=58 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:09:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=594s tick=59 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:09:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=604s tick=60 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:10:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=614s tick=61 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:10:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=624s tick=62 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:10:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=634s tick=63 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:10:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=644s tick=64 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:10:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=654s tick=65 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:10:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=664s tick=66 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:11:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=674s tick=67 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:11:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=684s tick=68 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:11:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=695s tick=69 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:11:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=705s tick=70 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:11:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=715s tick=71 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:11:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=725s tick=72 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:12:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=735s tick=73 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:12:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=745s tick=74 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:12:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=755s tick=75 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:12:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=765s tick=76 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:12:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=775s tick=77 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:12:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=785s tick=78 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:13:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=795s tick=79 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:13:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=805s tick=80 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:13:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=815s tick=81 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:13:30][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_PARA_FEW: saved=debug\\fail_guard_politics_20251221_161330.html')
-[2025-12-21 16:13:30][ERROR] Traceback (most recent call last):
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 121, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 199, in <lambda>
+    lambda a=article: generate_post_with_ollama(
+  File "C:\workspace\auto_tistory_blog\generator.py", line 395, in generate_post_with_ollama
+    _validate_post_quality(title2, body2, topic_tag)
+  File "C:\workspace\auto_tistory_blog\generator.py", line 192, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_LANG_CJK: saved={fail}")
+RuntimeError: E_GUARD_LANG_CJK: saved=debug\fail_guard_kpop_a1_20251221_182120.html
+
+[2025-12-21 18:21:20][WARN] kpop: 기사[1] LLM 실패 → 다음 기사 시도 (E_GUARD_LANG_CJK: saved=debug\fail_guard_kpop_a1_20251221_182120.html)
+[2025-12-21 18:21:20][INFO] kpop: 후보 기사[2/2] = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
+[2025-12-21 18:21:20][STEP] LLM 글 생성 (kpop) [article 2]
+[2025-12-21 18:21:30][INFO] [HB] step='LLM 글 생성 (kpop) [article 2]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:21:40][INFO] [HB] step='LLM 글 생성 (kpop) [article 2]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:21:50][INFO] [HB] step='LLM 글 생성 (kpop) [article 2]' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:21:50][ERROR] LLM 글 생성 (kpop) [article 2] 실패: RuntimeError('E_GUARD_LANG_CJK: saved=debug\\fail_guard_kpop_a2_20251221_182150.html')
+[2025-12-21 18:21:50][ERROR] Traceback (most recent call last):
   File "C:\workspace\auto_tistory_blog\generator.py", line 326, in generate_post_with_ollama
     _validate_post_quality(title, body, topic_tag)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 178, in _validate_post_quality
-    raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
-RuntimeError: E_GUARD_PARA_FEW: saved=debug\fail_guard_politics_20251221_161221.html
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<10 lines>...
-        topic_tag=topic_key,          # ✅ 디버그 파일명용
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ),
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 384, in generate_post_with_ollama
-    _validate_post_quality(title2, body2, topic_tag)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 178, in _validate_post_quality
-    raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
-RuntimeError: E_GUARD_PARA_FEW: saved=debug\fail_guard_politics_20251221_161330.html
-
-[2025-12-21 16:23:48][STEP] 프로그램 시작
-[2025-12-21 16:23:48][STEP] make_driver() 호출 직전
-[2025-12-21 16:23:54][STEP] make_driver() 리턴 직후
-[2025-12-21 16:23:54][STEP] 로그인 시작
-[2025-12-21 16:23:59][INFO] ===== TOPIC START: politics =====
-[2025-12-21 16:23:59][STEP] RSS 수집 (politics)
-[2025-12-21 16:24:01][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
-[2025-12-21 16:24:01][STEP] LLM 글 생성 (politics)
-[2025-12-21 16:24:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:24:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:24:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:24:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:24:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:25:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:25:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:25:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:25:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:25:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:25:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:26:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:26:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:26:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:26:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:26:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:26:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=171s tick=17 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:27:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=181s tick=18 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:27:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=191s tick=19 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:27:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=201s tick=20 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:27:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=211s tick=21 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:27:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=221s tick=22 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:27:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=231s tick=23 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:28:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=241s tick=24 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:28:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=251s tick=25 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:28:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=261s tick=26 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:28:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=271s tick=27 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:28:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=281s tick=28 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:28:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=291s tick=29 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:29:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=301s tick=30 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:29:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=312s tick=31 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:29:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=322s tick=32 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:29:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=332s tick=33 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:29:44][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=342s tick=34 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:29:54][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=353s tick=35 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:30:04][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=363s tick=36 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:30:14][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=373s tick=37 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:30:24][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=383s tick=38 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:30:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=393s tick=39 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:30:44][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=403s tick=40 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:30:54][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=413s tick=41 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:31:05][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=423s tick=42 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:31:15][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=433s tick=43 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:31:25][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=443s tick=44 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:31:35][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=453s tick=45 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:31:45][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=463s tick=46 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:31:55][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=474s tick=47 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:32:05][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=484s tick=48 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:32:15][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=494s tick=49 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:32:25][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=504s tick=50 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:32:35][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=514s tick=51 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:32:45][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=524s tick=52 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:32:55][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=534s tick=53 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:33:05][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=544s tick=54 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:33:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=554s tick=55 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:33:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=564s tick=56 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:33:36][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=575s tick=57 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:33:46][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=585s tick=58 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:33:56][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=595s tick=59 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:34:06][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=605s tick=60 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:34:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=615s tick=61 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:34:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=625s tick=62 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:34:36][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=635s tick=63 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:34:46][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=645s tick=64 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:34:56][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=655s tick=65 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=665s tick=66 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=675s tick=67 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=685s tick=68 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=696s tick=69 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=706s tick=70 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=716s tick=71 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 16:35:57][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_politics_20251221_163557.html')
-[2025-12-21 16:35:57][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\generator.py", line 310, in generate_post_with_ollama
-    _validate_post_quality(title, body, topic_tag)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 183, in _validate_post_quality
-    raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
-RuntimeError: E_GUARD_PARA_FEW: saved=debug\fail_guard_politics_20251221_163511.html
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<10 lines>...
-        topic_tag=topic_key,          # ✅ 디버그 파일명용
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ),
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 363, in generate_post_with_ollama
-    _validate_post_quality(title2, body2, topic_tag)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 150, in _validate_post_quality
+  File "C:\workspace\auto_tistory_blog\generator.py", line 155, in _validate_post_quality
     raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
-RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_politics_20251221_163557.html
-
-[2025-12-21 17:15:31][STEP] 프로그램 시작
-[2025-12-21 17:15:31][STEP] make_driver() 호출 직전
-[2025-12-21 17:15:34][STEP] make_driver() 리턴 직후
-[2025-12-21 17:15:34][STEP] 로그인 시작
-[2025-12-21 17:15:37][INFO] ===== TOPIC START: politics =====
-[2025-12-21 17:15:37][STEP] RSS 수집 (politics)
-[2025-12-21 17:15:38][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
-[2025-12-21 17:15:38][STEP] LLM 글 생성 (politics)
-[2025-12-21 17:15:48][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:15:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:16:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:16:15][INFO] politics: 생성된 제목 = ̦ㄯ ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ
-[2025-12-21 17:16:15][INFO] politics: 본문 미리보기 = [   {     "section": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ",     "content": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ"   },   {     "section": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ",     "content": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ  ...
-[2025-12-21 17:16:15][STEP] SD 이미지 생성 (politics)
-[2025-12-21 17:16:17][ERROR] SD 이미지 생성 (politics) 실패: ConnectionError(MaxRetryError('HTTPConnectionPool(host=\'127.0.0.1\', port=7860): Max retries exceeded with url: /sdapi/v1/txt2img (Caused by NewConnectionError("HTTPConnection(host=\'127.0.0.1\', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))'))
-[2025-12-21 17:16:17][ERROR] Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 204, in _new_conn
-    sock = connection.create_connection(
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
-    raise err
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
-    conn.request(
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 500, in request
-    self.endheaders()
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1278, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1038, in _send_output
-    self.send(msg)
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 976, in send
-    self.connect()
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 331, in connect
-    self.sock = self._new_conn()
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 219, in _new_conn
-    raise NewConnectionError(
-urllib3.exceptions.NewConnectionError: HTTPConnection(host='127.0.0.1', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 644, in send
-    resp = conn.urlopen(
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 519, in increment
-    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=7860): Max retries exceeded with url: /sdapi/v1/txt2img (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))
+RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_kpop_a2_20251221_182137.html
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
+  File "C:\workspace\auto_tistory_blog\main.py", line 121, in run_step
     return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 257, in _make_img
-    img = build_sd_prompt(topic_key, title_text)
-  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 27, in build_sd_prompt
-    return sd_txt2img(
-  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 71, in sd_txt2img
-    r = requests.post(url, json=payload, headers=headers, timeout=(10, timeout_sec))
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 115, in post
-    return request("post", url, data=data, json=json, **kwargs)
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 59, in request
-    return session.request(method=method, url=url, **kwargs)
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 589, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 703, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 677, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=7860): Max retries exceeded with url: /sdapi/v1/txt2img (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))
+  File "C:\workspace\auto_tistory_blog\main.py", line 199, in <lambda>
+    lambda a=article: generate_post_with_ollama(
+  File "C:\workspace\auto_tistory_blog\generator.py", line 395, in generate_post_with_ollama
+    _validate_post_quality(title2, body2, topic_tag)
+  File "C:\workspace\auto_tistory_blog\generator.py", line 192, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_LANG_CJK: saved={fail}")
+RuntimeError: E_GUARD_LANG_CJK: saved=debug\fail_guard_kpop_a2_20251221_182150.html
 
-[2025-12-21 17:31:50][STEP] 프로그램 시작
-[2025-12-21 17:31:50][STEP] make_driver() 호출 직전
-[2025-12-21 17:31:52][STEP] make_driver() 리턴 직후
-[2025-12-21 17:31:52][STEP] 로그인 시작
-[2025-12-21 17:31:55][INFO] ===== TOPIC START: politics =====
-[2025-12-21 17:31:55][STEP] RSS 수집 (politics)
-[2025-12-21 17:31:56][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
-[2025-12-21 17:31:56][STEP] LLM 글 생성 (politics)
-[2025-12-21 17:32:06][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:32:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:32:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:32:36][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:32:46][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:32:52][INFO] politics: 생성된 제목 = 王一 六 这为 2路 使 不 一 万... 是 五小 过 七 八 一 为 中三
-[2025-12-21 17:32:52][INFO] politics: 본문 미리보기 = ## 清 万 这 一 为 2路 使 不 一 万 八 一 为 中三  是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 为 中三, 是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 为 中三.  ## 一 为 2路 使 不 一 万 八 一 为 中三  是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 为 中三, 是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 ...
-[2025-12-21 17:32:52][STEP] SD 이미지 생성 (politics)
-[2025-12-21 17:33:02][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:33:12][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:33:22][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:33:33][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:33:43][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:33:53][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 17:34:03][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 18:21:51][WARN] kpop: 기사[2] LLM 실패 → 다음 기사 시도 (E_GUARD_LANG_CJK: saved=debug\fail_guard_kpop_a2_20251221_182150.html)
+[2025-12-21 18:21:51][WARN] kpop: 2개 기사 시도했지만 LLM 통과 실패 → 토픽 스킵
+[2025-12-21 18:21:51][INFO] ===== TOPIC START: hot =====
+[2025-12-21 18:21:51][STEP] RSS 수집 (hot)
+[2025-12-21 18:21:52][INFO] hot: 후보 기사[1/2] = [2025 보안 사고·이슈 결산-7] 범부처 정보보호 종합대책, 2026년 산업 활성화 ‘기대’ - 보안뉴스
+[2025-12-21 18:21:52][STEP] LLM 글 생성 (hot) [article 1]
+[2025-12-21 18:22:02][INFO] [HB] step='LLM 글 생성 (hot) [article 1]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:22:12][INFO] [HB] step='LLM 글 생성 (hot) [article 1]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:22:20][ERROR] LLM 글 생성 (hot) [article 1] 실패: RuntimeError('E_GUARD_LANG_CJK: saved=debug\\fail_guard_hot_a1_20251221_182220.html')
+[2025-12-21 18:22:20][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\generator.py", line 326, in generate_post_with_ollama
+    _validate_post_quality(title, body, topic_tag)
+  File "C:\workspace\auto_tistory_blog\generator.py", line 155, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
+RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_hot_a1_20251221_182205.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 121, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 199, in <lambda>
+    lambda a=article: generate_post_with_ollama(
+  File "C:\workspace\auto_tistory_blog\generator.py", line 395, in generate_post_with_ollama
+    _validate_post_quality(title2, body2, topic_tag)
+  File "C:\workspace\auto_tistory_blog\generator.py", line 192, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_LANG_CJK: saved={fail}")
+RuntimeError: E_GUARD_LANG_CJK: saved=debug\fail_guard_hot_a1_20251221_182220.html
+
+[2025-12-21 18:22:20][WARN] hot: 기사[1] LLM 실패 → 다음 기사 시도 (E_GUARD_LANG_CJK: saved=debug\fail_guard_hot_a1_20251221_182220.html)
+[2025-12-21 18:22:20][INFO] hot: 후보 기사[2/2] = [속보] 장수군 ‘행복 콜택시’ 이용자 부담금 3000원으로 절충 - v.daum.net
+[2025-12-21 18:22:20][STEP] LLM 글 생성 (hot) [article 2]
+[2025-12-21 18:22:30][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:22:40][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:22:50][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:23:00][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:23:10][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:23:20][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:23:30][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:23:41][INFO] [HB] step='LLM 글 생성 (hot) [article 2]' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 18:23:50][ERROR] LLM 글 생성 (hot) [article 2] 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_hot_a2_20251221_182236.html')
+[2025-12-21 18:23:50][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 121, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 199, in <lambda>
+    lambda a=article: generate_post_with_ollama(
+  File "C:\workspace\auto_tistory_blog\generator.py", line 326, in generate_post_with_ollama
+    _validate_post_quality(title, body, topic_tag)
+  File "C:\workspace\auto_tistory_blog\generator.py", line 155, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
+RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_hot_a2_20251221_182236.html
+
+[2025-12-21 18:23:50][WARN] hot: 기사[2] LLM 실패 → 다음 기사 시도 (E_GUARD_BODY_SHORT: saved=debug\fail_guard_hot_a2_20251221_182236.html)
+[2025-12-21 18:23:50][WARN] hot: 2개 기사 시도했지만 LLM 통과 실패 → 토픽 스킵
+[2025-12-21 18:23:50][STEP] 전체 작업 완료
+[2025-12-21 19:44:53][STEP] 프로그램 시작
+[2025-12-21 19:44:53][STEP] make_driver() 호출 직전
+[2025-12-21 19:44:55][STEP] make_driver() 리턴 직후
+[2025-12-21 19:44:55][STEP] 로그인 시작
+[2025-12-21 19:44:55][INFO] ===== TOPIC START: politics =====
+[2025-12-21 19:44:55][STEP] RSS 수집 (politics)
+[2025-12-21 19:44:56][INFO] politics: 후보 기사[1/2] = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 19:44:57][STEP] LLM 글 생성 (politics) [article 1]
+[2025-12-21 19:45:07][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=10s tick=1 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:45:17][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=20s tick=2 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:45:27][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=30s tick=3 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:45:30][INFO] politics: ✅ 선택된 기사 = [1] [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 19:45:30][INFO] politics: 생성된 제목 = 국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야
+[2025-12-21 19:45:30][INFO] politics: 본문 미리보기 = ## 핵심 요약 국가 미래를 위한 정치 개혁은 필수적인 bớc으로 나아가야 한다. 극단적 진영 정치의 완화는 국가의 안정성과 발전을 위해 ضرlements이다.  ## 내용 정리 서왕진 국회의원은 '극단적 진영 정치를 완화하기 위한 노력은 국가의 안정성과 발전을 위해 필수적인 bớc으로 나아가야 한다'고 말했다. 그는 '국민의 의견을 lắng nghe하고, ...
+[2025-12-21 19:45:30][STEP] SD 이미지 생성 (politics)
+[2025-12-21 19:45:40][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:45:50][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:46:00][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:46:10][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:46:20][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:46:30][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:46:40][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:46:50][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:47:00][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:47:10][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:47:21][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:47:31][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:47:41][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:47:51][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:48:01][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:48:11][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:48:21][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:48:31][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=180s tick=18 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:48:41][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=190s tick=19 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:48:51][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=200s tick=20 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:49:01][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=210s tick=21 url=https://www.tistory.com/auth/login title=TISTORY
+[2025-12-21 19:49:39][STEP] 프로그램 시작
+[2025-12-21 19:49:39][STEP] make_driver() 호출 직전
+[2025-12-21 19:49:42][STEP] make_driver() 리턴 직후
+[2025-12-21 19:49:42][STEP] 로그인 시작
+[2025-12-21 19:49:45][INFO] ===== TOPIC START: politics =====
+[2025-12-21 19:49:45][STEP] RSS 수집 (politics)
+[2025-12-21 19:49:46][INFO] politics: 후보 기사[1/2] = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 19:49:47][STEP] LLM 글 생성 (politics) [article 1]
+[2025-12-21 19:49:57][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:50:06][INFO] politics: ✅ 선택된 기사 = [1] [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 19:50:06][INFO] politics: 생성된 제목 = 국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야
+[2025-12-21 19:50:06][INFO] politics: 본문 미리보기 = ## 핵심 요약 국가 미래를 위한 정치 개혁은 필수적인 단계라고 서왕진 전 의장은 말했다.  ## 내용 정리 서왕진 전 의장은 '정치개혁이 국가 미래를 위해 필수적이고, 극단적 진영 정치를 완화해야한다'고 말했다. 그는 '정치개혁을 통해 국가의 미래를 위한 안정적인 정치 체제를 구축할 수 있다'고 주장했다.  ## 의미와 관전 포인트 서왕진 전 의장은 '정 ...
+[2025-12-21 19:50:06][STEP] SD 이미지 생성 (politics)
+[2025-12-21 19:50:16][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:50:26][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:50:36][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:50:46][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:50:56][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:51:06][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:51:16][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:51:26][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:51:36][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:51:46][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:51:56][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:52:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:52:17][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:52:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:52:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:52:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:52:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:53:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=180s tick=18 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:53:17][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=190s tick=19 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:53:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=200s tick=20 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:53:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=210s tick=21 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:53:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=220s tick=22 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:53:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=230s tick=23 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 19:54:05][STEP] 글쓰기 입력 (politics)
+[2025-12-21 19:54:15][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:54:25][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:54:35][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:54:45][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:54:55][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:55:05][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:55:15][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:55:25][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:55:35][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:55:45][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:55:55][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:56:05][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:56:15][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 19:56:21][STEP] 발행 처리 (politics)
+[2025-12-21 19:56:24][INFO] ✅ 완료: politics 1건 발행
+[2025-12-21 19:56:24][INFO] ===== TOPIC START: gossip =====
+[2025-12-21 19:56:24][STEP] RSS 수집 (gossip)
+[2025-12-21 19:56:25][INFO] gossip: 후보 기사[1/2] = ‘AI 아바타’가 나 대신 연애·결혼 미리 해본다면 - 조선일보
+[2025-12-21 19:56:26][STEP] LLM 글 생성 (gossip) [article 1]
+[2025-12-21 19:56:36][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:56:46][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:56:56][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:57:06][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:57:16][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:57:26][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:57:36][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:57:46][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:57:56][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:58:06][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:58:16][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:58:26][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:58:36][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:58:46][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=140s tick=14 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:58:56][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=150s tick=15 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:59:06][INFO] [HB] step='LLM 글 생성 (gossip) [article 1]' elapsed=160s tick=16 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:59:10][INFO] gossip: ✅ 선택된 기사 = [1] ‘AI 아바타’가 나 대신 연애·결혼 미리 해본다면 - 조선일보
+[2025-12-21 19:59:10][INFO] gossip: 생성된 제목 = ̦ ㄯ호 ㅍㅣㄫ ㄵㅍ ㅊㅍㅁ ㄲㅍㅁ ㄰ㅍㅁ
+[2025-12-21 19:59:10][INFO] gossip: 본문 미리보기 = ## ㅍㅣ ㄯ ㅊㅍ ㅁ 호 ㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ, ㅍ ㅣ ㄯ ㅊㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ. 호 ㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ, ㅍ ㅣ ㄯ ㅊㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ. 호 ㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ, ㅍ ㅣ ㄯ ㅊㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ.  ## ㅍㅣ ㄯ ㅊㅍ ㅁ ㄵㅍ ㅊㅍ ㅁ ㄲㅍㅁ ㄰ㅍㅁ ㅎ 호  ...
+[2025-12-21 19:59:10][STEP] SD 이미지 생성 (gossip)
+[2025-12-21 19:59:20][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:59:30][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:59:40][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 19:59:50][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:00:00][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:00:10][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:00:20][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:00:30][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:00:40][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:00:50][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:01:00][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:01:10][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:01:20][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:01:30][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=140s tick=14 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:01:40][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=150s tick=15 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:01:50][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=160s tick=16 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:02:00][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=170s tick=17 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:02:10][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=180s tick=18 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:02:20][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=190s tick=19 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:02:30][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=200s tick=20 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:02:40][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=210s tick=21 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:02:50][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=220s tick=22 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:03:00][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=230s tick=23 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:03:10][INFO] [HB] step='SD 이미지 생성 (gossip)' elapsed=240s tick=24 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:03:13][STEP] 글쓰기 입력 (gossip)
+[2025-12-21 20:03:23][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:03:33][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:03:43][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:03:53][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:04:03][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:04:13][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:04:23][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:04:33][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:04:43][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:04:53][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:05:03][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:05:13][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:05:23][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:05:31][STEP] 발행 처리 (gossip)
+[2025-12-21 20:05:33][INFO] ✅ 완료: gossip 1건 발행
+[2025-12-21 20:05:33][INFO] ===== TOPIC START: kpop =====
+[2025-12-21 20:05:33][STEP] RSS 수집 (kpop)
+[2025-12-21 20:05:34][INFO] kpop: 후보 기사[1/2] = [케이팝 베트남⑤] IP는 어떻게 자산이 되는가 - 케이트렌디뉴스
+[2025-12-21 20:05:35][STEP] LLM 글 생성 (kpop) [article 1]
+[2025-12-21 20:05:45][INFO] [HB] step='LLM 글 생성 (kpop) [article 1]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:05:55][INFO] [HB] step='LLM 글 생성 (kpop) [article 1]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:06:02][INFO] kpop: ✅ 선택된 기사 = [1] [케이팝 베트남⑤] IP는 어떻게 자산이 되는가 - 케이트렌디뉴스
+[2025-12-21 20:06:02][INFO] kpop: 생성된 제목 = [케이팝 베트남⑤] IP는 어떻게 자산이 되는가 - 케이트렌디뉴스
+[2025-12-21 20:06:02][INFO] kpop: 본문 미리보기 = ## 핵심 요약 IP 주소가 자산으로 사용되는 것은 가능성은 있지만, 실제로 이에 대한 사례는 드물다. IP 주소는 인터넷의 기본적인 기능 중 하나이며, 각 기기나 시스템이 인터넷에 접속할 때 사용된다. 그러나 IP 주소를 자산으로 사용하는 것은 legal 및 기술적으로도 복잡하다.  ## 내용 정리 IP 주소가 자산으로 사용되는 경우에는, 일반적으로 이중 ...
+[2025-12-21 20:06:02][STEP] SD 이미지 생성 (kpop)
+[2025-12-21 20:06:12][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:06:22][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:06:32][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:06:42][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:06:52][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:07:02][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:07:12][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:07:22][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:07:33][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:07:43][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:07:53][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:08:03][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:08:13][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:08:23][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=140s tick=14 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:08:33][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=150s tick=15 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:08:43][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=160s tick=16 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:08:53][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=170s tick=17 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:09:03][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=180s tick=18 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:09:13][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=190s tick=19 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:09:23][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=200s tick=20 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:09:33][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=210s tick=21 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:09:43][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=220s tick=22 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:09:53][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=230s tick=23 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:10:03][INFO] [HB] step='SD 이미지 생성 (kpop)' elapsed=240s tick=24 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:10:05][STEP] 글쓰기 입력 (kpop)
+[2025-12-21 20:10:15][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:10:25][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:10:35][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:10:45][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:10:55][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:11:05][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:11:15][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:11:26][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:11:36][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:11:46][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:11:56][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:12:06][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:12:16][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:12:22][STEP] 발행 처리 (kpop)
+[2025-12-21 20:12:24][INFO] ✅ 완료: kpop 1건 발행
+[2025-12-21 20:12:24][INFO] ===== TOPIC START: hot =====
+[2025-12-21 20:12:24][STEP] RSS 수집 (hot)
+[2025-12-21 20:12:25][INFO] hot: 후보 기사[1/2] = [속보]당정 "부동산 공급대책 마무리중…1월 발표 가능성" - 노컷뉴스
+[2025-12-21 20:12:26][STEP] LLM 글 생성 (hot) [article 1]
+[2025-12-21 20:12:36][INFO] [HB] step='LLM 글 생성 (hot) [article 1]' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:12:46][INFO] [HB] step='LLM 글 생성 (hot) [article 1]' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:12:56][INFO] [HB] step='LLM 글 생성 (hot) [article 1]' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:12:59][INFO] hot: ✅ 선택된 기사 = [1] [속보]당정 "부동산 공급대책 마무리중…1월 발표 가능성" - 노컷뉴스
+[2025-12-21 20:12:59][INFO] hot: 생성된 제목 = 당정 "부동산 공급대책 마무리중…1월 발표 가능성"
+[2025-12-21 20:12:59][INFO] hot: 본문 미리보기 = ## 핵심 요약 당정은 부동산 공급대책을 마무리하기 위해 노력하고 있으며, 1월에 발표가 가능하다며 공급 대책을 강화할 것이라고 말했다.  ## 내용 정리 당정은 부동산 공급대책이 마무리되면 공급량을 줄일 수 있을 것으로 예상한다. 또한, 공급 대책을 강화하면 공급량을 줄일 수 있는 기회가 생길 수 있다.  ## 의미와 관전 포인트 당정은 부동산 공급대책이 ...
+[2025-12-21 20:12:59][STEP] SD 이미지 생성 (hot)
+[2025-12-21 20:13:09][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:13:19][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:13:29][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:13:39][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:13:49][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:13:59][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:14:09][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:14:19][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:14:29][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:14:39][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:14:49][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:14:59][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:15:09][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:15:19][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=140s tick=14 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:15:29][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=150s tick=15 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:15:39][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=160s tick=16 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:15:49][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=170s tick=17 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:15:59][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=180s tick=18 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:16:09][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=190s tick=19 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:16:19][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=200s tick=20 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:16:29][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=210s tick=21 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:16:39][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=220s tick=22 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:16:49][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=230s tick=23 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:16:59][INFO] [HB] step='SD 이미지 생성 (hot)' elapsed=240s tick=24 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 20:17:05][STEP] 글쓰기 입력 (hot)
+[2025-12-21 20:17:15][INFO] [HB] step='글쓰기 입력 (hot)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:17:25][INFO] [HB] step='글쓰기 입력 (hot)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 20:17:35][INFO] [HB] step='글쓰기 입력 (hot)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기

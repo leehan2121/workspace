@@ -1,93 +1,130 @@
 # prompts.py
-import json
-
 def build_prompt_json(category: str, article: dict) -> str:
     """
     Ollama에게 '결과물만' JSON으로 뽑게 만드는 프롬프트.
     - HTML 금지(<br> 금지)
-    - 한국어 고정
+    - 한국어(한글) 고정
     - 섹션/구조/길이 강제
     - 정치 카테고리는 중립 톤 강제
+
+    변경점(중요):
+    - 프롬프트 자체를 100% 한국어로 통일(영어 제거)
+    - URL을 프롬프트에 직접 주입하지 않음(모델이 본문에 복사하는 전염 방지)
+    - 허용 문자 범위를 명시하고, 출력 전 자체 점검 후 재작성 강제
+    - 섹션별 최소 분량을 강제하여 BODY_SHORT 방지
     """
 
     title = (article.get("title") or "").strip()
     source = (article.get("source") or "").strip()
-    url = (article.get("link") or "").strip()
     pubdate = (article.get("date") or "").strip()
+    lead = (article.get("lead") or "").strip()
+    excerpt = (article.get("excerpt") or "").strip()
 
-    # ===== 공통 규칙 =====
+    # URL은 출력 금지인데, 프롬프트에 넣으면 모델이 따라 쓰는 경우가 잦아서 아예 제공하지 않는 편이 안전
+    # url = (article.get("link") or "").strip()
+
     base_rules = """
-- Output MUST be valid JSON only.
-- Do NOT include explanations, comments, markdown, or HTML.
-- Do NOT use <br> or any HTML tags.
-- Write in Korean.
-- Distinguish facts and opinions clearly.
-- Avoid unverified speculation or definitive claims.
+[역할]
+너는 한국어 뉴스 편집자 겸 해설 칼럼니스트다.
+단순 요약이 아니라, 기사 내용을 재구성하고 맥락과 쟁점을 해설하라.
+
+[출력 절대 규칙]
+- 출력은 반드시 '유효한 JSON 1개'만 허용한다. (설명/주석/마크다운/코드펜스/추가 텍스트 금지)
+- JSON 키는 정확히 아래 2개만 허용한다: "title", "body"
+- HTML 태그 금지. (<br> 포함, 어떤 태그도 금지)
+- 본문(body)과 제목(title)은 오직 한국어(한글)로만 작성한다.
+  * 영문(알파벳) 사용 금지
+  * 한자 사용 금지
+  * 일본어(히라가나/가타카나) 사용 금지
+  * 베트남어 등 악센트 로마자 사용 금지
+  * 이모지/특수기호 남발 금지
+- 숫자(0-9), 공백, 기본 문장부호(.,!?()[]-:;,'" 및 줄바꿈)는 허용한다.
+- 원문 기사 문장 그대로 복사 금지(직접 인용도 금지).
+- 사실과 해석을 문장 단위로 구분하라:
+  * 사실: “보도에 따르면/기사에 따르면/발표에 따르면/관계자는 …라고 밝혔다”
+  * 해석: “해석해보면/시사하는 바는/관전 포인트는”
+- 확인되지 않은 추측, 단정, 과장(“무조건/확실히/완벽히”) 금지.
+- 독후감 문체 금지:
+  * “큰 의미”, “큰 충격”, “도움이 된다” 같은 추상 문장 금지
+  * 반드시 구체 정보(실험 방식/수치/비교/사례/쟁점)로 설명할 것
+
+[콘텐츠 품질 규칙]
+- 1인칭 금지: "나", "내", "저", "필자" 같은 표현을 쓰지 마라.
+- 매 섹션은 '구체 명사' 중심으로 작성하라. (사람/기관/행사/방법/데이터 규모 등)
+- 본문에는 반드시 아래를 포함하라:
+  * 구체 사실 3개 이상(누가/무엇을/어떻게)
+  * 숫자 2개 이상(예: 표본 수, 정확도, 횟수, 비율 등)
+  * 비교 1개 이상("A는 B보다 ...")
+- "소식이 나왔다", "관심을 끈다" 같은 빈말 금지. 대신 '무엇이 새롭고 왜 다른지'를 적어라.
+
+[자체 점검(매우 중요)]
+- JSON 출력 직전에 title/body에 아래 금지 문자가 하나라도 포함되어 있으면,
+  조용히(설명 없이) 처음부터 다시 작성해서 금지 문자가 0개가 되게 하라.
+  금지 문자 예시: a-zA-Z, 亜漢字, ぁァ, lộ 같은 악센트, 洽 같은 한자 등
 """.strip()
 
-    # ===== 문단 예시 =====
-    paragraph_example = """
-{
-  "title": "제목",
-  "summary": [
-    "요약 문장 1",
-    "요약 문장 2",
-    "요약 문장 3"
-  ],
-  "body": [
-    {
-      "section": "배경",
-      "content": "배경 설명 문단"
-    },
-    {
-      "section": "핵심 내용",
-      "content": "기사 핵심 재구성"
-    },
-    {
-      "section": "해설",
-      "content": "의미와 맥락 해설"
-    }
-  ],
-  "source": {
-    "name": "매체명",
-    "url": "원문 링크"
-  }
-}
+    structure_rules = """
+[구조/길이 규칙]
+- title: 60자 내외(공백 포함), 낚시성 과장 금지
+- body: 900~1800자(공백 포함) 범위로 작성(기존 700보다 상향 → BODY_SHORT 방지)
+- body는 아래 섹션 제목을 '정확히' 사용하고, 순서도 유지하라:
+  1) ## 핵심 요약
+     - 정확히 3줄
+     - 각 줄은 20~45자 권장
+  2) ## 내용 정리
+     - 최소 350자 이상
+     - 무엇을/어떻게/얼마나(수치·규모)를 빠짐없이 정리
+  3) ## 의미와 관전 포인트
+     - 최소 350자 이상
+     - 왜 이런 결과가 나왔는지 원인 분석을 최소 1개 포함
+     - 독자가 이해할 사회적 파장을 설명
+  4) ## 한계와 우려
+     - 최소 250자 이상
+     - 개인정보/편향/윤리/현실 적용 한계 중 최소 1개는 반드시 포함
+  5) ## 한 줄 결론
+     - 정확히 1문장, 20~45자
+
+- 줄바꿈은 \\n 만 사용하고, 문단 사이에는 반드시 빈 줄(\\n\\n)을 넣어라.
+- 출처 링크(URL)나 영문 도메인을 본문에 쓰지 마라. (출처 표기는 시스템이 별도로 처리한다)
 """.strip()
 
-    # ===== 정치 카테고리 추가 규칙 =====
     politics_rules = ""
     if category == "politics":
         politics_rules = """
-- Maintain a neutral and balanced tone.
-- Do NOT support or oppose any political party or individual.
-- Clearly separate reported facts from interpretation.
+[정치 카테고리 추가 규칙]
+- 논조를 중립적으로 유지하라.
+- 특정 정당/정치인/진영을 노골적으로 지지하거나 반대하는 표현 금지.
+- 비난/조롱/선동/감정적 단정 금지.
+- 사실과 해석의 경계를 더 엄격히 지켜라.
 """.strip()
 
-    # ⚠️ 핵심 수정 포인트
-    extra_constraints = ""
-    if politics_rules:
-        extra_constraints = "Additional constraints for politics:\n" + politics_rules
+    paragraph_example = """
+[JSON 출력 예시(형식만 참고)]
+{
+  "title": "제목",
+  "body": "## 핵심 요약\\n요약 1줄\\n요약 1줄\\n요약 1줄\\n\\n## 내용 정리\\n...\\n\\n## 의미와 관전 포인트\\n...\\n\\n## 한계와 우려\\n...\\n\\n## 한 줄 결론\\n..."
+}
+""".strip()
 
-    # ===== 최종 프롬프트 =====
     prompt = f"""
-You are a news editor.
-
-Rules:
 {base_rules}
 
-JSON format example:
+{structure_rules}
+
 {paragraph_example}
 
-{extra_constraints}
+[뉴스 입력]
+- 제목: {title}
+- 매체: {source}
+- 날짜: {pubdate}
 
-News input:
-- title: {title}
-- source: {source}
-- date: {pubdate}
-- url: {url}
+[기사 단서(참고용)]
+- 아래 텍스트는 '참고 단서'일 뿐이며, 문장을 그대로 복사하면 실패한다.
+- 단서의 사실관계를 바탕으로, 너만의 문장으로 재구성하라.
+- 메타 설명: {lead}
+- 발췌 단서: {excerpt}
 
-Now produce the JSON object.
+이제 JSON 객체 1개만 출력하라.
 """.strip()
 
     return prompt

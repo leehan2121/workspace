@@ -12,6 +12,9 @@ TISTORY_WRITE_URL = "https://ohmygodit.tistory.com/manage/newpost/?type=post&ret
 DRAFT_ALERT_ACCEPT = False
 VISIBILITY_ID = "open0"   # 비공개 고정
 
+# ===== 이미지 옵션 =====
+REQUIRE_IMAGE_UPLOAD = False  # 이미지 실패 시 글 발행을 계속할지 여부
+
 # ===== LLM 모드 =====
 USE_LLM = True
 OLLAMA_URL = "http://127.0.0.1:11434"
@@ -37,6 +40,12 @@ LLM_REWRITE_NUM_PREDICT = 2200
 GOOGLE_NEWS_REGION = "hl=ko&gl=KR&ceid=KR:ko"
 GOOGLE_NEWS_LIMIT_PER_TOPIC = 1   # 각 주제당 1개씩만 발행(테스트 목적)
 
+# RSS에서 "가져오는 기사 개수"(후보 풀). 최소 ARTICLE_MAX_TRIES_PER_TOPIC 이상으로 잡아야 함
+GOOGLE_NEWS_FETCH_LIMIT_PER_TOPIC = 5
+
+# 한 토픽에서 LLM 실패 시 다음 기사로 넘어가며 최대 몇 개 기사까지 시도할지
+ARTICLE_MAX_TRIES_PER_TOPIC = 2
+
 GOOGLE_NEWS_FEEDS = {
     # 최근 1일(when:1d)
     "politics": f"https://news.google.com/rss/search?q=%EC%A0%95%EC%B9%98%20when%3A1d&{GOOGLE_NEWS_REGION}",
@@ -57,6 +66,16 @@ PROMPT_CATEGORY_MAP = {
 # ===== (선택) RSS 원문(XML) 상단 출력 =====
 DEBUG_PRINT_RSS_SOURCE = False
 
+# ===== 기사 단서 추출 (품질 개선) =====
+# RSS가 제목/링크만 주는 경우가 많아서, LLM이 쓸 '재료'를 추가로 확보한다.
+# Article hint extraction: collects meta description + paragraph snippets.
+ENABLE_ARTICLE_HINT = True
+ARTICLE_HINT_TIMEOUT_SEC = 12
+
+# ===== 본문 끝 출처 라인 추가 여부 =====
+# 출처 표시(attribution)를 자동으로 붙일지 여부
+APPEND_SOURCE_URL = True
+
 # === SD(A1111) 이미지 생성/업로드 ===
 ENABLE_IMAGE = True
 
@@ -75,4 +94,3 @@ SD_SAMPLER = None
 # 생성 타임아웃 / 저장 경로
 SD_TIMEOUT_SEC = 900
 SD_OUT_DIR = "debug/images"
-

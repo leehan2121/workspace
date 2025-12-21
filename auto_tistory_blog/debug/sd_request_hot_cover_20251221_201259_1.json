@@ -1,0 +1,9 @@
+{
+  "prompt": "breaking news cover illustration, clean composition, high quality, modern, minimal text, headline area, 당정 \"부동산 공급대책 마무리중…1월 발표 가능성\"",
+  "negative_prompt": "low quality, blurry, watermark, logo, distorted face, gibberish text, extra fingers",
+  "width": 768,
+  "height": 512,
+  "steps": 18,
+  "cfg_scale": 7.0,
+  "seed": -1
+}

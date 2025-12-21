@@ -1,0 +1,4 @@
+{
+  "title": "동아일보 - 정치",
+  "body": "## 핵심 요약\n2025년 12월 21일, 한국의 대중교통을 다루는 기사에 따르면, recent studies have shown that the country's public transportation system is facing a major crisis.\n\n## 내용 정리\n한국의 대중교통은 2010년부터 지속적으로 발전하고 있습니다. 그러나 최근 연구에 따르면, 대중교통 시스템이 지속적으로 발전할 수 있는지 여부는 불확실합니다.\n\n## 의미와 관전 포인트\n대중교통 시스템의 발전은 한국의 경제 성장을 크게 도모했습니다. 그러나 recent studies have shown that the system is facing a major crisis due to aging infrastructure and increasing demand for public transportation.\n\n## 한계와 우려\n한국의 대중교통 시스템은 Aging infrastructure에 대한 우려가 있습니다. 또한, increasing demand for public transportation는 시스템을 지속적으로 발전시키기 어렵습니다.\n\n## 한 줄 결론\n한국의 대중교통 시스템이 지속적으로 발전할 수 있는지 여부는 불확실합니다. 시스템의 Aging infrastructure와 increasing demand for public transportation은 큰 challenges를 제고하고 있습니다."
+}

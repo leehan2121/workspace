@@ -6,6 +6,7 @@ import time
 import threading
 
 from sources.google_news import fetch_google_news_rss, debug_print_rss_source
+from sources.article_extract import fetch_article_hint
 from generator import generate_post_with_ollama
 from tistory_bot import make_driver, login, write_post, publish_with_visibility
 from utils import pause_forever
@@ -14,41 +15,44 @@ from image_pipeline import build_sd_prompt
 from pathlib import Path
 from datetime import datetime
 
-# =========================
-# 로그 유틸
-# =========================
-
 DEBUG_DIR = Path("debug")
 DEBUG_DIR.mkdir(exist_ok=True)
 
 LOG_FILE = DEBUG_DIR / "run.log"
 
+
 def _ts():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
 
 def _write(line: str):
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(line + "\n")
+
 
 def log_step(msg):
     line = f"[{_ts()}][STEP] {msg}"
     print(line, flush=True)
     _write(line)
 
+
 def log_info(msg):
     line = f"[{_ts()}][INFO] {msg}"
     print(line, flush=True)
     _write(line)
+
 
 def log_warn(msg):
     line = f"[{_ts()}][WARN] {msg}"
     print(line, flush=True)
     _write(line)
 
+
 def log_err(msg):
     line = f"[{_ts()}][ERROR] {msg}"
     print(line, flush=True)
     _write(line)
+
 
 def debug_dump(driver, tag="last"):
     if driver is None:
@@ -63,6 +67,7 @@ def debug_dump(driver, tag="last"):
     except Exception:
         pass
 
+
 def dump_json(tag: str, data: dict):
     try:
         p = DEBUG_DIR / f"{tag}.json"
@@ -71,15 +76,8 @@ def dump_json(tag: str, data: dict):
     except Exception:
         pass
 
-# =========================
-# 진행률(Heartbeat) 모니터
-# =========================
 
 def _safe_driver_state(driver):
-    """
-    Selenium이 뻗었거나 page_source가 무거운 상황을 피하려고,
-    url/title만 최대한 가볍게 뽑는다.
-    """
     try:
         url = driver.current_url if driver else ""
     except Exception:
@@ -90,13 +88,8 @@ def _safe_driver_state(driver):
         title = ""
     return url, title
 
+
 def start_heartbeat(driver, step_name: str, interval_sec: int = 10):
-    """
-    특정 step이 오래 걸릴 때:
-    - "지금 응답 대기 중인지"
-    - "어느 페이지에서 걸렸는지"
-    를 주기적으로 run.log에 남긴다.
-    """
     stop_event = threading.Event()
     started = time.time()
 
@@ -117,6 +110,7 @@ def start_heartbeat(driver, step_name: str, interval_sec: int = 10):
     t.start()
     return stop_event
 
+
 def run_step(driver, name, fn, heartbeat_sec: int | None = None):
     log_step(name)
 
@@ -135,14 +129,10 @@ def run_step(driver, name, fn, heartbeat_sec: int | None = None):
         if hb_stop:
             hb_stop.set()
 
-# =========================
-# 메인
-# =========================
 
 def main():
     log_step("프로그램 시작")
 
-    # RSS 소스 디버그 모드
     if getattr(config, "DEBUG_PRINT_RSS_SOURCE", False):
         log_warn("DEBUG_PRINT_RSS_SOURCE=True → RSS 소스만 출력하고 종료")
         for key, url in config.GOOGLE_NEWS_FEEDS.items():
@@ -152,13 +142,11 @@ def main():
             debug_print_rss_source(url, lines=30)
         return
 
-    # 드라이버 생성
     log_step("make_driver() 호출 직전")
     driver, wait = make_driver()
     log_step("make_driver() 리턴 직후")
 
     try:
-        # 로그인 (가끔 인증/리디렉션에서 멈출 수 있어서 HB 켬)
         run_step(
             driver,
             "로그인 시작",
@@ -172,7 +160,6 @@ def main():
             heartbeat_sec=10
         )
 
-        # 주제별 글 작성
         for topic_key, feed_url in config.GOOGLE_NEWS_FEEDS.items():
             log_info(f"===== TOPIC START: {topic_key} =====")
 
@@ -181,7 +168,7 @@ def main():
                 f"RSS 수집 ({topic_key})",
                 lambda: fetch_google_news_rss(
                     feed_url,
-                    limit=config.GOOGLE_NEWS_LIMIT_PER_TOPIC
+                    limit=getattr(config, "GOOGLE_NEWS_FETCH_LIMIT_PER_TOPIC", config.GOOGLE_NEWS_LIMIT_PER_TOPIC)
                 ),
                 heartbeat_sec=None
             )
@@ -190,39 +177,78 @@ def main():
                 log_warn(f"{topic_key}: RSS 결과 없음")
                 continue
 
-            article = items[0]
-            log_info(f"{topic_key}: 기사 제목 = {article.get('title')}")
+            max_article_tries = getattr(config, "ARTICLE_MAX_TRIES_PER_TOPIC", 2)
+            if max_article_tries < 1:
+                max_article_tries = 1
 
-            # 가공 전 데이터 저장(근거 파일)
-            dump_json(
-                tag=f"raw_article_{topic_key}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
-                data=article
-            )
+            chosen_article = None
 
-            prompt_category = config.PROMPT_CATEGORY_MAP.get(topic_key, "social")
+            # ✅ 여러 기사 중에서 "LLM 통과하는" 기사를 고른다 (최대 N개 시도)
+            for ai, article in enumerate(items[:max_article_tries], start=1):
+                log_info(f"{topic_key}: 후보 기사[{ai}/{max_article_tries}] = {article.get('title')}")
+                dump_json(
+                    tag=f"raw_article_{topic_key}_{ai}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                    data=article
+                )
 
-            # ✅ 여기서 오래 걸릴 수 있으니 HB 켬 (10초마다 경과시간 출력)
-            title_text, body_text = run_step(
-                driver,
-                f"LLM 글 생성 ({topic_key})",
-                lambda: generate_post_with_ollama(
-                    category=prompt_category,
-                    article={
-                        "title": article["title"],
-                        "link": article["link"],
-                        "source": article.get("source", ""),
-                        "lead": article.get("lead", "") or "",
-                        "excerpt": article.get("excerpt", "") or "",
-                    },
-                    ollama_url=config.OLLAMA_URL,
-                    model=config.OLLAMA_MODEL,
-                    timeout=config.LLM_TIMEOUT,
-                    topic_tag=topic_key,          # ✅ 디버그 파일명용
-                ),
-                heartbeat_sec=10
-            )
+                prompt_category = config.PROMPT_CATEGORY_MAP.get(topic_key, "social")
 
-            # 방어: JSON/프롬프트가 그대로 올라가는 상황 차단
+                try:
+                    # ✅ 기사 단서 추출(메타 설명 + 일부 문단)
+                    # Article hints (meta description + paragraph snippets)
+                    hint = None
+                    if getattr(config, "ENABLE_ARTICLE_HINT", True):
+                        hint = fetch_article_hint(article.get("link", ""), timeout_sec=getattr(config, "ARTICLE_HINT_TIMEOUT_SEC", 12))
+
+                    title_text, body_text = run_step(
+                        driver,
+                        f"LLM 글 생성 ({topic_key}) [article {ai}]",
+                        lambda a=article: generate_post_with_ollama(
+                            category=prompt_category,
+                            article={
+                                "title": a["title"],
+                                "link": a["link"],
+                                "source": a.get("source", ""),
+                                "date": a.get("pubDate", "") or "",
+                                # LLM 재구성 재료 (clues)
+                                "lead": (hint.description if hint else ""),
+                                "excerpt": (hint.excerpt if hint else ""),
+                            },
+                            ollama_url=config.OLLAMA_URL,
+                            model=config.OLLAMA_MODEL,
+                            timeout=config.LLM_TIMEOUT,
+                            topic_tag=f"{topic_key}_a{ai}",
+                        ),
+                        heartbeat_sec=10
+                    )
+
+                    chosen_article = {
+                        "article": article,
+                        "title_text": title_text,
+                        "body_text": body_text,
+                        "index": ai,
+                    }
+                    break
+
+                except RuntimeError as e:
+                    msg = str(e)
+                    # ✅ 가드/파싱 실패면 다음 기사로 넘어감
+                    if msg.startswith("E_GUARD_") or msg.startswith("E_LLM_"):
+                        log_warn(f"{topic_key}: 기사[{ai}] LLM 실패 → 다음 기사 시도 ({msg})")
+                        continue
+                    raise
+
+            if not chosen_article:
+                log_warn(f"{topic_key}: {max_article_tries}개 기사 시도했지만 LLM 통과 실패 → 토픽 스킵")
+                continue
+
+            article = chosen_article["article"]
+            title_text = chosen_article["title_text"]
+            body_text = chosen_article["body_text"]
+            chosen_idx = chosen_article["index"]
+
+            log_info(f"{topic_key}: ✅ 선택된 기사 = [{chosen_idx}] {article.get('title')}")
+
             if not title_text.strip() or not body_text.strip():
                 log_warn(f"{topic_key}: title/body 비어있음 → 스킵")
                 continue
@@ -236,7 +262,7 @@ def main():
                 )
                 continue
 
-            # (2) 프롬프트 규칙이 그대로 섞여나오면(“역할:”, “출력 규칙:”) 실패로 간주
+            # (2) 프롬프트 규칙이 그대로 섞여나오면 실패로 간주
             bad_markers = ["역할:", "목표:", "출력 공통 규칙", "공통 글 구조", "BASE_PROMPT", "너는 뉴스 편집자다"]
             if any(m in body_text for m in bad_markers):
                 log_warn(f"{topic_key}: 본문에 프롬프트 흔적 감지 → 스킵")
@@ -249,25 +275,26 @@ def main():
             log_info(f"{topic_key}: 생성된 제목 = {title_text[:120]}")
             log_info(f"{topic_key}: 본문 미리보기 = {body_text[:200].replace(chr(10), ' ')} ...")
 
-            
-# ===== ✅ 커버 이미지 생성 =====
+            # ===== 커버 이미지 생성 =====
             image_paths = []
             if getattr(config, "ENABLE_IMAGE", False):
-                def _make_img():
-                    img = build_sd_prompt(topic_key, title_text)
-                    if not img:
-                        raise RuntimeError("E_IMAGE_EMPTY_PATH")
-                    return img
+                try:
+                    img_path = run_step(
+                        driver,
+                        f"SD 이미지 생성 ({topic_key})",
+                        lambda: build_sd_prompt(topic_key, title_text),
+                        heartbeat_sec=10
+                    )
+                    if img_path:
+                        image_paths = [img_path]
+                    else:
+                        log_warn(f"{topic_key}: SD 이미지 생성 실패(빈 경로) → 이미지 없이 진행")
+                        image_paths = []
+                except Exception as e:
+                    log_warn(f"{topic_key}: SD 이미지 생성 예외 → 이미지 없이 진행 ({repr(e)})")
+                    image_paths = []
 
-                img_path = run_step(
-                    driver,
-                    f"SD 이미지 생성 ({topic_key})",
-                    _make_img,
-                    heartbeat_sec=10
-                )
-                image_paths = [img_path]
-
-            # ===== 글쓰기 입력(이미지 포함) =====
+            # ===== 글쓰기 입력 =====
             run_step(
                 driver,
                 f"글쓰기 입력 ({topic_key})",
@@ -278,13 +305,12 @@ def main():
                     config.DRAFT_ALERT_ACCEPT,
                     title_text,
                     body_text,
-                    image_paths=image_paths
+                    image_paths=image_paths,
+                    require_image_upload=config.REQUIRE_IMAGE_UPLOAD
                 ),
                 heartbeat_sec=10
             )
 
-
-            # 발행 처리도 팝업/레이어 대기에서 멈출 수 있어 HB 켬
             run_step(
                 driver,
                 f"발행 처리 ({topic_key})",

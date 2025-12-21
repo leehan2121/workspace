@@ -1,0 +1,25 @@
+{
+  "model": "llama3.2:3b",
+  "prompt": "You are a Korean news editor.\n\nRules:\n- Output MUST be valid JSON only.\n- Do NOT include explanations, comments, markdown fences, or HTML.\n- Do NOT use <br> or any HTML tags.\n- Write ONLY in Korean (Hangul).\n- Do NOT use Chinese characters, Japanese, or English.\n- Distinguish facts and opinions clearly.\n- Avoid unverified speculation or definitive claims.\n\nJSON format example:\n{\n  \"title\": \"제목\",\n  \"body\": \"## 핵심 요약\\n요약 3줄...\\n\\n## 내용 정리\\n...\\n\\n## 의미와 관전 포인트\\n...\\n\\n## 한 줄 결론\\n...\"\n}\n\n\n\nNews input:\n- title: [속보] 장수군 ‘행복 콜택시’ 이용자 부담금 3000원으로 절충 - v.daum.net\n- source: v.daum.net\n- date: \n- url: https://news.google.com/rss/articles/CBMiT0FVX3lxTE5zdGZxTFJZTF9oaUx1TC1HTUhHdWRUbW1uM1p1M29ONUFCRTBwWnBzZnBGd0tUN25aZzR4NDM3dVdBWnFtamFPdHhFZ1lOdEk?oc=5&hl=en-US&gl=US&ceid=US:en\n\nNow produce the JSON object.",
+  "stream": false,
+  "format": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "body"
+    ]
+  },
+  "options": {
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "num_predict": 1800
+  }
+}
