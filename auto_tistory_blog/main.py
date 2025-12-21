@@ -9,6 +9,7 @@ from sources.google_news import fetch_google_news_rss, debug_print_rss_source
 from generator import generate_post_with_ollama
 from tistory_bot import make_driver, login, write_post, publish_with_visibility
 from utils import pause_forever
+from image_pipeline import build_sd_prompt
 
 from pathlib import Path
 from datetime import datetime
@@ -248,7 +249,25 @@ def main():
             log_info(f"{topic_key}: 생성된 제목 = {title_text[:120]}")
             log_info(f"{topic_key}: 본문 미리보기 = {body_text[:200].replace(chr(10), ' ')} ...")
 
-            # 글쓰기 입력도 DOM 로딩/에디터 대기에서 멈출 수 있어 HB 켬
+            
+# ===== ✅ 커버 이미지 생성 =====
+            image_paths = []
+            if getattr(config, "ENABLE_IMAGE", False):
+                def _make_img():
+                    img = build_sd_prompt(topic_key, title_text)
+                    if not img:
+                        raise RuntimeError("E_IMAGE_EMPTY_PATH")
+                    return img
+
+                img_path = run_step(
+                    driver,
+                    f"SD 이미지 생성 ({topic_key})",
+                    _make_img,
+                    heartbeat_sec=10
+                )
+                image_paths = [img_path]
+
+            # ===== 글쓰기 입력(이미지 포함) =====
             run_step(
                 driver,
                 f"글쓰기 입력 ({topic_key})",
@@ -258,10 +277,12 @@ def main():
                     config.TISTORY_WRITE_URL,
                     config.DRAFT_ALERT_ACCEPT,
                     title_text,
-                    body_text
+                    body_text,
+                    image_paths=image_paths
                 ),
                 heartbeat_sec=10
             )
+
 
             # 발행 처리도 팝업/레이어 대기에서 멈출 수 있어 HB 켬
             run_step(

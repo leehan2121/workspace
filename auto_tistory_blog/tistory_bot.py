@@ -10,6 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import UnexpectedAlertPresentException
 from webdriver_manager.chrome import ChromeDriverManager
+from tistory_image import upload_and_insert_image
+
 
 from utils import pause_forever, handle_any_alert
 
@@ -98,38 +100,33 @@ def click_done_to_open_publish_layer(driver, wait):
     return False
 
 
-def write_post(driver, wait, write_url, draft_alert_accept, title_text, body_text):
+def write_post(driver, wait, write_url, draft_alert_accept, title_text, body_text, image_paths=None):
     # 글쓰기 진입
     driver.get(write_url)
     wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
     # 임시저장 alert 처리
-    handle_any_alert(driver, accept=draft_alert_accept, timeout=5)
+    handle_any_alert(driver, accept=draft_alert_accept, timeout=2)
 
-    # 제목 입력 (확정: post-title-inp)
+    # ===== 제목 입력 =====
     for _ in range(3):
         try:
-            handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
-            title_el = wait.until(EC.element_to_be_clickable((By.ID, "post-title-inp")))
-            title_el.click()
-            title_el.clear()
-            title_el.send_keys(title_text)
+            title = wait.until(EC.element_to_be_clickable((By.ID, "post-title-inp")))
+            title.click()
+            title.send_keys(Keys.CONTROL, "a")
+            title.send_keys(Keys.BACKSPACE)
+            title.send_keys(title_text)
             break
         except UnexpectedAlertPresentException:
             handle_any_alert(driver, accept=draft_alert_accept, timeout=5)
     else:
         pause_forever(driver, "제목 입력 실패(alert 반복)")
 
-    # 본문 입력 (확정: iframe)
+    # ===== 본문 입력(iframe) =====
     for _ in range(3):
         try:
-            handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
-            iframe = find_editor_iframe(driver)
-            if not iframe:
-                pause_forever(driver, "에디터 iframe 못 찾음")
-
-            driver.switch_to.frame(iframe)
-            body = wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+            wait.until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, "iframe[title='Rich Text Area']")))
+            body = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "body")))
             body.click()
             body.send_keys(Keys.CONTROL, "a")
             body.send_keys(Keys.BACKSPACE)
@@ -142,13 +139,24 @@ def write_post(driver, wait, write_url, draft_alert_accept, title_text, body_tex
     else:
         pause_forever(driver, "본문 입력 실패(alert 반복)")
 
-    # 완료 클릭 -> 발행 레이어 열기
+    # ===== ✅ 이미지 업로드/삽입 (완료 버튼 누르기 전에!) =====
+    if image_paths:
+        for p in image_paths:
+            try:
+                ok = upload_and_insert_image(driver, wait, p, sleep_after_upload=2.5)
+                if not ok:
+                    pause_forever(driver, f"이미지 업로드/삽입 실패: {p}")
+            except Exception as e:
+                pause_forever(driver, f"이미지 업로드/삽입 예외: {p} / {repr(e)}")
+
+    # ===== 완료 클릭 -> 발행 레이어 열기 =====
     handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
     ok = click_done_to_open_publish_layer(driver, wait)
     if not ok:
         pause_forever(driver, "완료 버튼을 못 찾음(완료 버튼 DOM 확인 필요)")
 
     return True
+
 
 
 def publish_with_visibility(driver, wait, draft_alert_accept, visibility_id):

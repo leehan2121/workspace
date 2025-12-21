@@ -25,7 +25,8 @@ ollama pull llama3.2:3b
 
 
 # 실행 명령어 terminal
-webui-user.bat --api
+# webui-user.bat --api
+& "C:\stable-diffusion-webui\webui-user.bat" --api --listen --port 7860
 git --version 
 # 없으면 👉 https://git-scm.com/download/win
 

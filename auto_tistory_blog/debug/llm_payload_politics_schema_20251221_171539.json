@@ -1,0 +1,25 @@
+{
+  "model": "llama3.2:3b",
+  "prompt": "You are a news editor.\n\nRules:\n- Output MUST be valid JSON only.\n- Do NOT include explanations, comments, markdown, or HTML.\n- Do NOT use <br> or any HTML tags.\n- Write in Korean.\n- Distinguish facts and opinions clearly.\n- Avoid unverified speculation or definitive claims.\n\nJSON format example:\n{\n  \"title\": \"제목\",\n  \"summary\": [\n    \"요약 문장 1\",\n    \"요약 문장 2\",\n    \"요약 문장 3\"\n  ],\n  \"body\": [\n    {\n      \"section\": \"배경\",\n      \"content\": \"배경 설명 문단\"\n    },\n    {\n      \"section\": \"핵심 내용\",\n      \"content\": \"기사 핵심 재구성\"\n    },\n    {\n      \"section\": \"해설\",\n      \"content\": \"의미와 맥락 해설\"\n    }\n  ],\n  \"source\": {\n    \"name\": \"매체명\",\n    \"url\": \"원문 링크\"\n  }\n}\n\nAdditional constraints for politics:\n- Maintain a neutral and balanced tone.\n- Do NOT support or oppose any political party or individual.\n- Clearly separate reported facts from interpretation.\n\nNews input:\n- title: [인터뷰] 서왕진 \"국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야\" - 매일일보\n- source: 매일일보\n- date: \n- url: https://news.google.com/rss/articles/CBMiZEFVX3lxTE5wQUdvRWwwSHpHR0V1R0VDdlR5R2dobEtGTm1hM3ZWQllXbzJiZ1VwQ3hTNFN3Um9XWWs3SFkzQ0YwZlg4UzZoZVZZczhxbnFSQlZEM0RrQVFXcThNNThDYnY2OVc?oc=5&hl=en-US&gl=US&ceid=US:en\n\nNow produce the JSON object.",
+  "stream": false,
+  "format": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "title",
+      "body"
+    ]
+  },
+  "options": {
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "num_predict": 1800
+  }
+}

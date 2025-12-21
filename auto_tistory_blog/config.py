@@ -18,10 +18,20 @@ OLLAMA_URL = "http://127.0.0.1:11434"
 OLLAMA_MODEL = "llama3.2:3b"     # 네가 설치한 모델명과 동일해야 함
 OLLAMA_MODEL = "llama3.2:3b"
 LLM_TIMEOUT = 1200          # 20분 (처음엔 넉넉히)
-LLM_NUM_PREDICT = 700       # 너무 길면 속도 느려짐
-LLM_TEMPERATURE = 0.3       # 혼합언어/헛소리 줄이기
+# LLM 길이 안정화 (짧게 끊기는 문제 방지)
+LLM_TEMPERATURE = 0.2
 LLM_TOP_P = 0.9
+LLM_NUM_PREDICT = 1800
+LLM_MAX_RETRIES = 2
 
+
+# 가드 기준 (지금 프롬프트는 900자 이상 목표라 가드는 유지해도 됨)
+LLM_MIN_BODY_CHARS = 450
+LLM_MIN_PARAGRAPHS = 3
+# 짧으면 리라이트(너가 이미 generator에 넣은 기능이 있을 때만 의미 있음)
+LLM_REWRITE_ON_SHORT = True
+LLM_REWRITE_MAX_TRIES = 1
+LLM_REWRITE_NUM_PREDICT = 2200
 
 # ===== Google News RSS (4개 주제) =====
 GOOGLE_NEWS_REGION = "hl=ko&gl=KR&ceid=KR:ko"
@@ -47,25 +57,22 @@ PROMPT_CATEGORY_MAP = {
 # ===== (선택) RSS 원문(XML) 상단 출력 =====
 DEBUG_PRINT_RSS_SOURCE = False
 
-# === 이미지 생성/업로드 ===
+# === SD(A1111) 이미지 생성/업로드 ===
 ENABLE_IMAGE = True
+
+# SD WebUI 주소 (둘 중 하나만)
 SD_URL = "http://127.0.0.1:7860"
-SD_WIDTH = 1024
-SD_HEIGHT = 576
-SD_STEPS = 25
-SD_CFG_SCALE = 6.5
 
-
-# === SD(A1111) 이미지 생성 ===
-ENABLE_IMAGE = True
-SD_URL = "http://localhost:7860"
-
-# 빠른 기본값 (성공률 우선)
+# 성공률 우선 기본값
 SD_WIDTH = 768
 SD_HEIGHT = 512
-SD_STEPS = 20
+SD_STEPS = 18
 SD_CFG_SCALE = 7.0
-SD_SAMPLER = "DPM++ 2M"
+
+# sampler는 SD에 없는 이름이면 500 나기 쉬움 → 기본은 None 추천
+SD_SAMPLER = None
+
+# 생성 타임아웃 / 저장 경로
 SD_TIMEOUT_SEC = 900
 SD_OUT_DIR = "debug/images"
 

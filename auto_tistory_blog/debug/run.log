@@ -1,877 +1,80 @@
-[2025-12-20 19:14:51][STEP] 프로그램 시작
-[2025-12-20 19:14:51][STEP] make_driver() 호출 직전
-[2025-12-20 19:14:55][STEP] make_driver() 리턴 직후
-[2025-12-20 19:14:55][STEP] 로그인 시작
-[2025-12-20 19:14:59][INFO] ===== TOPIC START: politics =====
-[2025-12-20 19:14:59][STEP] RSS 수집 (politics)
-[2025-12-20 19:15:00][INFO] politics: 기사 제목 = 전체 - 시사저널
-[2025-12-20 19:15:00][STEP] LLM 글 생성 (politics)
-[2025-12-20 19:19:35][ERROR] LLM 글 생성 (politics) 실패: JSONDecodeError('Invalid control character at: line 2 column 10 (char 49)')
-[2025-12-20 19:19:35][ERROR] Traceback (most recent call last):
-  File "D:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+[2025-12-21 15:19:30][STEP] 프로그램 시작
+[2025-12-21 15:19:30][STEP] make_driver() 호출 직전
+[2025-12-21 15:19:35][STEP] make_driver() 리턴 직후
+[2025-12-21 15:19:35][STEP] 로그인 시작
+[2025-12-21 15:19:40][INFO] ===== TOPIC START: politics =====
+[2025-12-21 15:19:40][STEP] RSS 수집 (politics)
+[2025-12-21 15:19:41][INFO] politics: 기사 제목 = 與, 대전·충남 통합 추진에 "선거용 정치행위 아냐…가급적 빨리 진행" - v.daum.net
+[2025-12-21 15:19:41][STEP] LLM 글 생성 (politics)
+[2025-12-21 15:19:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:20:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:20:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:20:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:20:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:20:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:20:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:21:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:21:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:21:17][INFO] politics: 생성된 제목 = 정치 뉴스 추가 규칙에 따라 블로그 작성
+[2025-12-21 15:21:17][INFO] politics: 본문 미리보기 = 정치 뉴스를 보다 중립적으로 작성하고, 특정 정당/인물에 대한 평가적 단정은 피해야 합니다. 또한, 추측성 내부 사정, 의도 분석은 피할 것이고 감정적 표현을 최소화해야 합니다.  정치 뉴스 추가 규칙에 따라 블로그를 작성하는 것은 중립적인 ton과 해설형의 tone을 유지하여야 합니다. 이를 위해, 기사 제목이 clear하고, 3줄 요약이 있어야 합니다. ...
+[2025-12-21 15:21:17][STEP] SD 이미지 생성 (politics)
+[2025-12-21 15:21:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:21:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:21:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:21:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:22:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:22:17][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:22:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:22:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:22:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:22:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:23:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:23:17][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:23:27][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:23:37][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:23:47][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:23:57][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:24:07][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:24:10][ERROR] SD 이미지 생성 (politics) 실패: HTTPError('500 Server Error: Internal Server Error for url: http://localhost:7860/sdapi/v1/txt2img')
+[2025-12-21 15:24:10][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
     return fn()
-  File "D:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\main.py", line 257, in _make_img
+    img = build_sd_prompt(topic_key, title_text)
+  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 27, in build_sd_prompt
+    return sd_txt2img(
+        prompt=prompt,
+    ...<10 lines>...
+        file_prefix=f"{topic_key}_cover",
     )
-    ^
-  File "D:\workspace\auto_tistory_blog\generator.py", line 40, in generate_post_with_ollama
-    data = _extract_json(raw)
-  File "D:\workspace\auto_tistory_blog\generator.py", line 27, in _extract_json
-    return json.loads(m.group(1))
-           ~~~~~~~~~~^^^^^^^^^^^^
-  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\json\__init__.py", line 352, in loads
-    return _default_decoder.decode(s)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^
-  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\json\decoder.py", line 345, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\json\decoder.py", line 361, in raw_decode
-    obj, end = self.scan_once(s, idx)
-               ~~~~~~~~~~~~~~^^^^^^^^
-json.decoder.JSONDecodeError: Invalid control character at: line 2 column 10 (char 49)
-
-[2025-12-20 19:21:34][STEP] 프로그램 시작
-[2025-12-20 19:21:34][STEP] make_driver() 호출 직전
-[2025-12-20 19:21:38][STEP] make_driver() 리턴 직후
-[2025-12-20 19:21:38][STEP] 로그인 시작
-[2025-12-20 19:21:46][INFO] ===== TOPIC START: politics =====
-[2025-12-20 19:21:46][STEP] RSS 수집 (politics)
-[2025-12-20 19:21:47][INFO] politics: 기사 제목 = 전체 - 시사저널
-[2025-12-20 19:21:47][STEP] LLM 글 생성 (politics)
-[2025-12-20 19:22:29][ERROR] LLM 글 생성 (politics) 실패: ValueError('LLM 응답에서 JSON을 추출하지 못함')
-[2025-12-20 19:22:29][ERROR] Traceback (most recent call last):
-  File "D:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "D:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "D:\workspace\auto_tistory_blog\generator.py", line 42, in generate_post_with_ollama
-    data = _extract_json(raw)
-  File "D:\workspace\auto_tistory_blog\generator.py", line 29, in _extract_json
-    raise ValueError("LLM 응답에서 JSON을 추출하지 못함")
-ValueError: LLM 응답에서 JSON을 추출하지 못함
-
-[2025-12-20 19:24:34][STEP] 프로그램 시작
-[2025-12-20 19:24:34][STEP] make_driver() 호출 직전
-[2025-12-20 19:24:37][STEP] make_driver() 리턴 직후
-[2025-12-20 19:24:37][STEP] 로그인 시작
-[2025-12-20 19:24:40][INFO] ===== TOPIC START: politics =====
-[2025-12-20 19:24:40][STEP] RSS 수집 (politics)
-[2025-12-20 19:24:42][INFO] politics: 기사 제목 = 전체 - 시사저널
-[2025-12-20 19:24:42][STEP] LLM 글 생성 (politics)
-[2025-12-20 19:29:06][INFO] politics: 생성된 제목 = {
-[2025-12-20 19:29:06][INFO] politics: 본문 미리보기 = "title": "넷플릭스, 유튜브와 합병설에 대한 반응", "body": "넷플릭스에서 유튜브와의 합병설이 최근에 불거졌습니다. 기사에 따르면, 넷플릭스는 유튜브에 대한 인수 가능성을 언급했습니다. 하지만 이는 아직까지 공식적으로 발표된 사항은 아닙니다. 네티즌들은 이 뉴스에 대해 다양한 반응을 보이고 있습니다. 일부는 합병의 필요성에 대해 언급하고 있지 ...
-[2025-12-20 19:29:06][STEP] 글쓰기 입력 (politics)
-[2025-12-20 19:29:17][STEP] 발행 처리 (politics)
-[2025-12-20 19:29:19][INFO] ✅ 완료: politics 1건 발행
-[2025-12-20 19:29:19][INFO] ===== TOPIC START: gossip =====
-[2025-12-20 19:29:19][STEP] RSS 수집 (gossip)
-[2025-12-20 19:29:20][INFO] gossip: 기사 제목 = 김우빈·신민아, ‘10년 열애’ 끝에 오늘 결혼 - 조선비즈 - Chosunbiz
-[2025-12-20 19:29:20][STEP] LLM 글 생성 (gossip)
-[2025-12-20 19:31:53][INFO] gossip: 생성된 제목 = {
-[2025-12-20 19:31:53][INFO] gossip: 본문 미리보기 = "title": "김우빈·신민아, 열애 끝에 결혼한다", "body": "기사에 따르면 배우 김우빈과 신민아가 10년간의 열애를 끝으로 결혼을 한다고 전해졌다. 이들은 서로를 지지하며 함께하는 모습이 인스타그램을 통해 공개되면서 많은 이들의 관심을 끌었다. 1. 결혼 소식에 대한 의견은 어떠합니까? 결혼이라는 것은 새로운 시작인 동시에 두 사람의 약속과 맺 ...
-[2025-12-20 19:31:53][STEP] 글쓰기 입력 (gossip)
-[2025-12-20 19:32:03][STEP] 발행 처리 (gossip)
-[2025-12-20 19:32:05][INFO] ✅ 완료: gossip 1건 발행
-[2025-12-20 19:32:05][INFO] ===== TOPIC START: kpop =====
-[2025-12-20 19:32:05][STEP] RSS 수집 (kpop)
-[2025-12-20 19:32:07][INFO] kpop: 기사 제목 = 케이팝 데몬 헌터스 OST, 26주 연속 차트인…英 오피셜 차트서 장기 흥행 - v.daum.net
-[2025-12-20 19:32:07][STEP] LLM 글 생성 (kpop)
-[2025-12-20 19:35:10][INFO] kpop: 생성된 제목 = 제목: 케이팝 데몬 헌터스 OST, 英 오피셜 차트서 장기 흥행에 대한 보도
-[2025-12-20 19:35:10][INFO] kpop: 본문 미리보기 = 3줄 요약 - 케이팝 데몬 헌터스 OST는 26주 연속 영국 오피셜 차트에서 상위 순위를 유지하고 있다. - 이 시리즈의 음악은 국제적으로 인기를 끌고 있으며, 다양한 장르와 스타일을 결합하는 것이 특징이다. - 데몬 헌터스 OST는 케이팝 팬들에게 큰 반향을 일으키며, 영국 오피셜 차트에서 장기 흥행 중인 것에 대한 관심이 높아지고 있다. 본문 케이팝 데 ...
-[2025-12-20 19:35:10][STEP] 글쓰기 입력 (kpop)
-[2025-12-20 19:35:20][STEP] 발행 처리 (kpop)
-[2025-12-20 19:35:53][ERROR] 발행 처리 (kpop) 실패: TimeoutException()
-[2025-12-20 19:35:53][ERROR] Traceback (most recent call last):
-  File "D:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "D:\workspace\auto_tistory_blog\main.py", line 167, in <lambda>
-    lambda: publish_with_visibility(
-            ~~~~~~~~~~~~~~~~~~~~~~~^
-        driver,
-        ^^^^^^^
-    ...<2 lines>...
-        config.VISIBILITY_ID
-        ^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "D:\workspace\auto_tistory_blog\tistory_bot.py", line 158, in publish_with_visibility
-    wait.until(EC.element_to_be_clickable((By.ID, visibility_id))).click()
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\admin\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\selenium\webdriver\support\wait.py", line 122, in until
-    raise TimeoutException(message, screen, stacktrace)
-selenium.common.exceptions.TimeoutException: Message: 
-
-
-[2025-12-20 20:33:35][STEP] 프로그램 시작
-[2025-12-20 20:33:35][STEP] make_driver() 호출 직전
-[2025-12-20 20:33:44][STEP] make_driver() 리턴 직후
-[2025-12-20 20:33:44][STEP] 로그인 시작
-[2025-12-20 20:33:48][INFO] ===== TOPIC START: politics =====
-[2025-12-20 20:33:49][STEP] RSS 수집 (politics)
-[2025-12-20 20:33:50][INFO] politics: 기사 제목 = 정치 - 동아일보
-[2025-12-20 20:33:50][STEP] LLM 글 생성 (politics)
-[2025-12-20 20:33:50][ERROR] LLM 글 생성 (politics) 실패: HTTPError('404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate')
-[2025-12-20 20:33:50][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 109, in generate_post_with_ollama
+  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 52, in sd_txt2img
     r.raise_for_status()
     ~~~~~~~~~~~~~~~~~~^^
   File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
     raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http://localhost:7860/sdapi/v1/txt2img
 
-[2025-12-21 07:48:55][STEP] 프로그램 시작
-[2025-12-21 07:48:55][STEP] make_driver() 호출 직전
-[2025-12-21 07:49:07][STEP] make_driver() 리턴 직후
-[2025-12-21 07:49:07][STEP] 로그인 시작
-[2025-12-21 07:49:12][INFO] ===== TOPIC START: politics =====
-[2025-12-21 07:49:12][STEP] RSS 수집 (politics)
-[2025-12-21 07:49:14][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
-[2025-12-21 07:49:14][STEP] LLM 글 생성 (politics)
-[2025-12-21 07:49:14][ERROR] LLM 글 생성 (politics) 실패: HTTPError('404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate')
-[2025-12-21 07:49:14][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+[2025-12-21 15:28:46][STEP] 프로그램 시작
+[2025-12-21 15:28:46][STEP] make_driver() 호출 직전
+[2025-12-21 15:28:51][STEP] make_driver() 리턴 직후
+[2025-12-21 15:28:51][STEP] 로그인 시작
+[2025-12-21 15:28:55][INFO] ===== TOPIC START: politics =====
+[2025-12-21 15:28:55][STEP] RSS 수집 (politics)
+[2025-12-21 15:28:57][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 15:28:57][STEP] LLM 글 생성 (politics)
+[2025-12-21 15:29:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:29:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:29:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:29:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:29:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:29:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:30:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:30:18][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:30:21][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_politics_20251221_153021.html')
+[2025-12-21 15:30:21][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
     return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 109, in generate_post_with_ollama
-    r.raise_for_status()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
-
-[2025-12-21 07:52:50][STEP] 프로그램 시작
-[2025-12-21 07:52:50][STEP] make_driver() 호출 직전
-[2025-12-21 07:52:56][STEP] make_driver() 리턴 직후
-[2025-12-21 07:52:56][STEP] 로그인 시작
-[2025-12-21 07:53:00][INFO] ===== TOPIC START: politics =====
-[2025-12-21 07:53:00][STEP] RSS 수집 (politics)
-[2025-12-21 07:53:02][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
-[2025-12-21 07:53:02][STEP] LLM 글 생성 (politics)
-[2025-12-21 07:53:02][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_OLLAMA_404: /api/generate 가 404 입니다. OLLAMA_URL 설정을 확인하세요. 현재 base=http://127.0.0.1:11434, generate=http://127.0.0.1:11434/api/generate, root_status=200, tags_status=200')
-[2025-12-21 07:53:02][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 131, in generate_post_with_ollama
-    raise RuntimeError(
-    ...<3 lines>...
-    )
-RuntimeError: E_OLLAMA_404: /api/generate 가 404 입니다. OLLAMA_URL 설정을 확인하세요. 현재 base=http://127.0.0.1:11434, generate=http://127.0.0.1:11434/api/generate, root_status=200, tags_status=200
-
-[2025-12-21 07:55:54][STEP] 프로그램 시작
-[2025-12-21 07:55:54][STEP] make_driver() 호출 직전
-[2025-12-21 07:55:59][STEP] make_driver() 리턴 직후
-[2025-12-21 07:55:59][STEP] 로그인 시작
-[2025-12-21 07:56:03][INFO] ===== TOPIC START: politics =====
-[2025-12-21 07:56:03][STEP] RSS 수집 (politics)
-[2025-12-21 07:56:05][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
-[2025-12-21 07:56:05][STEP] LLM 글 생성 (politics)
-[2025-12-21 07:56:05][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434')
-[2025-12-21 07:56:05][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\generator.py", line 100, in generate_post_with_ollama
-    raise RuntimeError("E_OLLAMA_API_GENERATE_404")
-RuntimeError: E_OLLAMA_API_GENERATE_404
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 112, in generate_post_with_ollama
-    raise RuntimeError(
-    ...<3 lines>...
-    )
-RuntimeError: E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434
-
-[2025-12-21 08:26:56][STEP] 프로그램 시작
-[2025-12-21 08:26:56][STEP] make_driver() 호출 직전
-[2025-12-21 08:27:03][STEP] make_driver() 리턴 직후
-[2025-12-21 08:27:03][STEP] 로그인 시작
-[2025-12-21 08:27:08][INFO] ===== TOPIC START: politics =====
-[2025-12-21 08:27:08][STEP] RSS 수집 (politics)
-[2025-12-21 08:27:09][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
-[2025-12-21 08:27:09][STEP] LLM 글 생성 (politics)
-[2025-12-21 08:27:09][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434')
-[2025-12-21 08:27:09][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\generator.py", line 100, in generate_post_with_ollama
-    raise RuntimeError("E_OLLAMA_API_GENERATE_404")
-RuntimeError: E_OLLAMA_API_GENERATE_404
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 112, in generate_post_with_ollama
-    raise RuntimeError(
-    ...<3 lines>...
-    )
-RuntimeError: E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434
-
-[2025-12-21 08:33:08][STEP] 프로그램 시작
-[2025-12-21 08:33:08][STEP] make_driver() 호출 직전
-[2025-12-21 08:33:13][STEP] make_driver() 리턴 직후
-[2025-12-21 08:33:13][STEP] 로그인 시작
-[2025-12-21 08:33:18][INFO] ===== TOPIC START: politics =====
-[2025-12-21 08:33:18][STEP] RSS 수집 (politics)
-[2025-12-21 08:33:19][INFO] politics: 기사 제목 = 정치 - 동아일보
-[2025-12-21 08:33:19][STEP] LLM 글 생성 (politics)
-[2025-12-21 08:43:19][ERROR] LLM 글 생성 (politics) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=600)"))
-[2025-12-21 08:43:20][ERROR] Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
-    httplib_response = super().getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
-    response.begin()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
-    version, status, reason = self._read_status()
-                              ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-TimeoutError: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
-    resp = conn.urlopen(
-        method=request.method,
-    ...<9 lines>...
-        chunked=chunked,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
-    raise value
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-        conn,
-    ...<10 lines>...
-        **response_kw,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
-    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
-    raise ReadTimeoutError(
-        self, url, f"Read timed out. (read timeout={timeout_value})"
-    ) from err
-urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=600)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 106, in generate_post_with_ollama
-    r = requests.post(url, json=payload, timeout=(10, timeout))
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
-    return request("post", url, data=data, json=json, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
-    return session.request(method=method, url=url, **kwargs)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
-    raise ReadTimeout(e, request=request)
-requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=600)
-
-[2025-12-21 08:50:40][STEP] 프로그램 시작
-[2025-12-21 08:50:40][STEP] make_driver() 호출 직전
-[2025-12-21 08:50:46][STEP] make_driver() 리턴 직후
-[2025-12-21 08:50:46][STEP] 로그인 시작
-[2025-12-21 08:50:50][INFO] ===== TOPIC START: politics =====
-[2025-12-21 08:50:50][STEP] RSS 수집 (politics)
-[2025-12-21 08:50:52][INFO] politics: 기사 제목 = 정치 - 동아일보
-[2025-12-21 08:50:52][STEP] LLM 글 생성 (politics)
-[2025-12-21 08:52:52][INFO] politics: 생성된 제목 = 정치 - 동아일보
-[2025-12-21 08:52:52][INFO] politics: 본문 미리보기 = {   "title": "동아일보 뉴스 분석: 정치 뉴스 추가 규칙에 대한 해설",   "body": |     **뉴с 추가 규칙에 대한 해설**      동아일보가 recently introducing new rules for political news has sparked a heated debate among journalists and reader ...
-[2025-12-21 08:52:52][STEP] 글쓰기 입력 (politics)
-[2025-12-21 08:53:05][STEP] 발행 처리 (politics)
-[2025-12-21 08:53:07][INFO] ✅ 완료: politics 1건 발행
-[2025-12-21 08:53:07][INFO] ===== TOPIC START: gossip =====
-[2025-12-21 08:53:07][STEP] RSS 수집 (gossip)
-[2025-12-21 08:53:09][INFO] gossip: 기사 제목 = AI와 성생활·연애까지… 英서 확산 중이라는 ‘디지털 스리섬’, 뭐야? - 헬스조선
-[2025-12-21 08:53:09][STEP] LLM 글 생성 (gossip)
-[2025-12-21 08:54:36][INFO] gossip: 생성된 제목 = AI와 성생활·연애까지… 英서 확산 중이라는 ‘디지털 스리섬’, 뭐야? - 헬스조선
-[2025-12-21 08:54:36][INFO] gossip: 본문 미리보기 = {   "title": "AI와 성생활·연애까지…英國의 '디지털 스리섬'에 대한 진실",   "body": |     헬스조선은 영국에서 AI를 이용한 성생활과 연애에 대한 '디지털 스리섬'에 대해 기사로 보도했습니다. 이에 대해 많은 사람이 CuriosityStream이라는 플랫폼을 통해 영국의 가십 뉴스를 볼 수 있는 opportunity가 생겼다고 말 ...
-[2025-12-21 08:54:36][STEP] 글쓰기 입력 (gossip)
-[2025-12-21 08:54:48][STEP] 발행 처리 (gossip)
-[2025-12-21 08:54:51][INFO] ✅ 완료: gossip 1건 발행
-[2025-12-21 08:54:51][INFO] ===== TOPIC START: kpop =====
-[2025-12-21 08:54:51][STEP] RSS 수집 (kpop)
-[2025-12-21 08:54:52][INFO] kpop: 기사 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
-[2025-12-21 08:54:52][STEP] LLM 글 생성 (kpop)
-[2025-12-21 08:56:55][INFO] kpop: 생성된 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
-[2025-12-21 08:56:55][INFO] kpop: 본문 미리보기 = ```json {   "title": "가십 뉴스 추가 규칙: 사생활 단정과 루머에 대한 조심",   "body": " **가십 뉴スの 새로운 규칙이 나오고 있습니다.**   recent news  recently, OSEN은 '3세대 건재' 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤)[종합]'를 기사로 공개했습니다. ...
-[2025-12-21 08:56:55][STEP] 글쓰기 입력 (kpop)
-[2025-12-21 08:57:08][STEP] 발행 처리 (kpop)
-[2025-12-21 08:57:10][INFO] ✅ 완료: kpop 1건 발행
-[2025-12-21 08:57:10][INFO] ===== TOPIC START: hot =====
-[2025-12-21 08:57:10][STEP] RSS 수집 (hot)
-[2025-12-21 08:57:12][INFO] hot: 기사 제목 = [다시 청와대] ② 부활하는 권부의 심장 靑…'구중궁궐' 논란 벗을까 - 연합뉴스
-[2025-12-21 08:57:12][STEP] LLM 글 생성 (hot)
-[2025-12-21 08:59:16][INFO] hot: 생성된 제목 = [다시 청와대] ② 부활하는 권부의 심장 靑…'구중궁궐' 논란 벗을까 - 연합뉴스
-[2025-12-21 08:59:16][INFO] hot: 본문 미리보기 = {   "title": "다시 청와대: '구중궁ꐐ' 논란에 부활하는 권부의 심장",   "body": |     청와대가 다시 돌아오고 있습니다. 이 기사에서는 "구중궁ꐐ" 논란이 청와대의 심장을 뚫고 있는 상황을 보여줍니다.      청와대는 과거에 '구중궁ꐐ'라는 단어를 사용했는데, 이 단어가 의미가 무엇인지 알려드릴게요.       청와대는 '구중궁ꐐ ...
-[2025-12-21 08:59:16][STEP] 글쓰기 입력 (hot)
-[2025-12-21 08:59:30][STEP] 발행 처리 (hot)
-[2025-12-21 08:59:32][INFO] ✅ 완료: hot 1건 발행
-[2025-12-21 08:59:32][STEP] 전체 작업 완료
-[2025-12-21 09:20:38][STEP] 프로그램 시작
-[2025-12-21 09:20:38][STEP] make_driver() 호출 직전
-[2025-12-21 09:20:44][STEP] make_driver() 리턴 직후
-[2025-12-21 09:20:44][STEP] 로그인 시작
-[2025-12-21 09:20:49][INFO] ===== TOPIC START: politics =====
-[2025-12-21 09:20:49][STEP] RSS 수집 (politics)
-[2025-12-21 09:20:51][INFO] politics: 기사 제목 = 정치 - 동아일보
-[2025-12-21 09:20:51][STEP] LLM 글 생성 (politics)
-[2025-12-21 09:20:51][ERROR] LLM 글 생성 (politics) 실패: NameError("name 'build_prompt' is not defined")
-[2025-12-21 09:20:51][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
-    lambda: generate_post_with_ollama(
-            ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<9 lines>...
-        timeout=config.LLM_TIMEOUT
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 128, in generate_post_with_ollama
-    prompt = build_prompt_json(category, article)
-  File "C:\workspace\auto_tistory_blog\prompts.py", line 5, in build_prompt_json
-    base = build_prompt(category, article)
-           ^^^^^^^^^^^^
-NameError: name 'build_prompt' is not defined. Did you mean: 'build_prompt_json'?
-
-[2025-12-21 11:54:02][STEP] 프로그램 시작
-[2025-12-21 11:54:02][STEP] make_driver() 호출 직전
-[2025-12-21 11:54:12][STEP] make_driver() 리턴 직후
-[2025-12-21 11:54:12][STEP] 로그인 시작
-[2025-12-21 11:54:18][INFO] ===== TOPIC START: politics =====
-[2025-12-21 11:54:18][STEP] RSS 수집 (politics)
-[2025-12-21 11:54:20][INFO] politics: 기사 제목 = 여야, 연말연시 ‘필버 격돌’...정통망법.내란재판부법 등 쟁점 - BBS불교방송
-[2025-12-21 11:54:20][STEP] LLM 글 생성 (politics)
-[2025-12-21 11:54:20][ERROR] LLM 글 생성 (politics) 실패: NameError("name 'build_prompt' is not defined")
-[2025-12-21 11:54:20][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 135, in <lambda>
-    title_text, body_text = run_step(driver, f"LLM 글 생성 ({topic_key})", lambda: generate_post_with_ollama(
-                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        category=prompt_category,
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<10 lines>...
-        topic_tag=topic_key,
-        ^^^^^^^^^^^^^^^^^^^^
-    ))
-    ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 228, in generate_post_with_ollama
-    prompt = build_prompt_json(category, article)
-  File "C:\workspace\auto_tistory_blog\prompts.py", line 5, in build_prompt_json
-    base = build_prompt(category, article)
-           ^^^^^^^^^^^^
-NameError: name 'build_prompt' is not defined. Did you mean: 'build_prompt_json'?
-
-[2025-12-21 12:00:33][STEP] 프로그램 시작
-[2025-12-21 12:00:33][STEP] make_driver() 호출 직전
-[2025-12-21 12:00:38][STEP] make_driver() 리턴 직후
-[2025-12-21 12:00:38][STEP] 로그인 시작
-[2025-12-21 12:00:44][INFO] ===== TOPIC START: politics =====
-[2025-12-21 12:00:44][STEP] RSS 수집 (politics)
-[2025-12-21 12:00:46][INFO] politics: 기사 제목 = 전체 - 시사저널
-[2025-12-21 12:00:46][STEP] LLM 글 생성 (politics)
-[2025-12-21 12:12:03][INFO] politics: 생성된 제목 = 전체 - 시사저널
-[2025-12-21 12:12:03][INFO] politics: 본문 미리보기 = {   "title": "시사저널의 '전체' 기사와의 논란",   "body": |     시사저널이 최근에 발표한 '전체' 기사는 정치 뉴스에 대한 추가 규칙을 제시했다. 이 규칙은 특정 정당/인물에 대한 평가적 단정을 금지하고, 찬반적인 반응을 '엇갈린 반응'으로 표현하는 것을 권장한다.      이 규칙은 시사저널이 기사를 서술할 때 주의해야 할 중요 ...
-[2025-12-21 12:12:03][STEP] 글쓰기 입력 (politics)
-[2025-12-21 12:12:17][INFO] politics: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
-[2025-12-21 12:12:17][STEP] SD 이미지 생성 (politics)
-[2025-12-21 12:15:19][ERROR] SD 이미지 생성 (politics) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:15:19][ERROR] Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
-    httplib_response = super().getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
-    response.begin()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
-    version, status, reason = self._read_status()
-                              ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-TimeoutError: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
-    resp = conn.urlopen(
-        method=request.method,
-    ...<9 lines>...
-        chunked=chunked,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
-    raise value
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-        conn,
-    ...<10 lines>...
-        **response_kw,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
-    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
-    raise ReadTimeoutError(
-        self, url, f"Read timed out. (read timeout={timeout_value})"
-    ) from err
-urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
-    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
-                                                                         ~~~~~~~~~~~~~~~~~~~~^
-        topic_key, title_text
-        ^^^^^^^^^^^^^^^^^^^^^
-    ))
-    ^
-  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
-    return sd_txt2img(
-        prompt=prompt,
-    ...<6 lines>...
-        timeout_sec=config.SD_TIMEOUT_SEC,
-    )
-  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
-    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
-    return request("post", url, data=data, json=json, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
-    return session.request(method=method, url=url, **kwargs)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
-    raise ReadTimeout(e, request=request)
-requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-[2025-12-21 12:15:19][WARN] politics: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:15:19][STEP] 발행 처리 (politics)
-[2025-12-21 12:15:22][INFO] ✅ 완료: politics 1건 발행
-[2025-12-21 12:15:22][INFO] ===== TOPIC START: gossip =====
-[2025-12-21 12:15:22][STEP] RSS 수집 (gossip)
-[2025-12-21 12:15:24][INFO] gossip: 기사 제목 = ‘10년 연애’ 김우빈·신민아 결혼식…법륜스님이 주례 본 이유 - 중앙일보
-[2025-12-21 12:15:24][STEP] LLM 글 생성 (gossip)
-[2025-12-21 12:17:02][INFO] gossip: 생성된 제목 = ‘10년 연애’ 김우빈·신민아 결혼식…법륜스님이 주례 본 이유 - 중앙일보
-[2025-12-21 12:17:02][INFO] gossip: 본문 미리보기 = {   "title": '"10년 연애" 김우빈·신민아 결혼식…법륜스님이 주례 본 이유',   "body": |     최근에公開된 뉴스에 따르면, 가수 김우빈과 유튜버 신민아가 함께한 10년의 연애가 kết실되었다. 이 두 사람은 2023년 1월에 첫으로 결혼식을 올렸다.       신민아는 2018년부터 2022년에 종료된 그녀의 유튜브 계정이 가장 많 ...
-[2025-12-21 12:17:02][STEP] 글쓰기 입력 (gossip)
-[2025-12-21 12:17:16][INFO] gossip: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
-[2025-12-21 12:17:16][STEP] SD 이미지 생성 (gossip)
-[2025-12-21 12:20:18][ERROR] SD 이미지 생성 (gossip) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:20:18][ERROR] Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
-    httplib_response = super().getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
-    response.begin()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
-    version, status, reason = self._read_status()
-                              ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-TimeoutError: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
-    resp = conn.urlopen(
-        method=request.method,
-    ...<9 lines>...
-        chunked=chunked,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
-    raise value
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-        conn,
-    ...<10 lines>...
-        **response_kw,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
-    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
-    raise ReadTimeoutError(
-        self, url, f"Read timed out. (read timeout={timeout_value})"
-    ) from err
-urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
-    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
-                                                                         ~~~~~~~~~~~~~~~~~~~~^
-        topic_key, title_text
-        ^^^^^^^^^^^^^^^^^^^^^
-    ))
-    ^
-  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
-    return sd_txt2img(
-        prompt=prompt,
-    ...<6 lines>...
-        timeout_sec=config.SD_TIMEOUT_SEC,
-    )
-  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
-    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
-    return request("post", url, data=data, json=json, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
-    return session.request(method=method, url=url, **kwargs)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
-    raise ReadTimeout(e, request=request)
-requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-[2025-12-21 12:20:19][WARN] gossip: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:20:19][STEP] 발행 처리 (gossip)
-[2025-12-21 12:20:21][INFO] ✅ 완료: gossip 1건 발행
-[2025-12-21 12:20:21][INFO] ===== TOPIC START: kpop =====
-[2025-12-21 12:20:21][STEP] RSS 수집 (kpop)
-[2025-12-21 12:20:23][INFO] kpop: 기사 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
-[2025-12-21 12:20:23][STEP] LLM 글 생성 (kpop)
-[2025-12-21 12:21:28][INFO] kpop: 생성된 제목 = 가십 뉴스 추가 규칙: 사생활 단정과 루머에 대한 유의
-[2025-12-21 12:21:28][INFO] kpop: 본문 미리보기 = **가십 뉴스의 새로운 규칙에 대해 알려드릴게요!**   Recently, OSEN이 발표한 가십 뉴スの 추가 규칙에 관심을 가집니다. 이 regulations는 가십 뉴스에서 언급되는 사생활 단정과 루머를 address합니다.  **사생활 단정의 금지**\n  가십 뉴스의 새로운 규칙에서는 사생활 단정을 금지합니다. "열애 확정"이나 "결별 확정" 같은  ...
-[2025-12-21 12:21:28][STEP] 글쓰기 입력 (kpop)
-[2025-12-21 12:21:40][INFO] kpop: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
-[2025-12-21 12:21:40][STEP] SD 이미지 생성 (kpop)
-[2025-12-21 12:24:42][ERROR] SD 이미지 생성 (kpop) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:24:42][ERROR] Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
-    httplib_response = super().getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
-    response.begin()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
-    version, status, reason = self._read_status()
-                              ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-TimeoutError: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
-    resp = conn.urlopen(
-        method=request.method,
-    ...<9 lines>...
-        chunked=chunked,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
-    raise value
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-        conn,
-    ...<10 lines>...
-        **response_kw,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
-    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
-    raise ReadTimeoutError(
-        self, url, f"Read timed out. (read timeout={timeout_value})"
-    ) from err
-urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
-    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
-                                                                         ~~~~~~~~~~~~~~~~~~~~^
-        topic_key, title_text
-        ^^^^^^^^^^^^^^^^^^^^^
-    ))
-    ^
-  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
-    return sd_txt2img(
-        prompt=prompt,
-    ...<6 lines>...
-        timeout_sec=config.SD_TIMEOUT_SEC,
-    )
-  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
-    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
-    return request("post", url, data=data, json=json, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
-    return session.request(method=method, url=url, **kwargs)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
-    raise ReadTimeout(e, request=request)
-requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-[2025-12-21 12:24:42][WARN] kpop: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:24:42][STEP] 발행 처리 (kpop)
-[2025-12-21 12:24:45][INFO] ✅ 완료: kpop 1건 발행
-[2025-12-21 12:24:45][INFO] ===== TOPIC START: hot =====
-[2025-12-21 12:24:45][STEP] RSS 수집 (hot)
-[2025-12-21 12:24:47][INFO] hot: 기사 제목 = 논란에도 방송 복귀한 백종원·곽도원…시청자 반응 온도차 - 연합뉴스
-[2025-12-21 12:24:47][STEP] LLM 글 생성 (hot)
-[2025-12-21 12:29:26][INFO] hot: 생성된 제목 = 논란에도 방송 복귀한 백종원·곽도원…시청자 반응 온도차 - 연합뉴스
-[2025-12-21 12:29:26][INFO] hot: 본문 미리보기 = > \[기사 제목: 논란에도 방송 복귀한 백종원·곽도원…시청자 반응 온도차 - 연합뉴스\]  today, 2023.12.12  연합뉴스에 따르면, 이날 방송에서 논란이 되고 있는 백종원과 곽도원은 시청자들의 반응이 온도차로 보인다.  백종원이 방송에서 한 조aines의 가사와 곽도원이가 방송에서 하는 '아프리카'에 대한 논쟁은 시청자의 의견을 불분명하게 하 ...
-[2025-12-21 12:29:26][STEP] 글쓰기 입력 (hot)
-[2025-12-21 12:29:45][INFO] hot: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
-[2025-12-21 12:29:45][STEP] SD 이미지 생성 (hot)
-[2025-12-21 12:32:47][ERROR] SD 이미지 생성 (hot) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:32:47][ERROR] Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
-    response = conn.getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
-    httplib_response = super().getresponse()
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
-    response.begin()
-    ~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
-    version, status, reason = self._read_status()
-                              ~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-TimeoutError: timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
-    resp = conn.urlopen(
-        method=request.method,
-    ...<9 lines>...
-        chunked=chunked,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
-    retries = retries.increment(
-        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
-    raise value
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
-    response = self._make_request(
-        conn,
-    ...<10 lines>...
-        **response_kw,
-    )
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
-    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
-    raise ReadTimeoutError(
-        self, url, f"Read timed out. (read timeout={timeout_value})"
-    ) from err
-urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
-    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
-                                                                         ~~~~~~~~~~~~~~~~~~~~^
-        topic_key, title_text
-        ^^^^^^^^^^^^^^^^^^^^^
-    ))
-    ^
-  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
-    return sd_txt2img(
-        prompt=prompt,
-    ...<6 lines>...
-        timeout_sec=config.SD_TIMEOUT_SEC,
-    )
-  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
-    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
-    return request("post", url, data=data, json=json, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
-    return session.request(method=method, url=url, **kwargs)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
-    resp = self.send(prep, **send_kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
-    r = adapter.send(request, **kwargs)
-  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
-    raise ReadTimeout(e, request=request)
-requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
-
-[2025-12-21 12:32:47][WARN] hot: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
-[2025-12-21 12:32:47][STEP] 발행 처리 (hot)
-[2025-12-21 12:32:50][INFO] ✅ 완료: hot 1건 발행
-[2025-12-21 12:32:50][STEP] 전체 작업 완료
-[2025-12-21 13:40:16][STEP] 프로그램 시작
-[2025-12-21 13:40:16][STEP] make_driver() 호출 직전
-[2025-12-21 13:40:21][STEP] make_driver() 리턴 직후
-[2025-12-21 13:40:21][STEP] 로그인 시작
-[2025-12-21 13:40:25][INFO] ===== TOPIC START: politics =====
-[2025-12-21 13:40:25][STEP] RSS 수집 (politics)
-[2025-12-21 13:40:27][INFO] politics: 기사 제목 = 전체 - 시사저널
-[2025-12-21 13:40:27][STEP] LLM 글 생성 (politics)
-[2025-12-21 13:44:26][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_LLM_PARSE_FAILED: response not JSON. saved=debug\\llm_raw_politics_20251221_134426.txt')
-[2025-12-21 13:44:26][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 74, in run_step
-    return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 148, in <lambda>
+  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
     lambda: generate_post_with_ollama(
             ~~~~~~~~~~~~~~~~~~~~~~~~~^
         category=prompt_category,
@@ -879,34 +82,78 @@ requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860)
     ...<10 lines>...
         topic_tag=topic_key,          # ✅ 디버그 파일명용
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
+    ),
     ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 159, in generate_post_with_ollama
-    raise RuntimeError(f"E_LLM_PARSE_FAILED: response not JSON. saved={raw_path}")
-RuntimeError: E_LLM_PARSE_FAILED: response not JSON. saved=debug\llm_raw_politics_20251221_134426.txt
+  File "C:\workspace\auto_tistory_blog\generator.py", line 334, in generate_post_with_ollama
+    _validate_post_quality(title, body, topic_tag)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 172, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
+RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_politics_20251221_153021.html
 
-[2025-12-21 13:48:10][STEP] 프로그램 시작
-[2025-12-21 13:48:10][STEP] make_driver() 호출 직전
-[2025-12-21 13:48:15][STEP] make_driver() 리턴 직후
-[2025-12-21 13:48:15][STEP] 로그인 시작
-[2025-12-21 13:48:20][INFO] ===== TOPIC START: politics =====
-[2025-12-21 13:48:20][STEP] RSS 수집 (politics)
-[2025-12-21 13:48:21][INFO] politics: 기사 제목 = 정치 - 동아일보
-[2025-12-21 13:48:21][STEP] LLM 글 생성 (politics)
-[2025-12-21 13:49:40][INFO] politics: 생성된 제목 = 동아일보 뉴스 분석: '정치 뉴스 추가 규칙'이 정치계에 미칠 impact?
-[2025-12-21 13:49:40][INFO] politics: 본문 미리보기 = > **정치 뉴스 추가 규칙**  동아일보가 발표한 '정치 뉴스 추가 규칙'은 정치 뉴스를 보다 신중하고 정밀하게 보도하는 것을 목표로 한다. 이 규칙은 특정 정당/인물에 대한 평가적 단정을 금지하고, 찬반이 갈리는 사안에는  출처: 동아일보 (https://news.google.com/rss/articles/CBMiS0FVX3lxTFA4Yll2enlYOD ...
-[2025-12-21 13:49:40][STEP] 글쓰기 입력 (politics)
-[2025-12-21 13:49:52][STEP] 발행 처리 (politics)
-[2025-12-21 13:49:54][INFO] ✅ 완료: politics 1건 발행
-[2025-12-21 13:49:54][INFO] ===== TOPIC START: gossip =====
-[2025-12-21 13:49:54][STEP] RSS 수집 (gossip)
-[2025-12-21 13:49:56][INFO] gossip: 기사 제목 = 황우슬혜 “장거리 연애? 우리 집에서 재우면 돼” 연상美 매력 폭발 - 스포츠동아
-[2025-12-21 13:49:56][STEP] LLM 글 생성 (gossip)
-[2025-12-21 13:52:48][ERROR] LLM 글 생성 (gossip) 실패: RuntimeError('E_LLM_PARSE_FAILED: response not JSON. saved=debug\\llm_raw_gossip_20251221_135248.txt')
-[2025-12-21 13:52:48][ERROR] Traceback (most recent call last):
-  File "C:\workspace\auto_tistory_blog\main.py", line 74, in run_step
+[2025-12-21 15:44:00][STEP] 프로그램 시작
+[2025-12-21 15:44:00][STEP] make_driver() 호출 직전
+[2025-12-21 15:44:05][STEP] make_driver() 리턴 직후
+[2025-12-21 15:44:05][STEP] 로그인 시작
+[2025-12-21 15:44:09][INFO] ===== TOPIC START: politics =====
+[2025-12-21 15:44:09][STEP] RSS 수집 (politics)
+[2025-12-21 15:44:11][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 15:44:11][STEP] LLM 글 생성 (politics)
+[2025-12-21 15:44:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:44:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:44:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:44:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:45:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:45:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:45:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:45:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:45:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:45:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:46:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:46:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:46:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:46:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:46:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:46:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:47:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:47:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=181s tick=18 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:47:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=191s tick=19 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:47:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=201s tick=20 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:47:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=211s tick=21 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:47:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=221s tick=22 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:48:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=231s tick=23 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:48:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=241s tick=24 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:48:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=251s tick=25 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:48:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=261s tick=26 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:48:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=271s tick=27 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:48:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=281s tick=28 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:49:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=292s tick=29 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:49:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=302s tick=30 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:49:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=312s tick=31 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:49:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=322s tick=32 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:49:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=332s tick=33 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:49:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=342s tick=34 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:50:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=352s tick=35 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:50:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=362s tick=36 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:50:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=372s tick=37 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:50:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=382s tick=38 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:50:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=392s tick=39 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:50:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=402s tick=40 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:51:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=412s tick=41 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:51:14][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=422s tick=42 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:51:24][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=432s tick=43 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:51:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=442s tick=44 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:51:44][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=452s tick=45 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:51:54][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=462s tick=46 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:52:04][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=472s tick=47 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:52:14][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=483s tick=48 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:52:24][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=493s tick=49 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:52:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=503s tick=50 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 15:52:40][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_politics_20251221_154531.html')
+[2025-12-21 15:52:40][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
     return fn()
-  File "C:\workspace\auto_tistory_blog\main.py", line 148, in <lambda>
+  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
     lambda: generate_post_with_ollama(
             ~~~~~~~~~~~~~~~~~~~~~~~~~^
         category=prompt_category,
@@ -914,96 +161,344 @@ RuntimeError: E_LLM_PARSE_FAILED: response not JSON. saved=debug\llm_raw_politic
     ...<10 lines>...
         topic_tag=topic_key,          # ✅ 디버그 파일명용
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
+    ),
     ^
-  File "C:\workspace\auto_tistory_blog\generator.py", line 159, in generate_post_with_ollama
-    raise RuntimeError(f"E_LLM_PARSE_FAILED: response not JSON. saved={raw_path}")
-RuntimeError: E_LLM_PARSE_FAILED: response not JSON. saved=debug\llm_raw_gossip_20251221_135248.txt
+  File "C:\workspace\auto_tistory_blog\generator.py", line 326, in generate_post_with_ollama
+    _validate_post_quality(title, body, topic_tag)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 173, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
+RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_politics_20251221_154531.html
 
-[2025-12-21 14:12:49][STEP] 프로그램 시작
-[2025-12-21 14:12:49][STEP] make_driver() 호출 직전
-[2025-12-21 14:12:55][STEP] make_driver() 리턴 직후
-[2025-12-21 14:12:55][STEP] 로그인 시작
-[2025-12-21 14:12:59][INFO] ===== TOPIC START: politics =====
-[2025-12-21 14:12:59][STEP] RSS 수집 (politics)
-[2025-12-21 14:13:01][INFO] politics: 기사 제목 = 전체 - 시사저널
-[2025-12-21 14:13:01][STEP] LLM 글 생성 (politics)
-[2025-12-21 14:13:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:13:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:13:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:13:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:13:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:14:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:14:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:14:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:14:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:14:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
-[2025-12-21 14:14:46][INFO] politics: 생성된 제목 = 시사저널의 '전체' 기사: 정당 간의 오역과 의견
-[2025-12-21 14:14:46][INFO] politics: 본문 미리보기 = > 시사저널의 '전체' 기사는 정당 간의 오역과 의견에 대해 논의한다. 기사에 따르면, 정당 간의 차이점은 '오역'으로 설명된다. 이로 인해 논란이 일어나고 있다.  > 블로그에서 궁금해할 점은 다음과 같다.  * 시사저널의 '전체' 기사는 정당 간의 오역과 의견에 대해 논의한다?  * 논란이 일어나고 있는 이유는 무엇일까?  * 시사저널의 '전체' 기사는 ...
-[2025-12-21 14:14:46][STEP] 글쓰기 입력 (politics)
-[2025-12-21 14:14:58][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
-[2025-12-21 14:14:59][STEP] 발행 처리 (politics)
-[2025-12-21 14:15:01][INFO] ✅ 완료: politics 1건 발행
-[2025-12-21 14:15:01][INFO] ===== TOPIC START: gossip =====
-[2025-12-21 14:15:01][STEP] RSS 수집 (gossip)
-[2025-12-21 14:15:03][INFO] gossip: 기사 제목 = AI로 만든 ‘환승연애’ 멀티버스…“입소문에 도움” vs “명예훼손” - 한겨레
-[2025-12-21 14:15:03][STEP] LLM 글 생성 (gossip)
-[2025-12-21 14:15:13][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:15:23][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:15:33][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:15:43][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:15:53][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:16:03][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:16:11][INFO] gossip: 생성된 제목 = AI로 만든 '환승연애' 멀티버스... '입소문에 도움' vs '명예훼손'
-[2025-12-21 14:16:11][INFO] gossip: 본문 미리보기 = > **기사 요약** 한겨레가 보도한 'AI로 만든 환승연애' 멀티버스의 내용을 살펴보겠습니다. 이 멀티버스는 AI를 통해 다양한 연애 스타일을 시뮬레이션하고, 사용자들이 원하는 스타일에 맞춰서 선택할 수 있습니다.  > **본문** 한겨레는  출처: 한겨레 (https://news.google.com/rss/articles/CBMickFVX3lxTE1Tc ...
-[2025-12-21 14:16:11][STEP] 글쓰기 입력 (gossip)
-[2025-12-21 14:16:21][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
-[2025-12-21 14:16:22][STEP] 발행 처리 (gossip)
-[2025-12-21 14:16:24][INFO] ✅ 완료: gossip 1건 발행
-[2025-12-21 14:16:24][INFO] ===== TOPIC START: kpop =====
-[2025-12-21 14:16:24][STEP] RSS 수집 (kpop)
-[2025-12-21 14:16:26][INFO] kpop: 기사 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
-[2025-12-21 14:16:26][STEP] LLM 글 생성 (kpop)
-[2025-12-21 14:16:36][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:16:46][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:16:56][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:17:06][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:17:16][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:17:26][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:17:36][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:17:46][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:17:56][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:18:06][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:18:16][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:18:26][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:18:36][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:18:46][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=140s tick=14 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:18:48][INFO] kpop: 생성된 제목 = 가십 뉴스 추가 규칙: 사생활 단정과 루머에 대한 조심
-[2025-12-21 14:18:48][INFO] kpop: 본문 미리보기 = > **사생활 단정**  기사 제목을 보다 가볍고 선명하게 만들 수 있는 방법은, 사생활 단정을 제대로 관리하는 것입니다. '열애 확정'이나 '결별 확정' 같은 표현이 기사에 명시되지 않으면 사용하지 마세요. 이 तरह의 표현은 개인의 사생활을 침해할 수 있기 때문입니다.  > **루머와 추측**  보도에서는 '~라고 전해졌다'라는 표현만으로도 루머나 추측 ...
-[2025-12-21 14:18:48][STEP] 글쓰기 입력 (kpop)
-[2025-12-21 14:19:00][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
-[2025-12-21 14:19:01][STEP] 발행 처리 (kpop)
-[2025-12-21 14:19:03][INFO] ✅ 완료: kpop 1건 발행
-[2025-12-21 14:19:03][INFO] ===== TOPIC START: hot =====
-[2025-12-21 14:19:03][STEP] RSS 수집 (hot)
-[2025-12-21 14:19:05][INFO] hot: 기사 제목 = [속보]국민의힘-개혁신당, '통일교 특검법' 합의…제3자 추천 방식 - 경기일보
-[2025-12-21 14:19:05][STEP] LLM 글 생성 (hot)
-[2025-12-21 14:19:15][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:19:25][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:19:35][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:19:45][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:19:55][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:20:05][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:20:15][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:20:25][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:20:35][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:20:45][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:20:56][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:21:06][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
-[2025-12-21 14:21:09][INFO] hot: 생성된 제목 = 속보]국민의힘-개혁신당, '통일교 특검법' 합의…제3자 추천 방식
-[2025-12-21 14:21:09][INFO] hot: 본문 미리보기 = > **기사 요약** 국民의힘은 21일 개혁신당이 제3자 추천 방식을 포함한 '통일교 특검법'에 대한 합의를 이뤄냈다. 이 법안은 통일교의 신학적 문제와 관련된 법적 문제를 해결하기 위해 제시된 것이다.  > **기사 본문** 국민의힘은 21일 개혁신당이 제3자 추천 방식을 포함한 '통일교 특검법'에 대한 합의를 이뤄냈다. 이 법안은 통일교의 신학적 문제와 ...
-[2025-12-21 14:21:09][STEP] 글쓰기 입력 (hot)
-[2025-12-21 14:21:19][INFO] [HB] step='글쓰기 입력 (hot)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
-[2025-12-21 14:21:20][STEP] 발행 처리 (hot)
-[2025-12-21 14:21:23][INFO] ✅ 완료: hot 1건 발행
-[2025-12-21 14:21:23][STEP] 전체 작업 완료
+[2025-12-21 15:59:36][STEP] 프로그램 시작
+[2025-12-21 15:59:36][STEP] make_driver() 호출 직전
+[2025-12-21 15:59:41][STEP] make_driver() 리턴 직후
+[2025-12-21 15:59:41][STEP] 로그인 시작
+[2025-12-21 15:59:45][INFO] ===== TOPIC START: politics =====
+[2025-12-21 15:59:45][STEP] RSS 수집 (politics)
+[2025-12-21 15:59:46][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 15:59:46][STEP] LLM 글 생성 (politics)
+[2025-12-21 15:59:56][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:00:06][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:00:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:00:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:00:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:00:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:00:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:01:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:01:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:01:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:01:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:01:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:01:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:02:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:02:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:02:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:02:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:02:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=180s tick=18 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:02:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=191s tick=19 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:03:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=201s tick=20 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:03:18][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=211s tick=21 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:03:28][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=221s tick=22 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:03:38][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=231s tick=23 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:03:48][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=241s tick=24 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:03:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=251s tick=25 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:04:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=261s tick=26 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:04:18][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=271s tick=27 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:04:28][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=281s tick=28 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:04:38][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=291s tick=29 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:04:48][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=301s tick=30 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:04:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=312s tick=31 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:05:09][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=322s tick=32 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:05:19][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=332s tick=33 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:05:29][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=342s tick=34 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:05:39][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=352s tick=35 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:05:49][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=362s tick=36 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:05:59][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=372s tick=37 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:06:09][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=382s tick=38 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:06:19][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=393s tick=39 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:06:29][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=403s tick=40 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:06:39][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=413s tick=41 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:06:49][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=423s tick=42 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:07:00][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=433s tick=43 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:07:10][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=443s tick=44 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:07:20][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=453s tick=45 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:07:30][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=463s tick=46 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:07:40][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=473s tick=47 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:07:50][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=483s tick=48 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:08:00][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=493s tick=49 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:08:10][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=503s tick=50 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:08:20][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=513s tick=51 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:08:30][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=523s tick=52 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:08:40][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=533s tick=53 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:08:50][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=543s tick=54 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:09:00][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=553s tick=55 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:09:10][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=563s tick=56 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:09:20][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=574s tick=57 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:09:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=584s tick=58 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:09:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=594s tick=59 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:09:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=604s tick=60 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:10:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=614s tick=61 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:10:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=624s tick=62 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:10:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=634s tick=63 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:10:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=644s tick=64 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:10:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=654s tick=65 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:10:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=664s tick=66 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:11:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=674s tick=67 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:11:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=684s tick=68 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:11:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=695s tick=69 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:11:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=705s tick=70 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:11:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=715s tick=71 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:11:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=725s tick=72 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:12:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=735s tick=73 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:12:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=745s tick=74 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:12:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=755s tick=75 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:12:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=765s tick=76 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:12:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=775s tick=77 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:12:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=785s tick=78 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:13:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=795s tick=79 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:13:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=805s tick=80 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:13:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=815s tick=81 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:13:30][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_PARA_FEW: saved=debug\\fail_guard_politics_20251221_161330.html')
+[2025-12-21 16:13:30][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\generator.py", line 326, in generate_post_with_ollama
+    _validate_post_quality(title, body, topic_tag)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 178, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
+RuntimeError: E_GUARD_PARA_FEW: saved=debug\fail_guard_politics_20251221_161221.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        topic_tag=topic_key,          # ✅ 디버그 파일명용
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ),
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 384, in generate_post_with_ollama
+    _validate_post_quality(title2, body2, topic_tag)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 178, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
+RuntimeError: E_GUARD_PARA_FEW: saved=debug\fail_guard_politics_20251221_161330.html
+
+[2025-12-21 16:23:48][STEP] 프로그램 시작
+[2025-12-21 16:23:48][STEP] make_driver() 호출 직전
+[2025-12-21 16:23:54][STEP] make_driver() 리턴 직후
+[2025-12-21 16:23:54][STEP] 로그인 시작
+[2025-12-21 16:23:59][INFO] ===== TOPIC START: politics =====
+[2025-12-21 16:23:59][STEP] RSS 수집 (politics)
+[2025-12-21 16:24:01][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 16:24:01][STEP] LLM 글 생성 (politics)
+[2025-12-21 16:24:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:24:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:24:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:24:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:24:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:25:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:25:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:25:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:25:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:25:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:25:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:26:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:26:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:26:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:26:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:26:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:26:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=171s tick=17 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:27:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=181s tick=18 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:27:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=191s tick=19 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:27:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=201s tick=20 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:27:32][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=211s tick=21 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:27:42][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=221s tick=22 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:27:52][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=231s tick=23 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:28:02][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=241s tick=24 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:28:12][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=251s tick=25 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:28:22][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=261s tick=26 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:28:33][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=271s tick=27 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:28:43][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=281s tick=28 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:28:53][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=291s tick=29 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:29:03][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=301s tick=30 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:29:13][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=312s tick=31 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:29:23][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=322s tick=32 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:29:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=332s tick=33 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:29:44][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=342s tick=34 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:29:54][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=353s tick=35 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:30:04][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=363s tick=36 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:30:14][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=373s tick=37 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:30:24][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=383s tick=38 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:30:34][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=393s tick=39 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:30:44][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=403s tick=40 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:30:54][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=413s tick=41 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:31:05][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=423s tick=42 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:31:15][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=433s tick=43 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:31:25][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=443s tick=44 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:31:35][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=453s tick=45 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:31:45][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=463s tick=46 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:31:55][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=474s tick=47 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:32:05][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=484s tick=48 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:32:15][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=494s tick=49 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:32:25][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=504s tick=50 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:32:35][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=514s tick=51 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:32:45][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=524s tick=52 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:32:55][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=534s tick=53 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:33:05][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=544s tick=54 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:33:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=554s tick=55 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:33:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=564s tick=56 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:33:36][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=575s tick=57 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:33:46][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=585s tick=58 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:33:56][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=595s tick=59 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:34:06][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=605s tick=60 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:34:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=615s tick=61 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:34:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=625s tick=62 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:34:36][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=635s tick=63 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:34:46][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=645s tick=64 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:34:56][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=655s tick=65 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:07][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=665s tick=66 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:17][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=675s tick=67 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:27][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=685s tick=68 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:37][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=696s tick=69 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:47][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=706s tick=70 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:57][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=716s tick=71 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 16:35:57][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_GUARD_BODY_SHORT: saved=debug\\fail_guard_politics_20251221_163557.html')
+[2025-12-21 16:35:57][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\generator.py", line 310, in generate_post_with_ollama
+    _validate_post_quality(title, body, topic_tag)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 183, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
+RuntimeError: E_GUARD_PARA_FEW: saved=debug\fail_guard_politics_20251221_163511.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 208, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        topic_tag=topic_key,          # ✅ 디버그 파일명용
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ),
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 363, in generate_post_with_ollama
+    _validate_post_quality(title2, body2, topic_tag)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 150, in _validate_post_quality
+    raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
+RuntimeError: E_GUARD_BODY_SHORT: saved=debug\fail_guard_politics_20251221_163557.html
+
+[2025-12-21 17:15:31][STEP] 프로그램 시작
+[2025-12-21 17:15:31][STEP] make_driver() 호출 직전
+[2025-12-21 17:15:34][STEP] make_driver() 리턴 직후
+[2025-12-21 17:15:34][STEP] 로그인 시작
+[2025-12-21 17:15:37][INFO] ===== TOPIC START: politics =====
+[2025-12-21 17:15:37][STEP] RSS 수집 (politics)
+[2025-12-21 17:15:38][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 17:15:38][STEP] LLM 글 생성 (politics)
+[2025-12-21 17:15:48][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:15:58][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:16:08][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:16:15][INFO] politics: 생성된 제목 = ̦ㄯ ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ
+[2025-12-21 17:16:15][INFO] politics: 본문 미리보기 = [   {     "section": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ",     "content": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ ㄰ㅇㄺ"   },   {     "section": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ",     "content": "ㅍㅤㄫ ㄱㅈ ㄵㅎㄲ ㄰ㅇㄺ ㅍㅎㄲ ㄵㅎㄲ  ...
+[2025-12-21 17:16:15][STEP] SD 이미지 생성 (politics)
+[2025-12-21 17:16:17][ERROR] SD 이미지 생성 (politics) 실패: ConnectionError(MaxRetryError('HTTPConnectionPool(host=\'127.0.0.1\', port=7860): Max retries exceeded with url: /sdapi/v1/txt2img (Caused by NewConnectionError("HTTPConnection(host=\'127.0.0.1\', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))'))
+[2025-12-21 17:16:17][ERROR] Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 500, in request
+    self.endheaders()
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 1038, in _send_output
+    self.send(msg)
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\http\client.py", line 976, in send
+    self.connect()
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 331, in connect
+    self.sock = self._new_conn()
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: HTTPConnection(host='127.0.0.1', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=7860): Max retries exceeded with url: /sdapi/v1/txt2img (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 128, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 257, in _make_img
+    img = build_sd_prompt(topic_key, title_text)
+  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 27, in build_sd_prompt
+    return sd_txt2img(
+  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 71, in sd_txt2img
+    r = requests.post(url, json=payload, headers=headers, timeout=(10, timeout_sec))
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\PC\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=7860): Max retries exceeded with url: /sdapi/v1/txt2img (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=7860): Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다"))
+
+[2025-12-21 17:31:50][STEP] 프로그램 시작
+[2025-12-21 17:31:50][STEP] make_driver() 호출 직전
+[2025-12-21 17:31:52][STEP] make_driver() 리턴 직후
+[2025-12-21 17:31:52][STEP] 로그인 시작
+[2025-12-21 17:31:55][INFO] ===== TOPIC START: politics =====
+[2025-12-21 17:31:55][STEP] RSS 수집 (politics)
+[2025-12-21 17:31:56][INFO] politics: 기사 제목 = [인터뷰] 서왕진 "국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야" - 매일일보
+[2025-12-21 17:31:56][STEP] LLM 글 생성 (politics)
+[2025-12-21 17:32:06][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:32:16][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:32:26][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:32:36][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:32:46][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:32:52][INFO] politics: 생성된 제목 = 王一 六 这为 2路 使 不 一 万... 是 五小 过 七 八 一 为 中三
+[2025-12-21 17:32:52][INFO] politics: 본문 미리보기 = ## 清 万 这 一 为 2路 使 不 一 万 八 一 为 中三  是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 为 中三, 是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 为 中三.  ## 一 为 2路 使 不 一 万 八 一 为 中三  是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 为 中三, 是 五小 过 七 八 一 为 2路 使 不 一 万 八 一 ...
+[2025-12-21 17:32:52][STEP] SD 이미지 생성 (politics)
+[2025-12-21 17:33:02][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:33:12][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:33:22][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:33:33][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:33:43][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:33:53][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 17:34:03][INFO] [HB] step='SD 이미지 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
