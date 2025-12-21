@@ -16,7 +16,12 @@ VISIBILITY_ID = "open0"   # 비공개 고정
 USE_LLM = True
 OLLAMA_URL = "http://127.0.0.1:11434"
 OLLAMA_MODEL = "llama3.2:3b"     # 네가 설치한 모델명과 동일해야 함
-LLM_TIMEOUT = 600   # 120 -> 600 (10분)
+OLLAMA_MODEL = "llama3.2:3b"
+LLM_TIMEOUT = 1200          # 20분 (처음엔 넉넉히)
+LLM_NUM_PREDICT = 700       # 너무 길면 속도 느려짐
+LLM_TEMPERATURE = 0.3       # 혼합언어/헛소리 줄이기
+LLM_TOP_P = 0.9
+
 
 # ===== Google News RSS (4개 주제) =====
 GOOGLE_NEWS_REGION = "hl=ko&gl=KR&ceid=KR:ko"
@@ -49,3 +54,18 @@ SD_WIDTH = 1024
 SD_HEIGHT = 576
 SD_STEPS = 25
 SD_CFG_SCALE = 6.5
+
+
+# === SD(A1111) 이미지 생성 ===
+ENABLE_IMAGE = True
+SD_URL = "http://localhost:7860"
+
+# 빠른 기본값 (성공률 우선)
+SD_WIDTH = 768
+SD_HEIGHT = 512
+SD_STEPS = 20
+SD_CFG_SCALE = 7.0
+SD_SAMPLER = "DPM++ 2M"
+SD_TIMEOUT_SEC = 900
+SD_OUT_DIR = "debug/images"
+

@@ -1,1 +1,0 @@
-RuntimeError('E_OLLAMA_404: /api/generate 가 404 입니다. OLLAMA_URL 설정을 확인하세요. 현재 base=http://127.0.0.1:11434, generate=http://127.0.0.1:11434/api/generate, root_status=200, tags_status=200')

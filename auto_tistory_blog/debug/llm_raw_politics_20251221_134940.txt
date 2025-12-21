@@ -1,0 +1,8 @@
+{
+  "title": "동아일보 뉴스 분석: '정치 뉴스 추가 규칙'이 정치계에 미칠 impact?",
+  "body":"> **정치 뉴스 추가 규칙**\n\n동아일보가 발표한 '정치 뉴스 추가 규칙'은 정치 뉴스를 보다 신중하고 정밀하게 보도하는 것을 목표로 한다. 이 규칙은 특정 정당/인물에 대한 평가적 단정을 금지하고, 찬반이 갈리는 사안에는 " ,
+
+  "summary": "동아일보가 발표한 '정치 뉴스 추가 규칙'은 정치 뉴스를 보다 신중하고 정밀하게 보도하는 것을 목표로 한다. 이 규칙은 특정 정당/인물에 대한 평가적 단정을 금지하고, 찬반이 갈리는 사안에는 " ,
+
+  "source": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFA4Yll2enlYODJCeXJja3FjcHFqX3pUeUNabXIyT2p2cUdaMmFTMkhvSFdmWWJlSXFqTXVmcHhDZ0JkNkI3QkNmWEd4MA?oc=5&hl=en-US&gl=US&ceid=US:en"
+}

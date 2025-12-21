@@ -433,3 +433,577 @@ requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=11434
            ^^^^^^^^^^^^
 NameError: name 'build_prompt' is not defined. Did you mean: 'build_prompt_json'?
 
+[2025-12-21 11:54:02][STEP] 프로그램 시작
+[2025-12-21 11:54:02][STEP] make_driver() 호출 직전
+[2025-12-21 11:54:12][STEP] make_driver() 리턴 직후
+[2025-12-21 11:54:12][STEP] 로그인 시작
+[2025-12-21 11:54:18][INFO] ===== TOPIC START: politics =====
+[2025-12-21 11:54:18][STEP] RSS 수집 (politics)
+[2025-12-21 11:54:20][INFO] politics: 기사 제목 = 여야, 연말연시 ‘필버 격돌’...정통망법.내란재판부법 등 쟁점 - BBS불교방송
+[2025-12-21 11:54:20][STEP] LLM 글 생성 (politics)
+[2025-12-21 11:54:20][ERROR] LLM 글 생성 (politics) 실패: NameError("name 'build_prompt' is not defined")
+[2025-12-21 11:54:20][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 135, in <lambda>
+    title_text, body_text = run_step(driver, f"LLM 글 생성 ({topic_key})", lambda: generate_post_with_ollama(
+                                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        topic_tag=topic_key,
+        ^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 228, in generate_post_with_ollama
+    prompt = build_prompt_json(category, article)
+  File "C:\workspace\auto_tistory_blog\prompts.py", line 5, in build_prompt_json
+    base = build_prompt(category, article)
+           ^^^^^^^^^^^^
+NameError: name 'build_prompt' is not defined. Did you mean: 'build_prompt_json'?
+
+[2025-12-21 12:00:33][STEP] 프로그램 시작
+[2025-12-21 12:00:33][STEP] make_driver() 호출 직전
+[2025-12-21 12:00:38][STEP] make_driver() 리턴 직후
+[2025-12-21 12:00:38][STEP] 로그인 시작
+[2025-12-21 12:00:44][INFO] ===== TOPIC START: politics =====
+[2025-12-21 12:00:44][STEP] RSS 수집 (politics)
+[2025-12-21 12:00:46][INFO] politics: 기사 제목 = 전체 - 시사저널
+[2025-12-21 12:00:46][STEP] LLM 글 생성 (politics)
+[2025-12-21 12:12:03][INFO] politics: 생성된 제목 = 전체 - 시사저널
+[2025-12-21 12:12:03][INFO] politics: 본문 미리보기 = {   "title": "시사저널의 '전체' 기사와의 논란",   "body": |     시사저널이 최근에 발표한 '전체' 기사는 정치 뉴스에 대한 추가 규칙을 제시했다. 이 규칙은 특정 정당/인물에 대한 평가적 단정을 금지하고, 찬반적인 반응을 '엇갈린 반응'으로 표현하는 것을 권장한다.      이 규칙은 시사저널이 기사를 서술할 때 주의해야 할 중요 ...
+[2025-12-21 12:12:03][STEP] 글쓰기 입력 (politics)
+[2025-12-21 12:12:17][INFO] politics: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
+[2025-12-21 12:12:17][STEP] SD 이미지 생성 (politics)
+[2025-12-21 12:15:19][ERROR] SD 이미지 생성 (politics) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:15:19][ERROR] Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
+    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
+                                                                         ~~~~~~~~~~~~~~~~~~~~^
+        topic_key, title_text
+        ^^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^
+  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
+    return sd_txt2img(
+        prompt=prompt,
+    ...<6 lines>...
+        timeout_sec=config.SD_TIMEOUT_SEC,
+    )
+  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
+    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+[2025-12-21 12:15:19][WARN] politics: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:15:19][STEP] 발행 처리 (politics)
+[2025-12-21 12:15:22][INFO] ✅ 완료: politics 1건 발행
+[2025-12-21 12:15:22][INFO] ===== TOPIC START: gossip =====
+[2025-12-21 12:15:22][STEP] RSS 수집 (gossip)
+[2025-12-21 12:15:24][INFO] gossip: 기사 제목 = ‘10년 연애’ 김우빈·신민아 결혼식…법륜스님이 주례 본 이유 - 중앙일보
+[2025-12-21 12:15:24][STEP] LLM 글 생성 (gossip)
+[2025-12-21 12:17:02][INFO] gossip: 생성된 제목 = ‘10년 연애’ 김우빈·신민아 결혼식…법륜스님이 주례 본 이유 - 중앙일보
+[2025-12-21 12:17:02][INFO] gossip: 본문 미리보기 = {   "title": '"10년 연애" 김우빈·신민아 결혼식…법륜스님이 주례 본 이유',   "body": |     최근에公開된 뉴스에 따르면, 가수 김우빈과 유튜버 신민아가 함께한 10년의 연애가 kết실되었다. 이 두 사람은 2023년 1월에 첫으로 결혼식을 올렸다.       신민아는 2018년부터 2022년에 종료된 그녀의 유튜브 계정이 가장 많 ...
+[2025-12-21 12:17:02][STEP] 글쓰기 입력 (gossip)
+[2025-12-21 12:17:16][INFO] gossip: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
+[2025-12-21 12:17:16][STEP] SD 이미지 생성 (gossip)
+[2025-12-21 12:20:18][ERROR] SD 이미지 생성 (gossip) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:20:18][ERROR] Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
+    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
+                                                                         ~~~~~~~~~~~~~~~~~~~~^
+        topic_key, title_text
+        ^^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^
+  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
+    return sd_txt2img(
+        prompt=prompt,
+    ...<6 lines>...
+        timeout_sec=config.SD_TIMEOUT_SEC,
+    )
+  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
+    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+[2025-12-21 12:20:19][WARN] gossip: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:20:19][STEP] 발행 처리 (gossip)
+[2025-12-21 12:20:21][INFO] ✅ 완료: gossip 1건 발행
+[2025-12-21 12:20:21][INFO] ===== TOPIC START: kpop =====
+[2025-12-21 12:20:21][STEP] RSS 수집 (kpop)
+[2025-12-21 12:20:23][INFO] kpop: 기사 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
+[2025-12-21 12:20:23][STEP] LLM 글 생성 (kpop)
+[2025-12-21 12:21:28][INFO] kpop: 생성된 제목 = 가십 뉴스 추가 규칙: 사생활 단정과 루머에 대한 유의
+[2025-12-21 12:21:28][INFO] kpop: 본문 미리보기 = **가십 뉴스의 새로운 규칙에 대해 알려드릴게요!**   Recently, OSEN이 발표한 가십 뉴スの 추가 규칙에 관심을 가집니다. 이 regulations는 가십 뉴스에서 언급되는 사생활 단정과 루머를 address합니다.  **사생활 단정의 금지**\n  가십 뉴스의 새로운 규칙에서는 사생활 단정을 금지합니다. "열애 확정"이나 "결별 확정" 같은  ...
+[2025-12-21 12:21:28][STEP] 글쓰기 입력 (kpop)
+[2025-12-21 12:21:40][INFO] kpop: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
+[2025-12-21 12:21:40][STEP] SD 이미지 생성 (kpop)
+[2025-12-21 12:24:42][ERROR] SD 이미지 생성 (kpop) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:24:42][ERROR] Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
+    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
+                                                                         ~~~~~~~~~~~~~~~~~~~~^
+        topic_key, title_text
+        ^^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^
+  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
+    return sd_txt2img(
+        prompt=prompt,
+    ...<6 lines>...
+        timeout_sec=config.SD_TIMEOUT_SEC,
+    )
+  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
+    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+[2025-12-21 12:24:42][WARN] kpop: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:24:42][STEP] 발행 처리 (kpop)
+[2025-12-21 12:24:45][INFO] ✅ 완료: kpop 1건 발행
+[2025-12-21 12:24:45][INFO] ===== TOPIC START: hot =====
+[2025-12-21 12:24:45][STEP] RSS 수집 (hot)
+[2025-12-21 12:24:47][INFO] hot: 기사 제목 = 논란에도 방송 복귀한 백종원·곽도원…시청자 반응 온도차 - 연합뉴스
+[2025-12-21 12:24:47][STEP] LLM 글 생성 (hot)
+[2025-12-21 12:29:26][INFO] hot: 생성된 제목 = 논란에도 방송 복귀한 백종원·곽도원…시청자 반응 온도차 - 연합뉴스
+[2025-12-21 12:29:26][INFO] hot: 본문 미리보기 = > \[기사 제목: 논란에도 방송 복귀한 백종원·곽도원…시청자 반응 온도차 - 연합뉴스\]  today, 2023.12.12  연합뉴스에 따르면, 이날 방송에서 논란이 되고 있는 백종원과 곽도원은 시청자들의 반응이 온도차로 보인다.  백종원이 방송에서 한 조aines의 가사와 곽도원이가 방송에서 하는 '아프리카'에 대한 논쟁은 시청자의 의견을 불분명하게 하 ...
+[2025-12-21 12:29:26][STEP] 글쓰기 입력 (hot)
+[2025-12-21 12:29:45][INFO] hot: after write_post url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F
+[2025-12-21 12:29:45][STEP] SD 이미지 생성 (hot)
+[2025-12-21 12:32:47][ERROR] SD 이미지 생성 (hot) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:32:47][ERROR] Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 81, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 172, in <lambda>
+    img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: generate_cover_image(
+                                                                         ~~~~~~~~~~~~~~~~~~~~^
+        topic_key, title_text
+        ^^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^
+  File "C:\workspace\auto_tistory_blog\image_pipeline.py", line 7, in generate_cover_image
+    return sd_txt2img(
+        prompt=prompt,
+    ...<6 lines>...
+        timeout_sec=config.SD_TIMEOUT_SEC,
+    )
+  File "C:\workspace\auto_tistory_blog\image_client_sd.py", line 51, in sd_txt2img
+    r = requests.post(endpoint, json=payload, timeout=(15, timeout_sec))
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)
+
+[2025-12-21 12:32:47][WARN] hot: 이미지 단계 스킵(오류): ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='localhost', port=7860): Read timed out. (read timeout=180)"))
+[2025-12-21 12:32:47][STEP] 발행 처리 (hot)
+[2025-12-21 12:32:50][INFO] ✅ 완료: hot 1건 발행
+[2025-12-21 12:32:50][STEP] 전체 작업 완료
+[2025-12-21 13:40:16][STEP] 프로그램 시작
+[2025-12-21 13:40:16][STEP] make_driver() 호출 직전
+[2025-12-21 13:40:21][STEP] make_driver() 리턴 직후
+[2025-12-21 13:40:21][STEP] 로그인 시작
+[2025-12-21 13:40:25][INFO] ===== TOPIC START: politics =====
+[2025-12-21 13:40:25][STEP] RSS 수집 (politics)
+[2025-12-21 13:40:27][INFO] politics: 기사 제목 = 전체 - 시사저널
+[2025-12-21 13:40:27][STEP] LLM 글 생성 (politics)
+[2025-12-21 13:44:26][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_LLM_PARSE_FAILED: response not JSON. saved=debug\\llm_raw_politics_20251221_134426.txt')
+[2025-12-21 13:44:26][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 74, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 148, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        topic_tag=topic_key,          # ✅ 디버그 파일명용
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 159, in generate_post_with_ollama
+    raise RuntimeError(f"E_LLM_PARSE_FAILED: response not JSON. saved={raw_path}")
+RuntimeError: E_LLM_PARSE_FAILED: response not JSON. saved=debug\llm_raw_politics_20251221_134426.txt
+
+[2025-12-21 13:48:10][STEP] 프로그램 시작
+[2025-12-21 13:48:10][STEP] make_driver() 호출 직전
+[2025-12-21 13:48:15][STEP] make_driver() 리턴 직후
+[2025-12-21 13:48:15][STEP] 로그인 시작
+[2025-12-21 13:48:20][INFO] ===== TOPIC START: politics =====
+[2025-12-21 13:48:20][STEP] RSS 수집 (politics)
+[2025-12-21 13:48:21][INFO] politics: 기사 제목 = 정치 - 동아일보
+[2025-12-21 13:48:21][STEP] LLM 글 생성 (politics)
+[2025-12-21 13:49:40][INFO] politics: 생성된 제목 = 동아일보 뉴스 분석: '정치 뉴스 추가 규칙'이 정치계에 미칠 impact?
+[2025-12-21 13:49:40][INFO] politics: 본문 미리보기 = > **정치 뉴스 추가 규칙**  동아일보가 발표한 '정치 뉴스 추가 규칙'은 정치 뉴스를 보다 신중하고 정밀하게 보도하는 것을 목표로 한다. 이 규칙은 특정 정당/인물에 대한 평가적 단정을 금지하고, 찬반이 갈리는 사안에는  출처: 동아일보 (https://news.google.com/rss/articles/CBMiS0FVX3lxTFA4Yll2enlYOD ...
+[2025-12-21 13:49:40][STEP] 글쓰기 입력 (politics)
+[2025-12-21 13:49:52][STEP] 발행 처리 (politics)
+[2025-12-21 13:49:54][INFO] ✅ 완료: politics 1건 발행
+[2025-12-21 13:49:54][INFO] ===== TOPIC START: gossip =====
+[2025-12-21 13:49:54][STEP] RSS 수집 (gossip)
+[2025-12-21 13:49:56][INFO] gossip: 기사 제목 = 황우슬혜 “장거리 연애? 우리 집에서 재우면 돼” 연상美 매력 폭발 - 스포츠동아
+[2025-12-21 13:49:56][STEP] LLM 글 생성 (gossip)
+[2025-12-21 13:52:48][ERROR] LLM 글 생성 (gossip) 실패: RuntimeError('E_LLM_PARSE_FAILED: response not JSON. saved=debug\\llm_raw_gossip_20251221_135248.txt')
+[2025-12-21 13:52:48][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 74, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 148, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<10 lines>...
+        topic_tag=topic_key,          # ✅ 디버그 파일명용
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 159, in generate_post_with_ollama
+    raise RuntimeError(f"E_LLM_PARSE_FAILED: response not JSON. saved={raw_path}")
+RuntimeError: E_LLM_PARSE_FAILED: response not JSON. saved=debug\llm_raw_gossip_20251221_135248.txt
+
+[2025-12-21 14:12:49][STEP] 프로그램 시작
+[2025-12-21 14:12:49][STEP] make_driver() 호출 직전
+[2025-12-21 14:12:55][STEP] make_driver() 리턴 직후
+[2025-12-21 14:12:55][STEP] 로그인 시작
+[2025-12-21 14:12:59][INFO] ===== TOPIC START: politics =====
+[2025-12-21 14:12:59][STEP] RSS 수집 (politics)
+[2025-12-21 14:13:01][INFO] politics: 기사 제목 = 전체 - 시사저널
+[2025-12-21 14:13:01][STEP] LLM 글 생성 (politics)
+[2025-12-21 14:13:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:13:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:13:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:13:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:13:51][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:14:01][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:14:11][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:14:21][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:14:31][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:14:41][INFO] [HB] step='LLM 글 생성 (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-21 14:14:46][INFO] politics: 생성된 제목 = 시사저널의 '전체' 기사: 정당 간의 오역과 의견
+[2025-12-21 14:14:46][INFO] politics: 본문 미리보기 = > 시사저널의 '전체' 기사는 정당 간의 오역과 의견에 대해 논의한다. 기사에 따르면, 정당 간의 차이점은 '오역'으로 설명된다. 이로 인해 논란이 일어나고 있다.  > 블로그에서 궁금해할 점은 다음과 같다.  * 시사저널의 '전체' 기사는 정당 간의 오역과 의견에 대해 논의한다?  * 논란이 일어나고 있는 이유는 무엇일까?  * 시사저널의 '전체' 기사는 ...
+[2025-12-21 14:14:46][STEP] 글쓰기 입력 (politics)
+[2025-12-21 14:14:58][INFO] [HB] step='글쓰기 입력 (politics)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 14:14:59][STEP] 발행 처리 (politics)
+[2025-12-21 14:15:01][INFO] ✅ 완료: politics 1건 발행
+[2025-12-21 14:15:01][INFO] ===== TOPIC START: gossip =====
+[2025-12-21 14:15:01][STEP] RSS 수집 (gossip)
+[2025-12-21 14:15:03][INFO] gossip: 기사 제목 = AI로 만든 ‘환승연애’ 멀티버스…“입소문에 도움” vs “명예훼손” - 한겨레
+[2025-12-21 14:15:03][STEP] LLM 글 생성 (gossip)
+[2025-12-21 14:15:13][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:15:23][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:15:33][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:15:43][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:15:53][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:16:03][INFO] [HB] step='LLM 글 생성 (gossip)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:16:11][INFO] gossip: 생성된 제목 = AI로 만든 '환승연애' 멀티버스... '입소문에 도움' vs '명예훼손'
+[2025-12-21 14:16:11][INFO] gossip: 본문 미리보기 = > **기사 요약** 한겨레가 보도한 'AI로 만든 환승연애' 멀티버스의 내용을 살펴보겠습니다. 이 멀티버스는 AI를 통해 다양한 연애 스타일을 시뮬레이션하고, 사용자들이 원하는 스타일에 맞춰서 선택할 수 있습니다.  > **본문** 한겨레는  출처: 한겨레 (https://news.google.com/rss/articles/CBMickFVX3lxTE1Tc ...
+[2025-12-21 14:16:11][STEP] 글쓰기 입력 (gossip)
+[2025-12-21 14:16:21][INFO] [HB] step='글쓰기 입력 (gossip)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 14:16:22][STEP] 발행 처리 (gossip)
+[2025-12-21 14:16:24][INFO] ✅ 완료: gossip 1건 발행
+[2025-12-21 14:16:24][INFO] ===== TOPIC START: kpop =====
+[2025-12-21 14:16:24][STEP] RSS 수집 (kpop)
+[2025-12-21 14:16:26][INFO] kpop: 기사 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
+[2025-12-21 14:16:26][STEP] LLM 글 생성 (kpop)
+[2025-12-21 14:16:36][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:16:46][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:16:56][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:17:06][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:17:16][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:17:26][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:17:36][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:17:46][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:17:56][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:18:06][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:18:16][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:18:26][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:18:36][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=130s tick=13 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:18:46][INFO] [HB] step='LLM 글 생성 (kpop)' elapsed=140s tick=14 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:18:48][INFO] kpop: 생성된 제목 = 가십 뉴스 추가 규칙: 사생활 단정과 루머에 대한 조심
+[2025-12-21 14:18:48][INFO] kpop: 본문 미리보기 = > **사생활 단정**  기사 제목을 보다 가볍고 선명하게 만들 수 있는 방법은, 사생활 단정을 제대로 관리하는 것입니다. '열애 확정'이나 '결별 확정' 같은 표현이 기사에 명시되지 않으면 사용하지 마세요. 이 तरह의 표현은 개인의 사생활을 침해할 수 있기 때문입니다.  > **루머와 추측**  보도에서는 '~라고 전해졌다'라는 표현만으로도 루머나 추측 ...
+[2025-12-21 14:18:48][STEP] 글쓰기 입력 (kpop)
+[2025-12-21 14:19:00][INFO] [HB] step='글쓰기 입력 (kpop)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 14:19:01][STEP] 발행 처리 (kpop)
+[2025-12-21 14:19:03][INFO] ✅ 완료: kpop 1건 발행
+[2025-12-21 14:19:03][INFO] ===== TOPIC START: hot =====
+[2025-12-21 14:19:03][STEP] RSS 수집 (hot)
+[2025-12-21 14:19:05][INFO] hot: 기사 제목 = [속보]국민의힘-개혁신당, '통일교 특검법' 합의…제3자 추천 방식 - 경기일보
+[2025-12-21 14:19:05][STEP] LLM 글 생성 (hot)
+[2025-12-21 14:19:15][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:19:25][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=20s tick=2 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:19:35][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=30s tick=3 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:19:45][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=40s tick=4 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:19:55][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=50s tick=5 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:20:05][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=60s tick=6 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:20:15][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=70s tick=7 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:20:25][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=80s tick=8 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:20:35][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=90s tick=9 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:20:45][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=100s tick=10 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:20:56][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=110s tick=11 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:21:06][INFO] [HB] step='LLM 글 생성 (hot)' elapsed=120s tick=12 url=https://ohmygodit.tistory.com/manage/posts/ title=블로그관리 | ohmygodit 님의 블로그
+[2025-12-21 14:21:09][INFO] hot: 생성된 제목 = 속보]국민의힘-개혁신당, '통일교 특검법' 합의…제3자 추천 방식
+[2025-12-21 14:21:09][INFO] hot: 본문 미리보기 = > **기사 요약** 국民의힘은 21일 개혁신당이 제3자 추천 방식을 포함한 '통일교 특검법'에 대한 합의를 이뤄냈다. 이 법안은 통일교의 신학적 문제와 관련된 법적 문제를 해결하기 위해 제시된 것이다.  > **기사 본문** 국민의힘은 21일 개혁신당이 제3자 추천 방식을 포함한 '통일교 특검법'에 대한 합의를 이뤄냈다. 이 법안은 통일교의 신학적 문제와 ...
+[2025-12-21 14:21:09][STEP] 글쓰기 입력 (hot)
+[2025-12-21 14:21:19][INFO] [HB] step='글쓰기 입력 (hot)' elapsed=10s tick=1 url=https://ohmygodit.tistory.com/manage/newpost/?type=post&returnURL=%2Fmanage%2Fposts%2F title=글쓰기
+[2025-12-21 14:21:20][STEP] 발행 처리 (hot)
+[2025-12-21 14:21:23][INFO] ✅ 완료: hot 1건 발행
+[2025-12-21 14:21:23][STEP] 전체 작업 완료

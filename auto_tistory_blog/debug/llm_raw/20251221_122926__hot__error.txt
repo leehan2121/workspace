@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\generator.py", line 248, in generate_post_with_ollama
+    obj = _extract_json(raw or "")
+  File "C:\workspace\auto_tistory_blog\generator.py", line 137, in _extract_json
+    raise ValueError(f"LLM 응답에서 JSON을 추출하지 못함 (last_err={repr(last_err)})")
+ValueError: LLM 응답에서 JSON을 추출하지 못함 (last_err=JSONDecodeError('Expecting property name enclosed in double quotes: line 2 column 1 (char 2)'))

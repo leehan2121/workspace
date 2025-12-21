@@ -1,0 +1,3 @@
+{
+  "title": "AI로 만든 '환승연애' 멀티버스... '입소문에 도움' vs '명예훼손'",
+  "body":"> **기사 요약**\n한겨레가 보도한 'AI로 만든 환승연애' 멀티버스의 내용을 살펴보겠습니다. 이 멀티버스는 AI를 통해 다양한 연애 스타일을 시뮬레이션하고, 사용자들이 원하는 스타일에 맞춰서 선택할 수 있습니다.\n\n> **본문**\n한겨레는 " ,"source": "https://news.google.com/rss/articles/CBMickFVX3lxTE1TcDRDS3N0bjQyYXhQUzd4WTk0b0l2UE40V0ZaMlJtVmk4YTBSbXdGVGF5SzZDaGxHTVRHVGU4ZWRBYkF2aUpuZklYQ21SekpEeXFwenBkT21oa0tPay1YSVdBZjRESG9Zb0c1UUFTRWxndw?oc=5&hl=en-US&gl=US&ceid=US:en" }

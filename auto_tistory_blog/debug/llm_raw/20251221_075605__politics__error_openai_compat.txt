@@ -1,1 +1,0 @@
-HTTP 404 at http://127.0.0.1:11434/v1/chat/completions

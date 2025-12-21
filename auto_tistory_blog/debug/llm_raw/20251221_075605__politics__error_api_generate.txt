@@ -1,1 +1,0 @@
-RuntimeError('E_OLLAMA_API_GENERATE_404')
