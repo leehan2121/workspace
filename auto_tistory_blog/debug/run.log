@@ -116,3 +116,320 @@ ValueError: LLM 응답에서 JSON을 추출하지 못함
 selenium.common.exceptions.TimeoutException: Message: 
 
 
+[2025-12-20 20:33:35][STEP] 프로그램 시작
+[2025-12-20 20:33:35][STEP] make_driver() 호출 직전
+[2025-12-20 20:33:44][STEP] make_driver() 리턴 직후
+[2025-12-20 20:33:44][STEP] 로그인 시작
+[2025-12-20 20:33:48][INFO] ===== TOPIC START: politics =====
+[2025-12-20 20:33:49][STEP] RSS 수집 (politics)
+[2025-12-20 20:33:50][INFO] politics: 기사 제목 = 정치 - 동아일보
+[2025-12-20 20:33:50][STEP] LLM 글 생성 (politics)
+[2025-12-20 20:33:50][ERROR] LLM 글 생성 (politics) 실패: HTTPError('404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate')
+[2025-12-20 20:33:50][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 109, in generate_post_with_ollama
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
+
+[2025-12-21 07:48:55][STEP] 프로그램 시작
+[2025-12-21 07:48:55][STEP] make_driver() 호출 직전
+[2025-12-21 07:49:07][STEP] make_driver() 리턴 직후
+[2025-12-21 07:49:07][STEP] 로그인 시작
+[2025-12-21 07:49:12][INFO] ===== TOPIC START: politics =====
+[2025-12-21 07:49:12][STEP] RSS 수집 (politics)
+[2025-12-21 07:49:14][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
+[2025-12-21 07:49:14][STEP] LLM 글 생성 (politics)
+[2025-12-21 07:49:14][ERROR] LLM 글 생성 (politics) 실패: HTTPError('404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate')
+[2025-12-21 07:49:14][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 109, in generate_post_with_ollama
+    r.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: http://127.0.0.1:11434/api/generate
+
+[2025-12-21 07:52:50][STEP] 프로그램 시작
+[2025-12-21 07:52:50][STEP] make_driver() 호출 직전
+[2025-12-21 07:52:56][STEP] make_driver() 리턴 직후
+[2025-12-21 07:52:56][STEP] 로그인 시작
+[2025-12-21 07:53:00][INFO] ===== TOPIC START: politics =====
+[2025-12-21 07:53:00][STEP] RSS 수집 (politics)
+[2025-12-21 07:53:02][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
+[2025-12-21 07:53:02][STEP] LLM 글 생성 (politics)
+[2025-12-21 07:53:02][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_OLLAMA_404: /api/generate 가 404 입니다. OLLAMA_URL 설정을 확인하세요. 현재 base=http://127.0.0.1:11434, generate=http://127.0.0.1:11434/api/generate, root_status=200, tags_status=200')
+[2025-12-21 07:53:02][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 131, in generate_post_with_ollama
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: E_OLLAMA_404: /api/generate 가 404 입니다. OLLAMA_URL 설정을 확인하세요. 현재 base=http://127.0.0.1:11434, generate=http://127.0.0.1:11434/api/generate, root_status=200, tags_status=200
+
+[2025-12-21 07:55:54][STEP] 프로그램 시작
+[2025-12-21 07:55:54][STEP] make_driver() 호출 직전
+[2025-12-21 07:55:59][STEP] make_driver() 리턴 직후
+[2025-12-21 07:55:59][STEP] 로그인 시작
+[2025-12-21 07:56:03][INFO] ===== TOPIC START: politics =====
+[2025-12-21 07:56:03][STEP] RSS 수집 (politics)
+[2025-12-21 07:56:05][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
+[2025-12-21 07:56:05][STEP] LLM 글 생성 (politics)
+[2025-12-21 07:56:05][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434')
+[2025-12-21 07:56:05][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\generator.py", line 100, in generate_post_with_ollama
+    raise RuntimeError("E_OLLAMA_API_GENERATE_404")
+RuntimeError: E_OLLAMA_API_GENERATE_404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 112, in generate_post_with_ollama
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434
+
+[2025-12-21 08:26:56][STEP] 프로그램 시작
+[2025-12-21 08:26:56][STEP] make_driver() 호출 직전
+[2025-12-21 08:27:03][STEP] make_driver() 리턴 직후
+[2025-12-21 08:27:03][STEP] 로그인 시작
+[2025-12-21 08:27:08][INFO] ===== TOPIC START: politics =====
+[2025-12-21 08:27:08][STEP] RSS 수집 (politics)
+[2025-12-21 08:27:09][INFO] politics: 기사 제목 = 정치 - MBC 뉴스
+[2025-12-21 08:27:09][STEP] LLM 글 생성 (politics)
+[2025-12-21 08:27:09][ERROR] LLM 글 생성 (politics) 실패: RuntimeError('E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434')
+[2025-12-21 08:27:09][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\generator.py", line 100, in generate_post_with_ollama
+    raise RuntimeError("E_OLLAMA_API_GENERATE_404")
+RuntimeError: E_OLLAMA_API_GENERATE_404
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 112, in generate_post_with_ollama
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: E_OLLAMA_ENDPOINTS_NOT_FOUND: (/api/generate)와 (/v1/chat/completions) 둘 다 404 입니다. base=http://127.0.0.1:11434
+
+[2025-12-21 08:33:08][STEP] 프로그램 시작
+[2025-12-21 08:33:08][STEP] make_driver() 호출 직전
+[2025-12-21 08:33:13][STEP] make_driver() 리턴 직후
+[2025-12-21 08:33:13][STEP] 로그인 시작
+[2025-12-21 08:33:18][INFO] ===== TOPIC START: politics =====
+[2025-12-21 08:33:18][STEP] RSS 수집 (politics)
+[2025-12-21 08:33:19][INFO] politics: 기사 제목 = 정치 - 동아일보
+[2025-12-21 08:33:19][STEP] LLM 글 생성 (politics)
+[2025-12-21 08:43:19][ERROR] LLM 글 생성 (politics) 실패: ReadTimeout(ReadTimeoutError("HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=600)"))
+[2025-12-21 08:43:20][ERROR] Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\http\client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=600)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 106, in generate_post_with_ollama
+    r = requests.post(url, json=payload, timeout=(10, timeout))
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\PC\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=600)
+
+[2025-12-21 08:50:40][STEP] 프로그램 시작
+[2025-12-21 08:50:40][STEP] make_driver() 호출 직전
+[2025-12-21 08:50:46][STEP] make_driver() 리턴 직후
+[2025-12-21 08:50:46][STEP] 로그인 시작
+[2025-12-21 08:50:50][INFO] ===== TOPIC START: politics =====
+[2025-12-21 08:50:50][STEP] RSS 수집 (politics)
+[2025-12-21 08:50:52][INFO] politics: 기사 제목 = 정치 - 동아일보
+[2025-12-21 08:50:52][STEP] LLM 글 생성 (politics)
+[2025-12-21 08:52:52][INFO] politics: 생성된 제목 = 정치 - 동아일보
+[2025-12-21 08:52:52][INFO] politics: 본문 미리보기 = {   "title": "동아일보 뉴스 분석: 정치 뉴스 추가 규칙에 대한 해설",   "body": |     **뉴с 추가 규칙에 대한 해설**      동아일보가 recently introducing new rules for political news has sparked a heated debate among journalists and reader ...
+[2025-12-21 08:52:52][STEP] 글쓰기 입력 (politics)
+[2025-12-21 08:53:05][STEP] 발행 처리 (politics)
+[2025-12-21 08:53:07][INFO] ✅ 완료: politics 1건 발행
+[2025-12-21 08:53:07][INFO] ===== TOPIC START: gossip =====
+[2025-12-21 08:53:07][STEP] RSS 수집 (gossip)
+[2025-12-21 08:53:09][INFO] gossip: 기사 제목 = AI와 성생활·연애까지… 英서 확산 중이라는 ‘디지털 스리섬’, 뭐야? - 헬스조선
+[2025-12-21 08:53:09][STEP] LLM 글 생성 (gossip)
+[2025-12-21 08:54:36][INFO] gossip: 생성된 제목 = AI와 성생활·연애까지… 英서 확산 중이라는 ‘디지털 스리섬’, 뭐야? - 헬스조선
+[2025-12-21 08:54:36][INFO] gossip: 본문 미리보기 = {   "title": "AI와 성생활·연애까지…英國의 '디지털 스리섬'에 대한 진실",   "body": |     헬스조선은 영국에서 AI를 이용한 성생활과 연애에 대한 '디지털 스리섬'에 대해 기사로 보도했습니다. 이에 대해 많은 사람이 CuriosityStream이라는 플랫폼을 통해 영국의 가십 뉴스를 볼 수 있는 opportunity가 생겼다고 말 ...
+[2025-12-21 08:54:36][STEP] 글쓰기 입력 (gossip)
+[2025-12-21 08:54:48][STEP] 발행 처리 (gossip)
+[2025-12-21 08:54:51][INFO] ✅ 완료: gossip 1건 발행
+[2025-12-21 08:54:51][INFO] ===== TOPIC START: kpop =====
+[2025-12-21 08:54:51][STEP] RSS 수집 (kpop)
+[2025-12-21 08:54:52][INFO] kpop: 기사 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
+[2025-12-21 08:54:52][STEP] LLM 글 생성 (kpop)
+[2025-12-21 08:56:55][INFO] kpop: 생성된 제목 = "3세대 건재" 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤')[종합] - OSEN
+[2025-12-21 08:56:55][INFO] kpop: 본문 미리보기 = ```json {   "title": "가십 뉴스 추가 규칙: 사생활 단정과 루머에 대한 조심",   "body": " **가십 뉴スの 새로운 규칙이 나오고 있습니다.**   recent news  recently, OSEN은 '3세대 건재' 지드래곤·제니 대상→엑소 완전체 귀환···케이팝 원조가 여기 있네('2025 멜뮤)[종합]'를 기사로 공개했습니다. ...
+[2025-12-21 08:56:55][STEP] 글쓰기 입력 (kpop)
+[2025-12-21 08:57:08][STEP] 발행 처리 (kpop)
+[2025-12-21 08:57:10][INFO] ✅ 완료: kpop 1건 발행
+[2025-12-21 08:57:10][INFO] ===== TOPIC START: hot =====
+[2025-12-21 08:57:10][STEP] RSS 수집 (hot)
+[2025-12-21 08:57:12][INFO] hot: 기사 제목 = [다시 청와대] ② 부활하는 권부의 심장 靑…'구중궁궐' 논란 벗을까 - 연합뉴스
+[2025-12-21 08:57:12][STEP] LLM 글 생성 (hot)
+[2025-12-21 08:59:16][INFO] hot: 생성된 제목 = [다시 청와대] ② 부활하는 권부의 심장 靑…'구중궁궐' 논란 벗을까 - 연합뉴스
+[2025-12-21 08:59:16][INFO] hot: 본문 미리보기 = {   "title": "다시 청와대: '구중궁ꐐ' 논란에 부활하는 권부의 심장",   "body": |     청와대가 다시 돌아오고 있습니다. 이 기사에서는 "구중궁ꐐ" 논란이 청와대의 심장을 뚫고 있는 상황을 보여줍니다.      청와대는 과거에 '구중궁ꐐ'라는 단어를 사용했는데, 이 단어가 의미가 무엇인지 알려드릴게요.       청와대는 '구중궁ꐐ ...
+[2025-12-21 08:59:16][STEP] 글쓰기 입력 (hot)
+[2025-12-21 08:59:30][STEP] 발행 처리 (hot)
+[2025-12-21 08:59:32][INFO] ✅ 완료: hot 1건 발행
+[2025-12-21 08:59:32][STEP] 전체 작업 완료
+[2025-12-21 09:20:38][STEP] 프로그램 시작
+[2025-12-21 09:20:38][STEP] make_driver() 호출 직전
+[2025-12-21 09:20:44][STEP] make_driver() 리턴 직후
+[2025-12-21 09:20:44][STEP] 로그인 시작
+[2025-12-21 09:20:49][INFO] ===== TOPIC START: politics =====
+[2025-12-21 09:20:49][STEP] RSS 수집 (politics)
+[2025-12-21 09:20:51][INFO] politics: 기사 제목 = 정치 - 동아일보
+[2025-12-21 09:20:51][STEP] LLM 글 생성 (politics)
+[2025-12-21 09:20:51][ERROR] LLM 글 생성 (politics) 실패: NameError("name 'build_prompt' is not defined")
+[2025-12-21 09:20:51][ERROR] Traceback (most recent call last):
+  File "C:\workspace\auto_tistory_blog\main.py", line 65, in run_step
+    return fn()
+  File "C:\workspace\auto_tistory_blog\main.py", line 133, in <lambda>
+    lambda: generate_post_with_ollama(
+            ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        category=prompt_category,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        timeout=config.LLM_TIMEOUT
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\workspace\auto_tistory_blog\generator.py", line 128, in generate_post_with_ollama
+    prompt = build_prompt_json(category, article)
+  File "C:\workspace\auto_tistory_blog\prompts.py", line 5, in build_prompt_json
+    base = build_prompt(category, article)
+           ^^^^^^^^^^^^
+NameError: name 'build_prompt' is not defined. Did you mean: 'build_prompt_json'?
+

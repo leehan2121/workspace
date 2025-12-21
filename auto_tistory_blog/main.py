@@ -1,14 +1,16 @@
 # main.py
 import config
+import traceback
 
 from sources.google_news import fetch_google_news_rss, debug_print_rss_source
 from generator import generate_post_with_ollama
 from tistory_bot import make_driver, login, write_post, publish_with_visibility
 from utils import pause_forever
 
-import traceback
 from pathlib import Path
 from datetime import datetime
+from image_client_sd import sd_txt2img, build_sd_prompt
+from tistory_image import upload_and_insert_image
 
 # =========================
 # 로그 유틸
@@ -148,19 +150,31 @@ def main():
             log_info(f"{topic_key}: 생성된 제목 = {title_text[:120]}")
             log_info(f"{topic_key}: 본문 미리보기 = {body_text[:200].replace(chr(10), ' ')} ...")
 
-            run_step(
-                driver,
-                f"글쓰기 입력 ({topic_key})",
-                lambda: write_post(
-                    driver,
-                    wait,
-                    config.TISTORY_WRITE_URL,
-                    config.DRAFT_ALERT_ACCEPT,
-                    title_text,
-                    body_text
-                )
-            )
-
+            run_step(driver, f"글쓰기 입력 ({topic_key})", lambda: write_post(
+                driver, wait,
+                config.TISTORY_WRITE_URL,
+                config.DRAFT_ALERT_ACCEPT,
+                title_text,
+                body_text
+            ))
+            
+            # 2) 이미지 생성 + 업로드/삽입 (새로 추가)
+            if getattr(config, "ENABLE_IMAGE", False):
+                img_prompt = build_sd_prompt(topic_key, title_text)
+                img_path = run_step(driver, f"SD 이미지 생성 ({topic_key})", lambda: sd_txt2img(
+                    prompt=img_prompt,
+                    out_dir="assets",
+                    width=config.SD_WIDTH,
+                    height=config.SD_HEIGHT,
+                    steps=config.SD_STEPS,
+                    cfg_scale=config.SD_CFG_SCALE,
+                    sd_url=config.SD_URL,
+                    timeout_sec=180
+                ))
+                run_step(driver, f"티스토리 이미지 업로드/삽입 ({topic_key})", lambda: upload_and_insert_image(
+                    driver, wait, img_path
+                ))
+                
             run_step(
                 driver,
                 f"발행 처리 ({topic_key})",

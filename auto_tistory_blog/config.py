@@ -15,7 +15,7 @@ VISIBILITY_ID = "open0"   # 비공개 고정
 # ===== LLM 모드 =====
 USE_LLM = True
 OLLAMA_URL = "http://127.0.0.1:11434"
-OLLAMA_MODEL = "llama3.1:8b"     # 네가 설치한 모델명과 동일해야 함
+OLLAMA_MODEL = "llama3.2:3b"     # 네가 설치한 모델명과 동일해야 함
 LLM_TIMEOUT = 600   # 120 -> 600 (10분)
 
 # ===== Google News RSS (4개 주제) =====
@@ -41,3 +41,11 @@ PROMPT_CATEGORY_MAP = {
 
 # ===== (선택) RSS 원문(XML) 상단 출력 =====
 DEBUG_PRINT_RSS_SOURCE = False
+
+# === 이미지 생성/업로드 ===
+ENABLE_IMAGE = True
+SD_URL = "http://127.0.0.1:7860"
+SD_WIDTH = 1024
+SD_HEIGHT = 576
+SD_STEPS = 25
+SD_CFG_SCALE = 6.5

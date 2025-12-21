@@ -1,11 +1,11 @@
 # generator.py
 import json
 import re
-import requests
 from pathlib import Path
 from datetime import datetime
 
 from prompts import build_prompt_json
+from llm_client import ollama_generate
 
 DEBUG_DIR = Path("debug")
 RAW_DIR = DEBUG_DIR / "llm_raw"
@@ -15,9 +15,6 @@ def _ts():
     return datetime.now().strftime("%Y%m%d_%H%M%S")
 
 def _save_raw(topic_tag: str, stage: str, text: str):
-    """
-    stage 예: prompt, response, parsed_json
-    """
     safe = re.sub(r"[^a-zA-Z0-9_\-()가-힣]", "_", topic_tag)[:80]
     p = RAW_DIR / f"{_ts()}__{safe}__{stage}.txt"
     with open(p, "w", encoding="utf-8") as f:
@@ -29,109 +26,141 @@ def _extract_json(text: str) -> dict:
 
     t = text.strip()
 
+    # 혹시 ```json``` 으로 감쌌을 때
     m = re.search(r"```json\s*(\{.*?\})\s*```", t, flags=re.DOTALL | re.IGNORECASE)
     if m:
         return json.loads(m.group(1))
 
-    m = re.search(r"```\s*(\{.*?\})\s*```", t, flags=re.DOTALL)
-    if m:
-        return json.loads(m.group(1))
-
+    # 그냥 {...}만 있을 때
     start = t.find("{")
     end = t.rfind("}")
     if start != -1 and end != -1 and end > start:
-        candidate = t[start:end + 1].strip()
-        return json.loads(candidate)
+        return json.loads(t[start:end + 1].strip())
 
     raise ValueError("LLM 응답에서 JSON을 추출하지 못함")
 
-def _fallback_parse_text(raw: str, article_title: str) -> tuple[str, str]:
+def _repair_yaml_like(raw: str) -> dict:
     """
-    JSON 파싱 실패 시 텍스트에서 title/body 복구.
-    BUT 첫 줄이 '{' 같은 경우는 title로 쓰지 말고 기사 제목을 사용.
+    LLM이 아래처럼 YAML 비슷하게 뱉는 케이스 수리:
+    {
+      "title": "...",
+      "body": |
+        ...
+    }
     """
-    if not raw:
-        return (article_title or "(제목 없음)", "(본문 없음)")
+    t = (raw or "").strip()
 
-    text = raw.strip()
+    title_m = re.search(r'"title"\s*:\s*"([^"]+)"', t)
+    title = title_m.group(1).strip() if title_m else ""
 
-    # 마커 기반
-    if "[TITLE]" in text and "[BODY]" in text:
-        try:
-            part_title = text.split("[TITLE]", 1)[1].split("[BODY]", 1)[0].strip()
-            part_body = text.split("[BODY]", 1)[1].strip()
-            tline = part_title.splitlines()[0].strip() if part_title else ""
-            title = tline if tline and not tline.startswith("{") else (article_title or "(제목 없음)")
-            body = part_body if part_body else text
-            return (title, body)
-        except Exception:
-            pass
+    # body: | 시작점 찾기
+    body_m = re.search(r'"body"\s*:\s*\|\s*\n', t)
+    if not body_m:
+        raise ValueError("YAML-like body( | ) 패턴 아님")
 
-    # 첫 줄/나머지
-    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
-    if not lines:
-        return (article_title or "(제목 없음)", text)
+    body_start = body_m.end()
+    body_block = t[body_start:]
 
-    first = lines[0]
-    # ✅ '{' 같은 쓰레기 타이틀 방지
-    if first == "{" or first.startswith("{") or first.startswith("```") or first.lower().startswith("json"):
-        title = article_title or "(제목 없음)"
-        body = text
-        return (title, body)
+    # 마지막 닫는 중괄호 잘라내기
+    last_brace = body_block.rfind("}")
+    if last_brace != -1:
+        body_block = body_block[:last_brace].rstrip()
 
-    title = first[:80]
-    body = "\n".join(lines[1:]).strip()
-    if not body:
-        body = text
+    # 들여쓰기 제거
+    lines = body_block.splitlines()
+    # 공통 indent 추정 (최소 2칸 이상일 때)
+    indents = []
+    for ln in lines:
+        if ln.strip():
+            indents.append(len(ln) - len(ln.lstrip(" ")))
+    cut = min(indents) if indents else 0
+    if cut >= 2:
+        lines = [ln[cut:] if len(ln) >= cut else ln for ln in lines]
 
-    return (title, body)
+    body = "\n".join(lines).strip()
+    return {"title": title, "body": body}
 
-def generate_post_with_ollama(category, article, ollama_url, model, timeout=60, topic_tag=""):
+def _sanitize_body(text: str) -> str:
     """
-    - prompt/response 원본 저장 (재현/분석 가능)
-    - JSON 파싱 실패 시 fallback
-    - '{' 제목 방지
+    - 한자/일본어 제거
+    - 긴 영어 문장 라인 제거
+    - 프롬프트 잔재(역할/목표/출력 형식/입력 블록) 등장 시 그 지점부터 제거
     """
+    if not text:
+        return text
+
+    # 프롬프트 잔재 컷(이 패턴이 본문에 나오면 그 아래는 버림)
+    cut_markers = ["역할:", "목표:", "출력 공통 규칙:", "[입력]", "[출력 형식]"]
+    for mk in cut_markers:
+        idx = text.find(mk)
+        if idx != -1:
+            text = text[:idx].rstrip()
+
+    out_lines = []
+    for ln in text.splitlines():
+        s = ln.strip()
+        if not s:
+            out_lines.append("")
+            continue
+
+        # 한자/일본어(히라가나/가타카나) 제거
+        s = re.sub(r"[\u4E00-\u9FFF\u3040-\u30FF]+", "", s)
+
+        # 영어가 너무 많은 라인은 제거(질문/설명 섞이는 것 방지)
+        ascii_letters = sum(c.isascii() and c.isalpha() for c in s)
+        korean_letters = sum("\uac00" <= c <= "\ud7a3" for c in s)
+        if ascii_letters >= 25 and korean_letters < 5:
+            continue
+
+        # 이상한 “외계어” 같은 특수문자 폭주 라인 제거(너무 길면 컷)
+        if len(s) > 300:
+            s = s[:300] + "…"
+
+        out_lines.append(s)
+
+    cleaned = "\n".join(out_lines).strip()
+    return cleaned
+
+def generate_post_with_ollama(category, article, ollama_url, model, timeout=600, topic_tag=""):
     article_title = (article.get("title") or "").strip()
     topic_tag = topic_tag or category or "topic"
 
     prompt = build_prompt_json(category, article)
     _save_raw(topic_tag, "prompt", prompt)
 
-    url = ollama_url.rstrip("/") + "/api/generate"
-    payload = {
-        "model": model,
-        "prompt": prompt,
-        "stream": False,
-    }
-
-    r = requests.post(url, json=payload, timeout=(10, timeout))
-    r.raise_for_status()
-
-    data = r.json()
-    raw = (data.get("response") or "").strip()
+    raw = ollama_generate(
+        ollama_url=ollama_url,
+        model=model,
+        prompt=prompt,
+        timeout=timeout
+    )
     _save_raw(topic_tag, "response", raw)
 
-    # 1) JSON 우선
+    # 1) JSON 파싱 우선
+    obj = None
     try:
         obj = _extract_json(raw)
-        _save_raw(topic_tag, "parsed_json", json.dumps(obj, ensure_ascii=False, indent=2))
+    except Exception as e_json:
+        _save_raw(topic_tag, "parse_json_error", repr(e_json))
+        # 2) YAML-like 수리 시도
+        try:
+            obj = _repair_yaml_like(raw)
+            _save_raw(topic_tag, "repair_used", "yaml_like_repair")
+        except Exception as e_rep:
+            _save_raw(topic_tag, "repair_error", repr(e_rep))
+            # 3) 최후 fallback: 제목은 기사 제목, 본문은 raw
+            obj = {"title": article_title or "(제목 없음)", "body": raw}
 
-        title = (obj.get("title") or "").strip()
-        body = (obj.get("body") or "").strip()
+    title = (obj.get("title") or "").strip()
+    body = (obj.get("body") or "").strip()
 
-        # ✅ 타이틀이 '{' 같은 값이면 기사 제목으로 교체
-        if not title or title == "{" or title.startswith("{"):
-            title = article_title or "(제목 없음)"
+    if not title or title == "{" or title.startswith("{"):
+        title = article_title or "(제목 없음)"
 
-        if not body:
-            raise ValueError("JSON body 비어있음")
+    body = _sanitize_body(body)
 
-        return title, body
+    # body 너무 짧으면 raw를 한번 더 정리해서 채움
+    if len(body) < 200:
+        body = _sanitize_body(raw)
 
-    except Exception as e:
-        # 2) fallback
-        title, body = _fallback_parse_text(raw, article_title)
-        if not body or len(body) < 50:
-            body = raw or body
-        return title, body
+    return title, body

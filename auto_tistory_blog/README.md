@@ -18,5 +18,21 @@ Ollama는 로컬 PC에서 대형 언어 모델(LLM)을 실행하게 해주는 �
 VS Code 터미널에서 설치/실행 가능하다. (Windows/macOS/Linux 지원)
 
 winget install Ollama.Ollama
+where.exe ollama
+>> ollama --version
 
-ollama pull llama3.1:8b
+ollama pull llama3.2:3b
+
+
+# 실행 명령어 terminal
+webui-user.bat --api
+git --version 
+# 없으면 👉 https://git-scm.com/download/win
+
+# 원하는 위치에서 실행 (예: C:)
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+
+# 👉 링크: https://huggingface.co/Lykon/DreamShaper
+Files and versions -> DreamShaper_8_pruned.safetensors 
+# 다운된 파일을 이동
+C:\stable-diffusion-webui\models\Stable-diffusion\

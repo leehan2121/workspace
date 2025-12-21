@@ -1,0 +1,7 @@
+{
+  "base": "http://127.0.0.1:11434",
+  "generate": "http://127.0.0.1:11434/api/generate",
+  "tags_ok": true,
+  "root_status": 200,
+  "tags_status": 200
+}
