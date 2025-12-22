@@ -1,9 +1,0 @@
-{
-  "prompt": "modern pop culture poster illustration, clean composition, high quality, modern, minimal text, headline area, [케이팝 베트남⑤] IP는 어떻게 자산이 되는가 - 케이트렌디뉴스",
-  "negative_prompt": "low quality, blurry, watermark, logo, distorted face, gibberish text, extra fingers",
-  "width": 768,
-  "height": 512,
-  "steps": 18,
-  "cfg_scale": 7.0,
-  "seed": -1
-}

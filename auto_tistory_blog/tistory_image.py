@@ -123,15 +123,6 @@ def _click_attach_submenu_photo(driver, wait) -> bool:
     return False
 
 
-
-# tistory_image.py
-import time
-from typing import Optional, Tuple, List
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-
-
 def _switch_to_frame_chain(driver, chain: List) -> None:
     """
     # 프레임 체인으로 이동한다
@@ -208,56 +199,56 @@ def _open_attach_menu(driver, wait) -> bool:
         return False
 
 
+
 def upload_and_insert_image(driver, wait, image_path: str, sleep_after_upload: float = 2.5) -> bool:
     """
-    # OS 파일 선택창을 띄우지 않고 input[type=file]에 send_keys로 업로드한다
-    # Upload(업로드) via send_keys(경로 주입) to input[type=file] without OS file dialog(운영체제 파일창)
+    # 티스토리 글쓰기 화면에서 OS 파일창 없이 이미지 업로드/삽입
+    # Upload/insert image without OS file dialog by using file input send_keys()
 
-    핵심:
-    - '사진' 메뉴(#attach-image)를 클릭하면 OS 파일창이 뜰 수 있으니 클릭하지 않는다.
-    - 대신 '첨부' 메뉴만 열고, 생성/노출된 input[type=file]을 찾아 경로를 주입한다.
-    # Key idea(핵심 아이디어): avoid clicking(클릭 회피) photo menu, inject path to file input.
+    핵심 포인트:
+    - iframe(editor-tistory_ifr)은 "본문 편집" 영역이다. 업로드 input은 iframe 밖에 있다.
+    - 업로드 input은 id="openFile" 로 존재한다.
+    # Key point: editor iframe is for content(editing), file input lives in top-level DOM.
     """
+
     driver.switch_to.default_content()
 
-    # 1) 첨부 메뉴만 연다 (사진 메뉴 클릭 금지)
-    # Only open(열기) attach menu(첨부 메뉴); do NOT click photo menu(사진 메뉴)
-    _open_attach_menu(driver, wait)
-
-    # 2) input[type=file]이 동적으로 생길 수 있으니 짧게 폴링하며 탐색
-    # Poll(반복 확인) for dynamically created(동적 생성) file input(파일 인풋)
-    found = None
-    for _ in range(20):
-        found = _find_file_input_anywhere(driver)
-        if found:
-            break
-        time.sleep(0.15)
-
-    if not found:
-        raise RuntimeError("E_TISTORY_FILE_INPUT_NOT_FOUND: input[type=file]을 찾지 못했습니다.")
-
-    file_input, frame_chain = found
-
-    # 3) 해당 프레임으로 이동 후 send_keys
-    # Switch(전환) to frame then send_keys(경로 주입)
-    if frame_chain:
-        _switch_to_frame_chain(driver, frame_chain)
-    else:
-        driver.switch_to.default_content()
-
+    # 1) 첨부 메뉴 열기(선택)
+    # Attach menu open(optional). Some UI flows require this, but file input exists anyway.
     try:
-        # 일부 사이트는 hidden input이라 interactable 오류가 날 수 있어서 JS로 표시 시도
-        # Some sites have hidden input(숨김 인풋) -> try JS to make it visible(보이게)
-        driver.execute_script("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", file_input)
+        btn_attach = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#mceu_0-open")))
+        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn_attach)
+        time.sleep(0.1)
+        try:
+            btn_attach.click()
+        except Exception:
+            driver.execute_script("arguments[0].click();", btn_attach)
+        time.sleep(0.2)
+    except Exception:
+        # 첨부 버튼 못 찾아도 계속 진행 (openFile이 있으면 업로드 가능)
+        # Continue if attach button not found (upload still possible via #openFile).
+        pass
+
+    # 2) 업로드 input 찾기: #openFile (iframe 밖)
+    # Find upload input: #openFile (outside iframe).
+    file_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "input#openFile[type='file']")))
+
+    # 3) hidden/투명 요소라도 send_keys는 되는 편이라 그대로 시도,
+    #    막히면 JS로 visibility만 보정
+    # Try send_keys even if hidden/transparent; if blocked, adjust visibility via JS.
+    try:
         file_input.send_keys(image_path)
-    except Exception as e:
-        driver.switch_to.default_content()
-        raise RuntimeError(f"E_TISTORY_FILE_INPUT_SENDKEYS_FAIL: {repr(e)}")
+    except Exception:
+        driver.execute_script(
+            "arguments[0].style.display='block';"
+            "arguments[0].style.visibility='visible';"
+            "arguments[0].style.opacity='1';",
+            file_input
+        )
+        file_input.send_keys(image_path)
 
-    driver.switch_to.default_content()
-
-    # 4) 업로드 완료 대기
-    # Wait(대기) for upload completion(업로드 완료)
+    # 4) 업로드/삽입 반영 대기
+    # Wait for upload/render to complete.
     time.sleep(sleep_after_upload)
 
     return True

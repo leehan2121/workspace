@@ -1,9 +1,0 @@
-{
-  "prompt": "newspaper editorial illustration, clean composition, high quality, modern, minimal text, headline area, 동아일보 - 정치",
-  "negative_prompt": "low quality, blurry, watermark, logo, distorted face, gibberish text, extra fingers",
-  "width": 768,
-  "height": 512,
-  "steps": 18,
-  "cfg_scale": 7.0,
-  "seed": -1
-}

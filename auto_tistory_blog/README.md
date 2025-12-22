@@ -27,11 +27,17 @@ ollama pull llama3.2:3b
 # 실행 명령어 terminal
 # webui-user.bat --api
 & "C:\stable-diffusion-webui\webui-user.bat" --api --listen --port 7860
+& "D:\workspace\stable-diffusion-webui\webui-user.bat" --api --listen --port 7860
+
 git --version 
 # 없으면 👉 https://git-scm.com/download/win
 
 # 원하는 위치에서 실행 (예: C:)
 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+
+# GPU가 없을때 CPU로
+set COMMANDLINE_ARGS=--use-cpu all --precision full --no-half --skip-torch-cuda-test
+
 
 # 👉 링크: https://huggingface.co/Lykon/DreamShaper
 Files and versions -> DreamShaper_8_pruned.safetensors 

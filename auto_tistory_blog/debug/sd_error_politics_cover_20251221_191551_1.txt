@@ -1,7 +1,0 @@
-URL: http://127.0.0.1:7860/sdapi/v1/txt2img
-STATUS: 500
-
-RESPONSE_TEXT:
-{"error":"NansException","detail":"","body":"","errors":"A tensor with NaNs was produced in Unet. This could be either because there's not enough precision to represent the picture, or because your video card does not support half type. Try setting the \"Upcast cross attention layer to float32\" option in Settings > Stable Diffusion or using the --no-half commandline argument to fix this. Use --disable-nan-check commandline argument to disable this check."}
-
-REQUEST_FILE: debug\sd_request_politics_cover_20251221_191435_1.json

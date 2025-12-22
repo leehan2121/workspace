@@ -1,9 +1,0 @@
-{
-  "prompt": "newspaper editorial illustration, clean composition, high quality, modern, minimal text, headline area, 국가 미래 위해 정치개혁 필수…극단적 진영 정치 완화해야",
-  "negative_prompt": "low quality, blurry, watermark, logo, distorted face, gibberish text, extra fingers",
-  "width": 640,
-  "height": 448,
-  "steps": 12,
-  "cfg_scale": 5.5,
-  "seed": -1
-}
