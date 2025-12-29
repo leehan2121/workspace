@@ -1,0 +1,9 @@
+{
+  "prompt": "newspaper editorial illustration, clean composition, high quality, modern, no text, no letters, minimal typography, headline area, 김정은 북한 국무위원장이 방사포 생산공장을 찾아 핵 탑재가 가능한 '전략적 공격수단'이라고 강조했다.",
+  "negative_prompt": "text, letters, words, watermark, logo, caption, subtitle, gibberish, symbols, low quality, blurry, distorted face, extra fingers",
+  "width": 512,
+  "height": 384,
+  "steps": 12,
+  "cfg_scale": 5.5,
+  "seed": -1
+}

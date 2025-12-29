@@ -1,254 +1,246 @@
 # tistory_image.py
+import os
 import time
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Optional
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
 
 
-def _switch_to_frame_chain(driver, chain: List[object]) -> None:
+def _ts() -> str:
     """
-    # 프레임 체인으로 이동한다
-    # Switch(전환) to frame chain(프레임 체인)
+    # 로그용 타임스탬프 문자열을 만든다.
+    # Build(만들기) timestamp(타임스탬프) string for logs(로그).
     """
-    driver.switch_to.default_content()
-    for fr in chain:
-        driver.switch_to.frame(fr)
+    return time.strftime("%Y-%m-%d %H:%M:%S")
 
 
-def _find_file_input_anywhere(driver) -> Optional[Tuple[object, List[object]]]:
+def _log(level: str, msg: str) -> None:
     """
-    # 현재 문서 + 모든 iframe에서 input[type=file]을 찾는다
-    # Find(찾기) input[type=file] across document(문서) and iframes(아이프레임)
+    # 업로드 로직 디버깅을 위해 로그를 남긴다.
+    # Log(로그) messages for debugging(디버깅) upload flow(업로드 흐름).
     """
-    driver.switch_to.default_content()
+    print(f"[{_ts()}][IMG][{level}] {msg}")
 
-    # 1) default content
-    inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-    if inputs:
-        return inputs[0], []
 
-    # 2) 1-depth iframes
-    frames = driver.find_elements(By.TAG_NAME, "iframe")
-    for fr in frames:
+def _safe_send_keys(driver, by, selector, value, *, retries: int = 3):
+    """
+    # 요소를 찾아 send_keys를 안전하게 수행한다(재시도 포함).
+    # Safely(안전하게) send keys(키 입력) with retries(재시도).
+    """
+    last_err: Optional[Exception] = None
+    for n in range(1, retries + 1):
         try:
-            driver.switch_to.default_content()
-            driver.switch_to.frame(fr)
-            inputs2 = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-            if inputs2:
-                return inputs2[0], [fr]
-        except Exception:
-            continue
-
-    # 3) 2-depth nested iframes (가끔 에디터 내부가 중첩됨)
-    # 3) 2-depth nested iframes(중첩) for editor variants(에디터 변형)
-    driver.switch_to.default_content()
-    frames1 = driver.find_elements(By.TAG_NAME, "iframe")
-    for fr1 in frames1:
-        try:
-            driver.switch_to.default_content()
-            driver.switch_to.frame(fr1)
-            frames2 = driver.find_elements(By.TAG_NAME, "iframe")
-            for fr2 in frames2:
-                try:
-                    driver.switch_to.default_content()
-                    driver.switch_to.frame(fr1)
-                    driver.switch_to.frame(fr2)
-                    inputs3 = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-                    if inputs3:
-                        return inputs3[0], [fr1, fr2]
-                except Exception:
-                    continue
-        except Exception:
-            continue
-
-    driver.switch_to.default_content()
-    return None
+            el = driver.find_element(by, selector)
+            el.send_keys(value)
+            return el
+        except Exception as e:
+            last_err = e
+            _log("WARN", f"send_keys retry({n}/{retries}) fail: {by} {selector} err={e!r}")
+            time.sleep(0.3)
+    raise last_err  # type: ignore[misc]
 
 
-def _open_attach_menu_tinymce(driver, wait) -> bool:
+def _find_windows_file_dialog_hwnd() -> Optional[int]:
     """
-    # TinyMCE 상단 툴바의 '첨부' 메뉴를 연다
-    # Open(열기) TinyMCE toolbar(툴바) attach menu(첨부 메뉴)
+    # Windows 네이티브 파일 선택창(hwnd)을 찾는다(pywin32가 있을 때만).
+    # Find(찾기) Windows native file dialog hwnd(핸들) when pywin32 is available(가능할 때).
+
+    메모:
+    - 일반 파일 열기 대화상자 클래스(class; 클래스)는 보통 '#32770' 이다.
     """
-    driver.switch_to.default_content()
-    # 네가 준 DOM 스니펫 기준으로 '첨부' 버튼은 #mceu_0-open
-    # Based on DOM snippet(스니펫), attach button(첨부 버튼) is #mceu_0-open
     try:
-        btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#mceu_0-open")))
-        btn.click()
-        time.sleep(0.2)
-        return True
+        import win32gui  # pip install pywin32
+
+        hwnd = win32gui.FindWindow("#32770", None)
+        return int(hwnd) if hwnd else None
     except Exception:
+        return None
+
+
+def _close_native_file_dialog() -> bool:
+    """
+    # Windows 파일 선택창(네이티브)을 '브라우저를 닫지 않고' 안전하게 닫는다.
+    # Close(닫기) Windows native file dialog(파일창) safely(안전하게) without closing Chrome(크롬 닫기 없이).
+
+    ⚠️ 중요:
+    - Alt+F4는 활성 창을 닫는다.
+    - 파일창이 아니라 Chrome이 활성화돼 있으면 브라우저가 닫혀 Selenium 세션이 끊긴다.
+    - So we DO NOT use Alt+F4(Alt+F4 사용 금지) by default(기본).
+
+    전략:
+    1) ESC 여러 번 (pyautogui)
+    2) (옵션) pywin32가 있으면 '#32770' 창을 WM_CLOSE로 닫기(브라우저에 안전)
+    """
+    try:
+        import pyautogui  # pip install pyautogui
+
+        time.sleep(0.4)  # dialog focus wait
+
+        for _ in range(4):
+            pyautogui.press("esc")
+            time.sleep(0.15)
+
+        hwnd = _find_windows_file_dialog_hwnd()
+        if hwnd:
+            try:
+                import win32gui
+                import win32con
+                win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
+                time.sleep(0.2)
+                _log("INFO", f"native file dialog WM_CLOSE sent hwnd={hwnd}")
+            except Exception as e:
+                _log("WARN", f"WM_CLOSE failed: {e!r}")
+
+        _log("INFO", "native file dialog close attempt: ESC x4 (+WM_CLOSE if possible)")
+        return True
+    except Exception as e:
+        _log("WARN", f"native file dialog close skipped/failed: {e!r}")
         return False
 
 
-def _click_attach_submenu_photo(driver, wait) -> bool:
+# (호환성) 예전 이름을 쓰는 코드가 있을 수 있어서 alias(별칭) 제공
+# Compatibility(호환): provide alias name for old callers(예전 호출자).
+_close_native_file_dialog_esc = _close_native_file_dialog
+_close_native_file_dialog = _close_native_file_dialog
+
+
+def _open_attach_menu(driver, wait: WebDriverWait) -> bool:
     """
-    # 첨부 드롭다운에서 '사진' 항목을 클릭한다
-    # Click(클릭) the 'Photo'(사진) item in the attach dropdown(첨부 드롭다운)
-    """
-    driver.switch_to.default_content()
+    # TinyMCE 상단 툴바의 '첨부' 메뉴를 연다.
+    # Open(열기) attach menu(첨부 메뉴) in TinyMCE(toolbar; 툴바).
 
-    # 1) DOM에서 확정된 고정 id를 최우선으로 클릭
-    # First(최우선), click stable id(안정적인 id) confirmed(확정) by DOM snippet(스니펫)
-    try:
-        el = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#attach-image")))
-        el.click()
-        time.sleep(0.2)
-        return True
-    except Exception:
-        pass
-
-    # 2) 텍스트 기반 백업(사진/이미지)
-    # Backup(백업) with text-based selectors(텍스트 기반 선택자)
-    candidates = [
-        (By.CSS_SELECTOR, "#attach-image-text"),  # 사진 텍스트 span
-        (By.XPATH, "//*[@role='menuitem' and .//span[normalize-space()='사진']]"),
-        (By.XPATH, "//*[self::div or self::span or self::button or self::a][contains(normalize-space(.), '사진')]"),
-        (By.XPATH, "//*[self::div or self::span or self::button or self::a][contains(normalize-space(.), '이미지')]"),
-        (By.CSS_SELECTOR, ".mce-i-image"),  # 아이콘 기반
-    ]
-
-    for by, sel in candidates:
-        try:
-            el = wait.until(EC.element_to_be_clickable((by, sel)))
-            el.click()
-            time.sleep(0.2)
-            return True
-        except Exception:
-            continue
-
-    return False
-
-
-def _switch_to_frame_chain(driver, chain: List) -> None:
-    """
-    # 프레임 체인으로 이동한다
-    # Switch(전환) to frame chain(프레임 체인)
-    """
-    driver.switch_to.default_content()
-    for fr in chain:
-        driver.switch_to.frame(fr)
-
-
-def _find_file_input_anywhere(driver) -> Optional[Tuple[object, List]]:
-    """
-    # 현재 문서 + 모든 iframe에서 input[type=file] 탐색
-    # Find(찾기) input[type=file] across document(문서) and iframes(아이프레임)
-    """
-    driver.switch_to.default_content()
-    elems = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-    if elems:
-        return elems[0], []
-
-    frames = driver.find_elements(By.TAG_NAME, "iframe")
-    for fr in frames:
-        try:
-            driver.switch_to.default_content()
-            driver.switch_to.frame(fr)
-            elems2 = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-            if elems2:
-                return elems2[0], [fr]
-        except Exception:
-            continue
-
-    # 2-depth nested iframes
-    driver.switch_to.default_content()
-    frames1 = driver.find_elements(By.TAG_NAME, "iframe")
-    for fr1 in frames1:
-        try:
-            driver.switch_to.default_content()
-            driver.switch_to.frame(fr1)
-            frames2 = driver.find_elements(By.TAG_NAME, "iframe")
-            for fr2 in frames2:
-                try:
-                    driver.switch_to.default_content()
-                    driver.switch_to.frame(fr1)
-                    driver.switch_to.frame(fr2)
-                    elems3 = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-                    if elems3:
-                        return elems3[0], [fr1, fr2]
-                except Exception:
-                    continue
-        except Exception:
-            continue
-
-    driver.switch_to.default_content()
-    return None
-
-
-def _open_attach_menu(driver, wait) -> bool:
-    """
-    # '첨부' 메뉴를 연다 (TinyMCE)
-    # Open(열기) attach menu(첨부 메뉴) in TinyMCE(editor; 에디터)
+    고정 셀렉터:
+    - #mceu_0-open
     """
     try:
         driver.switch_to.default_content()
         btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#mceu_0-open")))
-        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn)
-        time.sleep(0.1)
-        try:
-            btn.click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", btn)
+        driver.execute_script("arguments[0].click();", btn)
         time.sleep(0.2)
+        _log("INFO", "attach menu opened (#mceu_0-open clicked)")
         return True
-    except Exception:
+    except Exception as e:
+        _log("WARN", f"attach menu open failed: {e!r}")
         return False
 
 
-
-def upload_and_insert_image(driver, wait, image_path: str, sleep_after_upload: float = 2.5) -> bool:
+def _click_attach_photo(driver, wait: WebDriverWait) -> bool:
     """
-    # 티스토리 글쓰기 화면에서 OS 파일창 없이 이미지 업로드/삽입
-    # Upload/insert image without OS file dialog by using file input send_keys()
+    # 첨부 드롭다운에서 '사진'을 클릭해 #openFile 생성/활성화를 트리거한다.
+    # Click(클릭) Photo(사진) to trigger(트리거) #openFile creation(생성).
 
-    핵심 포인트:
-    - iframe(editor-tistory_ifr)은 "본문 편집" 영역이다. 업로드 input은 iframe 밖에 있다.
-    - 업로드 input은 id="openFile" 로 존재한다.
-    # Key point: editor iframe is for content(editing), file input lives in top-level DOM.
+    고정 셀렉터:
+    - #attach-image
     """
-
-    driver.switch_to.default_content()
-
-    # 1) 첨부 메뉴 열기(선택)
-    # Attach menu open(optional). Some UI flows require this, but file input exists anyway.
     try:
-        btn_attach = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#mceu_0-open")))
-        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn_attach)
-        time.sleep(0.1)
-        try:
-            btn_attach.click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", btn_attach)
+        driver.switch_to.default_content()
+        photo = wait.until(EC.element_to_be_clickable((By.ID, "attach-image")))
+        driver.execute_script("arguments[0].click();", photo)
         time.sleep(0.2)
+        _log("INFO", "photo clicked (#attach-image) -> should create #openFile")
+        return True
+    except Exception as e:
+        _log("WARN", f"photo click failed: {e!r}")
+        return False
+
+
+def _get_attachment_cnt(driver) -> int:
+    """
+    # window.Config.attachmentRawData.length 값을 가져온다.
+    # Get(가져오기) window.Config.attachmentRawData.length.
+    """
+    try:
+        cnt = driver.execute_script(
+            "return (window.Config && window.Config.attachmentRawData) ? window.Config.attachmentRawData.length : 0;"
+        )
+        return int(cnt or 0)
     except Exception:
-        # 첨부 버튼 못 찾아도 계속 진행 (openFile이 있으면 업로드 가능)
-        # Continue if attach button not found (upload still possible via #openFile).
+        return 0
+
+
+def upload_and_insert_image(driver, image_path: str, timeout: int = 60, sleep_after_upload: float = 1.0) -> bool:
+    """
+    # 티스토리 글쓰기(/manage/newpost)에서 이미지를 업로드(첨부)하고 반영을 확인한다.
+    # Upload(업로드) an image(이미지) on Tistory newpost editor(글쓰기) and verify(검증) it.
+
+    고정 순서(베이스라인):
+    1) 첨부(#mceu_0-open) → 2) 사진(#attach-image) → 3) 파일창 닫기(OS ESC)
+    4) #openFile presence 대기 → 5) send_keys(image_path) → 6) attachmentRawData 증가 대기
+    """
+    if not image_path:
+        _log("WARN", "image_path is empty -> skip")
+        return False
+
+    if isinstance(image_path, Path):
+        image_path = str(image_path)
+    image_path = os.path.abspath(image_path)
+
+    if not os.path.exists(image_path):
+        _log("ERROR", f"image not found: {image_path}")
+        raise FileNotFoundError(image_path)
+
+    try:
+        driver.switch_to.default_content()
+    except Exception:
         pass
 
-    # 2) 업로드 input 찾기: #openFile (iframe 밖)
-    # Find upload input: #openFile (outside iframe).
-    file_input = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "input#openFile[type='file']")))
+    wait = WebDriverWait(driver, timeout)
 
-    # 3) hidden/투명 요소라도 send_keys는 되는 편이라 그대로 시도,
-    #    막히면 JS로 visibility만 보정
-    # Try send_keys even if hidden/transparent; if blocked, adjust visibility via JS.
-    try:
-        file_input.send_keys(image_path)
-    except Exception:
-        driver.execute_script(
-            "arguments[0].style.display='block';"
-            "arguments[0].style.visibility='visible';"
-            "arguments[0].style.opacity='1';",
-            file_input
-        )
-        file_input.send_keys(image_path)
+    before_cnt = _get_attachment_cnt(driver)
+    _log("INFO", f"before attachmentRawData.length = {before_cnt}")
 
-    # 4) 업로드/삽입 반영 대기
-    # Wait for upload/render to complete.
-    time.sleep(sleep_after_upload)
+    _open_attach_menu(driver, wait)
+    _click_attach_photo(driver, wait)
+
+    # 🔥 변경 핵심: Alt+F4 제거(브라우저 닫힘 방지) + WM_CLOSE 옵션
+    _close_native_file_dialog()
+
+    driver.switch_to.default_content()
+    _log("INFO", "waiting #openFile presence...")
+    wait.until(EC.presence_of_element_located((By.ID, "openFile")))
+    _log("INFO", "#openFile present")
+
+    selectors = [
+        (By.ID, "openFile"),
+        (By.CSS_SELECTOR, "input#openFile[type='file']"),
+        (By.CSS_SELECTOR, "input[type='file']#openFile"),
+        (By.CSS_SELECTOR, "input[type='file']"),
+    ]
+
+    ok = False
+    last_err: Optional[Exception] = None
+
+    for by, sel in selectors:
+        try:
+            _log("INFO", f"send_keys try selector: {by} {sel}")
+            _safe_send_keys(driver, by, sel, image_path)
+            ok = True
+            _log("INFO", f"send_keys OK: {sel}")
+            break
+        except Exception as e:
+            last_err = e
+            _log("WARN", f"send_keys failed: {sel} err={e!r}")
+
+    if not ok:
+        _log("ERROR", f"send_keys all failed last_err={last_err!r}")
+        raise TimeoutException("file input send_keys failed")
+
+    _log("INFO", "waiting attachmentRawData.length increase...")
+
+    def _uploaded(_drv):
+        cnt = _get_attachment_cnt(_drv)
+        return cnt > before_cnt
+
+    wait.until(_uploaded)
+
+    after_cnt = _get_attachment_cnt(driver)
+    _log("INFO", f"after attachmentRawData.length = {after_cnt} (uploaded)")
+
+    if sleep_after_upload:
+        time.sleep(sleep_after_upload)
 
     return True

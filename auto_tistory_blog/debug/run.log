@@ -1,0 +1,52 @@
+[2025-12-30 07:25:30][STEP] 프로그램 시작
+[2025-12-30 07:25:30][STEP] make_driver() 호출 직전
+[2025-12-30 07:25:40][STEP] make_driver() 리턴 직후
+[2025-12-30 07:25:40][STEP] 로그인 시작
+[2025-12-30 07:25:46][INFO] ===== TOPIC START: politics (EXTRA_RSS_FEEDS_BY_TOPIC) =====
+[2025-12-30 07:25:46][STEP] RSS 수집 (politics)
+[2025-12-30 07:25:46][INFO] politics: 후보 기사[1/5] = 김정은, 방사포 생산공장 시찰…'핵탑재 가능' 강조
+[2025-12-30 07:25:46][STEP] LLM 글 생성 (politics) [article 1]
+[2025-12-30 07:25:56][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:26:06][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:26:16][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:26:26][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:26:36][INFO] [HB] step='LLM 글 생성 (politics) [article 1]' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:26:41][INFO] politics: ✅ 선택된 기사 = [1] 김정은, 방사포 생산공장 시찰…'핵탑재 가능' 강조
+[2025-12-30 07:26:41][INFO] politics: 생성된 제목 = 김정은 북한 국무위원장이 방사포 생산공장을 찾아 핵 탑재가 가능한 '전략적 공격수단'이라고 강조했다.
+[2025-12-30 07:26:41][INFO] politics: 본문 미리보기 = 김정은 북한 국무위원장이 방사포(다연장로켓포) 생산공장을 찾아 핵 탑재가 가능한 '전략적 공격수단'이라고 강조했다. 김 위원장은 내년 초 9차 당대회를 앞두고 연일 지방공장 현장을 방문하며 성과 달성을 독려하고 있다. 김 위원장은 '군사작전상 대량적으로 집중 이용하게 되는 이 무기체계는 고정밀성과 가공할 파괴력을 가진 것으로 하여 타격의 집중성과 불의성으로 ...
+[2025-12-30 07:26:41][STEP] SD 이미지 생성(대표) (politics)
+[2025-12-30 07:26:51][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:27:01][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:27:11][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:27:21][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:27:31][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:27:41][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:27:51][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:28:02][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:28:12][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:28:22][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:28:32][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:28:42][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:28:52][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:29:02][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:29:12][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=150s tick=15 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:29:22][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=160s tick=16 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:29:32][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=170s tick=17 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:29:42][INFO] [HB] step='SD 이미지 생성(대표) (politics)' elapsed=180s tick=18 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:29:44][STEP] SD 이미지 생성(요약) (politics)
+[2025-12-30 07:29:54][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:30:04][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=20s tick=2 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:30:14][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=30s tick=3 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:30:24][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=40s tick=4 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:30:34][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=50s tick=5 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:30:44][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=60s tick=6 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:30:54][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=70s tick=7 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:31:04][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=80s tick=8 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:31:14][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=90s tick=9 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:31:24][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=100s tick=10 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:31:34][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=110s tick=11 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:31:44][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=120s tick=12 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:31:54][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=130s tick=13 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:32:04][INFO] [HB] step='SD 이미지 생성(요약) (politics)' elapsed=140s tick=14 url=https://www.tistory.com/ title=티스토리
+[2025-12-30 07:32:06][STEP] SD 이미지 생성(본문) (politics)
+[2025-12-30 07:32:16][INFO] [HB] step='SD 이미지 생성(본문) (politics)' elapsed=10s tick=1 url=https://www.tistory.com/ title=티스토리

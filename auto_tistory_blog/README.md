@@ -26,6 +26,7 @@ ollama pull llama3.2:3b
 
 # 실행 명령어 terminal
 # webui-user.bat --api
+# ollama serve
 & "C:\stable-diffusion-webui\webui-user.bat" --api --listen --port 7860
 & "D:\workspace\stable-diffusion-webui\webui-user.bat" --api --listen --port 7860
 
@@ -43,3 +44,6 @@ set COMMANDLINE_ARGS=--use-cpu all --precision full --no-half --skip-torch-cuda-
 Files and versions -> DreamShaper_8_pruned.safetensors 
 # 다운된 파일을 이동
 C:\stable-diffusion-webui\models\Stable-diffusion\
+./webui-user.bat --api --listen --port 7860
+$env:PUBLISH_COUNT="5"
+python main.py

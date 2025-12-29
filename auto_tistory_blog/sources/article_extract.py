@@ -74,7 +74,7 @@ def _find_meta_content(html: str, *, prop: str = "", name: str = "") -> str:
     return ""
 
 
-def fetch_article_hint(url: str, *, timeout_sec: int = 12, max_chars: int = 1600) -> Optional[ArticleHint]:
+def fetch_article_hint(url: str, *, timeout_sec: int = 12, max_chars: int = 1000) -> Optional[ArticleHint]:
     """기사 링크에서 요약 단서를 추출.
 
     한국어
@@ -107,7 +107,7 @@ def fetch_article_hint(url: str, *, timeout_sec: int = 12, max_chars: int = 1600
         if not t:
             continue
         # 너무 짧은 문단 제거
-        if len(t) < 25:
+        if len(t) < 15:
             continue
         cleaned.append(t)
         if sum(len(x) for x in cleaned) >= max_chars:

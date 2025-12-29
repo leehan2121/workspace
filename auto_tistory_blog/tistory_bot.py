@@ -18,68 +18,456 @@ from tistory_image import upload_and_insert_image
 from utils import handle_any_alert
 
 
+# ===== Category mapping (카테고리 매핑) =====
+# NOTE: topic -> categoryId 매핑이 필요한 경우 main.py에서 topic을 category_id로 변환해서 넘기는 게 가장 안전.
+#      (main.py converts topic to category_id and passes it to write_post.)
+TISTORY_CATEGORY_ID_MAP = {
+    "kpop": "1549319",
+    "politics": "1549306",
+    "economy": "1549307",
+    "society": "1549308",
+    "world": "1549309",         # 국제
+    "it_science": "1549310",
+    "culture_ent": "1549311",
+    "sports": "1549312",
+}
+
+CATEGORY_NAME_MAP = {
+    "1549319": "KPOP",
+    "1549306": "정치",
+    "1549307": "경제",
+    "1549308": "사회",
+    "1549309": "국제",
+    "1549310": "IT·과학",
+    "1549311": "문화·연예",
+    "1549312": "스포츠",
+}
+
+
 def make_driver():
-    # 크롬 드라이버 생성 및 옵션 설정
-    # Create(생성) a Chrome(크롬) driver(드라이버) with options(옵션)
+    """
+    크롬 드라이버 생성 및 옵션 설정
+    Create Chrome driver with options
+    """
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
     options.add_argument("--disable-blink-features=AutomationControlled")
 
+    # webdriver-manager: 자동 설치/버전 매칭
+    # Auto-install/match chromedriver via webdriver-manager
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
 
-    # 기본 대기(명시적 대기용)
-    # Default(기본) explicit wait(명시적 대기)
     wait = WebDriverWait(driver, 20)
     return driver, wait
 
 
+# ===== 카테고리 선택 유틸 (Category helpers) =====
+def select_category_by_id(driver, wait, category_id: str, retry: int = 3) -> bool:
+    """
+    티스토리 카테고리 선택 (확정판)
+    Final category selector for Tistory editor
+
+    핵심:
+    - category-btn 텍스트는 항상 '카테고리/더보기'라서 검증에 사용 불가
+      category-btn text doesn't reflect selected value
+    - 드롭다운을 다시 열어 활성 아이템의 category-id로 검증
+      Verify by reopening dropdown and reading active item's category-id
+    """
+    cid = str(category_id).strip()
+    if not cid or cid == "0":
+        return True
+
+    def open_dropdown():
+        btn = wait.until(EC.element_to_be_clickable((By.ID, "category-btn")))
+        driver.execute_script("arguments[0].click();", btn)
+        wait.until(
+            EC.presence_of_element_located(
+                (By.CSS_SELECTOR, '.btn-category [id^="category-item-"][category-id]')
+            )
+        )
+
+    def close_dropdown():
+        # 제목 입력창 클릭로 닫기(가장 안정)
+        # Close dropdown by clicking title input (most stable)
+        try:
+            title_inp = driver.find_element(By.ID, "post-title-inp")
+            driver.execute_script("arguments[0].click();", title_inp)
+        except Exception:
+            driver.execute_script("""
+                const c = document.querySelector('#editorContainer');
+                if (c) c.click();
+            """)
+
+    def click_item():
+        # id 형태: category-item-1549306
+        # item id format
+        item = driver.find_element(By.CSS_SELECTOR, f'#category-item-{cid}[category-id="{cid}"]')
+        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", item)
+
+        # 이벤트 시퀀스가 더 잘 먹히는 케이스가 있음
+        # Dispatch event sequence for reliability
+        driver.execute_script("""
+            const el = arguments[0];
+            ['mouseover','mousedown','mouseup','click'].forEach(type => {
+              el.dispatchEvent(new MouseEvent(type, {bubbles:true, cancelable:true, view:window}));
+            });
+        """, item)
+
+    def read_active_id_from_dropdown() -> str:
+        # 드롭다운 내부에서 '활성/선택' 상태인 아이템의 category-id를 읽는다.
+        # Read active/selected category-id from dropdown.
+        js = r"""
+        try {
+          const root = document.querySelector('.btn-category') || document;
+          const el =
+            root.querySelector('[id^="category-item-"][category-id].mce-active') ||
+            root.querySelector('[id^="category-item-"][category-id][aria-selected="true"]') ||
+            root.querySelector('[id^="category-item-"][category-id].active') ||
+            root.querySelector('[id^="category-item-"][category-id].mce-selected');
+
+          if (!el) return '';
+          let v = el.getAttribute('category-id') || el.getAttribute('data-category-id') || el.getAttribute('id') || '';
+          if (!v) return '';
+          v = String(v);
+          // id 값이 'category-item-1549306'이면 숫자만 뽑는다.
+          const m = v.match(/(\d{4,})$/);
+          return m ? m[1] : v;
+        } catch (e) {
+          return '';
+        }
+        """
+        return (driver.execute_script(js) or "").strip()
+
+    last_seen = ""
+    for _ in range(max(1, int(retry))):
+        try:
+            open_dropdown()
+            click_item()
+            close_dropdown()
+            time.sleep(0.4)
+
+            # 검증(Verification): 다시 열어서 active 항목 확인
+            open_dropdown()
+            active = read_active_id_from_dropdown()
+            last_seen = active or last_seen
+            close_dropdown()
+
+            if active == cid:
+                return True
+
+            # 간헐적으로 DOM이 늦게 반영됨 → 잠깐 대기 후 재시도
+            time.sleep(0.6)
+
+        except Exception as e:
+            # 드롭다운이 꼬인 경우를 대비해 닫고 재시도
+            try:
+                close_dropdown()
+            except Exception:
+                pass
+            time.sleep(0.6)
+
+    print(f"[WARN] 카테고리 선택 검증 실패: target={cid}, active={last_seen}")
+    return False
 
 
+def read_active_category_id() -> str:
+    """
+    현재 선택(활성)된 카테고리 ID를 최대한 안정적으로 읽어온다.
+    - 실패 시 '0' 같은 값 대신 빈 문자열("" )을 반환해서 불필요한 경고 로그를 줄인다.
+    """
+    # 우선순위: aria-selected=true → .active → 선택된 텍스트 기반
+    js = """
+    try {
+      // 1) 카테고리 목록이 렌더된 영역에서 aria-selected=true 찾기
+      var selected = document.querySelector('[role="option"][aria-selected="true"]')
+                  || document.querySelector('[role="option"].active')
+                  || document.querySelector('.category-list [aria-selected="true"]')
+                  || document.querySelector('.category-list .active');
+
+      if (selected) {
+        // data-id / value / id 등 후보
+        var cid = selected.getAttribute('data-id')
+               || selected.getAttribute('data-value')
+               || selected.getAttribute('value')
+               || selected.getAttribute('data-category-id')
+               || selected.getAttribute('id');
+        if (cid) return String(cid);
+      }
+
+      // 2) 카테고리 버튼(콤보박스)에 선택된 값이 표기되는 경우 텍스트를 반환(상위에서 매핑 가능)
+      var btn = document.querySelector('#category-btn');
+      if (btn) {
+        var t = (btn.innerText || '').trim();
+        if (t && t !== '카테고리') return t;
+      }
+    } catch (e) {}
+    return "";
+    """
+    v = driver.execute_script(js)
+    return "" if v in (None, 0, "0") else str(v)
+def find_editor_iframe(driver):
+    """
+    모든 iframe을 순회하면서 '에디터 본문'으로 보이는 프레임 찾기
+    Scan all iframes to find an editor frame
+    """
+    for _ in range(30):
+        frames = driver.find_elements(By.TAG_NAME, "iframe")
+        for frame in frames:
+            try:
+                driver.switch_to.default_content()
+                driver.switch_to.frame(frame)
+
+                # iframe 내부에서 body/contenteditable 존재 여부로 판별
+                # Detect editor by body/contenteditable
+                body = None
+                try:
+                    body = driver.find_element(By.TAG_NAME, "body")
+                except Exception:
+                    body = None
+
+                if body:
+                    aria = (body.get_attribute("aria-label") or "")
+                    cls = (body.get_attribute("class") or "")
+                    ce = (body.get_attribute("contenteditable") or "")
+
+                    if ("글 내용 입력" in aria) or ("mce-content-body" in cls) or (ce.lower() == "true"):
+                        driver.switch_to.default_content()
+                        return frame
+
+                # contenteditable div가 있으면 에디터로 간주
+                # If contenteditable div exists, treat as editor
+                ces = driver.find_elements(By.CSS_SELECTOR, "[contenteditable='true']")
+                if ces:
+                    driver.switch_to.default_content()
+                    return frame
+
+            except Exception:
+                continue
+
+        driver.switch_to.default_content()
+        time.sleep(1)
+
+    return None
+
+
+def move_editor_caret_to_top(driver, wait) -> None:
+    """
+    본문 에디터 커서를 최상단으로 이동
+    Move editor caret to top
+    """
+    iframe = None
+    try:
+        iframe = driver.find_element(By.ID, "editor-tistory_ifr")
+    except Exception:
+        iframe = find_editor_iframe(driver)
+
+    if not iframe:
+        return
+
+    driver.switch_to.default_content()
+    driver.switch_to.frame(iframe)
+
+    driver.execute_script("""
+        const doc = document;
+        const body = doc.body;
+        if (!body) return;
+
+        const first = body.querySelector('p') || body.firstChild || body;
+        const range = doc.createRange();
+
+        try { range.setStart(first, 0); }
+        catch (e) { range.setStart(body, 0); }
+
+        range.collapse(true);
+        const sel = doc.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+
+        // focus
+        if (body && body.focus) body.focus();
+    """)
+
+    driver.switch_to.default_content()
+
+
+# ===== 입력 유틸 (Typing helpers) =====
+
+def move_editor_caret_to_marker(driver, wait, marker: str) -> bool:
+    """
+    본문 에디터에서 marker 문자열 위치로 커서를 이동하고 marker를 삭제한다.
+    Move caret to marker text in the editor and delete the marker text.
+
+    반환값:
+    - True: marker를 찾고 커서 이동 성공
+    - False: marker를 찾지 못함
+    """
+    if not marker:
+        return False
+
+    iframe = find_editor_iframe(driver)
+    if not iframe:
+        return False
+
+    try:
+        driver.switch_to.frame(iframe)
+        js = """
+        const marker = arguments[0];
+        function findTextNode(root) {
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+          let node;
+          while ((node = walker.nextNode())) {
+            const idx = node.nodeValue ? node.nodeValue.indexOf(marker) : -1;
+            if (idx >= 0) {
+              return { node, idx };
+            }
+          }
+          return null;
+        }
+        const found = findTextNode(document.body);
+        if (!found) return false;
+
+        const range = document.createRange();
+        range.setStart(found.node, found.idx);
+        range.setEnd(found.node, found.idx + marker.length);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+
+        // marker 문자열 삭제 -> 커서는 그 위치에 남음
+        document.execCommand('delete');
+        return true;
+        """
+        ok = bool(driver.execute_script(js, marker))
+        return ok
+    finally:
+        driver.switch_to.default_content()
+
+def _clear_and_type(el, text: str):
+    """입력창 비우고 텍스트 입력 / Clear and type"""
+    el.click()
+    el.send_keys(Keys.CONTROL, "a")
+    el.send_keys(Keys.BACKSPACE)
+    el.send_keys(text)
+
+
+def _try_input_body_via_iframe(driver, wait, body_text: str, draft_alert_accept: bool) -> bool:
+    # 1) 알려진 iframe selector 후보들을 먼저 시도
+    iframe_selectors = [
+        "iframe[title='Rich Text Area']",
+        "iframe[title*='Rich']",
+        "iframe[title*='Text']",
+        "iframe[title*='Area']",
+        "iframe#tx_canvas_wysiwyg",
+        "iframe.se2_inputarea",
+        "iframe#editor-tistory_ifr",  # 티스토리
+    ]
+
+    for css in iframe_selectors:
+        try:
+            driver.switch_to.default_content()
+            handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
+
+            wait.until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, css)))
+            body = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
+            _clear_and_type(body, body_text)
+
+            driver.switch_to.default_content()
+            return True
+        except TimeoutException:
+            driver.switch_to.default_content()
+            continue
+        except UnexpectedAlertPresentException:
+            driver.switch_to.default_content()
+            handle_any_alert(driver, accept=draft_alert_accept, timeout=3)
+            continue
+        except Exception:
+            driver.switch_to.default_content()
+            continue
+
+    # 2) selector 후보가 실패하면 iframe 자동 탐색
+    frame = find_editor_iframe(driver)
+    if frame:
+        try:
+            driver.switch_to.default_content()
+            driver.switch_to.frame(frame)
+
+            targets = []
+            try:
+                targets.append(driver.find_element(By.CSS_SELECTOR, "body"))
+            except Exception:
+                pass
+
+            targets.extend(driver.find_elements(By.CSS_SELECTOR, "div.ProseMirror"))
+            targets.extend(driver.find_elements(By.CSS_SELECTOR, "[contenteditable='true']"))
+
+            for t in targets:
+                try:
+                    if t.is_displayed() and t.is_enabled():
+                        _clear_and_type(t, body_text)
+                        driver.switch_to.default_content()
+                        return True
+                except Exception:
+                    continue
+
+            driver.switch_to.default_content()
+        except Exception:
+            driver.switch_to.default_content()
+
+    return False
+
+
+def _try_input_body_via_contenteditable(driver, wait, body_text: str, draft_alert_accept: bool) -> bool:
+    selectors = [
+        "div.ProseMirror",
+        "[contenteditable='true']",
+        ".toastui-editor-contents",
+    ]
+
+    for css in selectors:
+        try:
+            driver.switch_to.default_content()
+            handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
+
+            el = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, css)))
+            _clear_and_type(el, body_text)
+            return True
+        except TimeoutException:
+            continue
+        except UnexpectedAlertPresentException:
+            handle_any_alert(driver, accept=draft_alert_accept, timeout=3)
+            continue
+        except Exception:
+            continue
+
+    return False
+
+
+# ===== 로그인 (Login) =====
 def login(driver, wait, login_url, kakao_id, kakao_pw):
     """
-    # 티스토리 → 카카오 로그인까지 자동 진입하고 계정 입력을 시도한다
-    # Auto(자동) navigate(이동) from Tistory login to Kakao login, then try(시도) credential input(자격증명 입력; credential(자격증명))
+    티스토리 → 카카오 로그인 자동 진입 및 계정 입력 시도
+    Auto navigate to Kakao login and try credential input
     """
-    # 1) 티스토리 로그인 페이지 이동
-    # Go(이동) to Tistory login page(티스토리 로그인 페이지)
     driver.get(login_url)
     wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
-    # 2) 티스토리 로그인 화면에서 '카카오계정으로 로그인' 버튼 클릭
-    # Click(클릭) "Login with Kakao"(카카오계정으로 로그인) button(버튼) on Tistory login page
+    # 티스토리 로그인 화면에서 카카오 버튼 클릭
     try:
         cur = driver.current_url or ""
         if "tistory.com/auth/login" in cur and "accounts.kakao.com" not in cur:
-            # ✅ 네가 준 DOM 기준: a.btn_login.link_kakao_id 가 정답
-            # ✅ DOM-based(돔 기반) stable selector(안정 선택자): a.btn_login.link_kakao_id
             btn = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a.btn_login.link_kakao_id")))
-
-            # 보이는 상태로 스크롤
-            # Scroll(스크롤) into view(보이는 위치) to avoid overlay(오버레이) issues(문제)
             driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn)
             time.sleep(0.2)
-
-            # 일반 클릭 시도
-            # Try(시도) normal click(일반 클릭)
             try:
                 btn.click()
             except Exception:
-                # 클릭이 막히면 JS 클릭으로 강제
-                # If blocked(막힘), force click(강제 클릭) via JavaScript(JS; 자바스크립트)
                 driver.execute_script("arguments[0].click();", btn)
-
-            # 리다이렉트 대기
-            # Wait(대기) for redirect(리다이렉트)
             time.sleep(1.0)
-
     except Exception:
-        # 여기서 실패해도 수동 로그인 가능하도록 진행
-        # Even if fail(실패), allow(허용) manual login(수동 로그인)
         pass
 
-    # 3) 카카오 로그인 페이지로 넘어왔는지 확인
-    # Ensure(확인) we reached Kakao login page(카카오 로그인 페이지)
+    # 카카오 로그인 페이지 대기
     for _ in range(60):
         url = driver.current_url or ""
         print("URL:", url)
@@ -87,13 +475,9 @@ def login(driver, wait, login_url, kakao_id, kakao_pw):
             break
         time.sleep(0.5)
 
-    # 4) 카카오 아이디/비번 입력 시도 (실패 시 수동 입력 허용)
-    # Try(시도) filling Kakao id/pw(아이디/비번); allow(허용) manual input(수동 입력) on failure
+    # 카카오 계정 입력 시도
     try:
         wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-
-        # 입력창 셀렉터는 변형이 있어 후보를 여러 개 둠
-        # Input selectors(입력 선택자) may vary(변형), so try multiple candidates(후보)
         id_el = None
         pw_el = None
 
@@ -127,12 +511,10 @@ def login(driver, wait, login_url, kakao_id, kakao_pw):
             pw_el.clear()
             pw_el.send_keys(kakao_pw)
             pw_el.send_keys(Keys.ENTER)
-
     except Exception:
         pass
 
-    # 5) 티스토리로 돌아올 때까지 대기 (수동 로그인도 여기서 흡수)
-    # Wait(대기) until redirected back(되돌아옴) to Tistory after login(로그인)
+    # 티스토리로 돌아올 때까지 대기
     for _ in range(180):
         url = driver.current_url or ""
         print("URL:", url)
@@ -140,176 +522,14 @@ def login(driver, wait, login_url, kakao_id, kakao_pw):
             return True
         time.sleep(1)
 
-    raise RuntimeError("로그인 완료 안 됨 (Login did not complete(완료되지 않음))")
+    raise RuntimeError("로그인 완료 안 됨 (Login did not complete)")
 
 
-
-def find_editor_iframe(driver):
-    # 모든 iframe을 순회하면서 '에디터 본문'으로 보이는 프레임 찾기
-    # Scan(스캔) all iframes(아이프레임들) to find editor(에디터) frame(프레임)
-    for _ in range(30):
-        frames = driver.find_elements(By.TAG_NAME, "iframe")
-        for frame in frames:
-            try:
-                driver.switch_to.default_content()
-                driver.switch_to.frame(frame)
-
-                # iframe 내부에서 body/contenteditable 존재 여부로 판별
-                # Detect(판별) by checking body(바디) / contenteditable(편집가능) element(요소)
-                try:
-                    body = driver.find_element(By.TAG_NAME, "body")
-                except Exception:
-                    body = None
-
-                if body:
-                    aria = (body.get_attribute("aria-label") or "")
-                    cls = (body.get_attribute("class") or "")
-                    ce = (body.get_attribute("contenteditable") or "")
-
-                    # 대표적인 에디터 흔적(aria/class/contenteditable)
-                    # Common(흔한) editor signals(신호)
-                    if ("글 내용 입력" in aria) or ("mce-content-body" in cls) or (ce.lower() == "true"):
-                        driver.switch_to.default_content()
-                        return frame
-
-                # body가 아니더라도 contenteditable div가 있으면 에디터로 간주
-                # If contenteditable div exists(존재), treat as editor(에디터로 간주)
-                ces = driver.find_elements(By.CSS_SELECTOR, "[contenteditable='true']")
-                if ces:
-                    driver.switch_to.default_content()
-                    return frame
-
-            except Exception:
-                continue
-
-        driver.switch_to.default_content()
-        time.sleep(1)
-
-    return None
-
-
-def _clear_and_type(el, text: str):
-    # 입력창 비우고 텍스트 입력
-    # Clear(비우기) and type(입력) text(텍스트)
-    el.click()
-    el.send_keys(Keys.CONTROL, "a")
-    el.send_keys(Keys.BACKSPACE)
-    el.send_keys(text)
-
-
-def _try_input_body_via_iframe(driver, wait, body_text: str, draft_alert_accept: bool) -> bool:
-    # 1) 알려진 iframe selector 후보들을 먼저 시도
-    # First(먼저), try known(알려진) iframe selectors(선택자 후보들)
-    iframe_selectors = [
-        "iframe[title='Rich Text Area']",
-        "iframe[title*='Rich']",
-        "iframe[title*='Text']",
-        "iframe[title*='Area']",
-        "iframe#tx_canvas_wysiwyg",        # 구형 에디터 케이스
-        "iframe.se2_inputarea",            # 스마트에디터 류 케이스
-    ]
-
-    for css in iframe_selectors:
-        try:
-            driver.switch_to.default_content()
-            handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
-
-            wait.until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, css)))
-            # iframe 안에서는 body에 입력되는 경우가 많음
-            # Inside iframe(아이프레임 내부), typing into body(바디 입력) often works(잘 동작)
-            body = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "body")))
-            _clear_and_type(body, body_text)
-
-            driver.switch_to.default_content()
-            return True
-        except TimeoutException:
-            driver.switch_to.default_content()
-            continue
-        except UnexpectedAlertPresentException:
-            driver.switch_to.default_content()
-            handle_any_alert(driver, accept=draft_alert_accept, timeout=3)
-            continue
-        except Exception:
-            driver.switch_to.default_content()
-            continue
-
-    # 2) selector 후보가 실패하면 iframe 자동 탐색
-    # If selectors(선택자) fail(실패), auto-detect(자동 탐지) iframe
-    frame = find_editor_iframe(driver)
-    if frame:
-        try:
-            driver.switch_to.default_content()
-            driver.switch_to.frame(frame)
-
-            # iframe 내에서 가능한 입력 타겟 후보
-            # Candidate(후보) input targets(입력 대상) inside iframe
-            targets = []
-            try:
-                targets.append(driver.find_element(By.CSS_SELECTOR, "body"))
-            except Exception:
-                pass
-
-            # ProseMirror/ToastUI 계열
-            # ProseMirror(프로즈미러) / ToastUI(토스트UI) editors
-            targets.extend(driver.find_elements(By.CSS_SELECTOR, "div.ProseMirror"))
-            targets.extend(driver.find_elements(By.CSS_SELECTOR, "[contenteditable='true']"))
-
-            for t in targets:
-                try:
-                    if t.is_displayed() and t.is_enabled():
-                        _clear_and_type(t, body_text)
-                        driver.switch_to.default_content()
-                        return True
-                except Exception:
-                    continue
-
-            driver.switch_to.default_content()
-        except Exception:
-            driver.switch_to.default_content()
-
-    return False
-
-
-def _try_input_body_via_contenteditable(driver, wait, body_text: str, draft_alert_accept: bool) -> bool:
-    # iframe가 없을 때: contenteditable div(예: ProseMirror) 직접 입력
-    # When no iframe(아이프레임 없음): type into contenteditable(편집가능) div directly(직접)
-    selectors = [
-        "div.ProseMirror",                 # ToastUI/ProseMirror
-        "[contenteditable='true']",        # 일반 contenteditable
-        ".toastui-editor-contents",        # ToastUI contents
-    ]
-
-    for css in selectors:
-        try:
-            driver.switch_to.default_content()
-            handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
-
-            el = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, css)))
-            # 클릭/포커스 후 입력
-            # Focus(포커스) then type(입력)
-            _clear_and_type(el, body_text)
-            return True
-        except TimeoutException:
-            continue
-        except UnexpectedAlertPresentException:
-            handle_any_alert(driver, accept=draft_alert_accept, timeout=3)
-            continue
-        except Exception:
-            continue
-
-    return False
-
-
+# ===== 발행 레이어 열기 (Open publish layer) =====
 def click_done_to_open_publish_layer(driver, wait):
     """
     에디터 하단 '완료' 버튼 클릭 → 발행 레이어 열기
-    Open(열기) publish layer(발행 레이어) by clicking Done(완료) button(버튼)
-
-    1) id=publish-layer-btn 우선 시도
-    First(먼저) try by id(아이디)
-
-    2) 텍스트=완료 버튼 fallback
-    Fallback(대체) by text(텍스트) match(매칭)
+    Click Done button to open publish layer
     """
     try:
         btn = WebDriverWait(driver, 3).until(EC.element_to_be_clickable((By.ID, "publish-layer-btn")))
@@ -333,18 +553,35 @@ def click_done_to_open_publish_layer(driver, wait):
     return False
 
 
-def write_post(driver, wait, write_url, draft_alert_accept, title_text, body_text, image_paths=None, require_image_upload=False):
-    # 글쓰기 페이지 진입
-    # Open(열기) new post page(새 글 페이지)
+# ===== 글쓰기 (Write post) =====
+def write_post(
+    driver,
+    wait,
+    write_url,
+    draft_alert_accept,
+    title_text,
+    body_text,
+    image_paths=None,
+    require_image_upload=False,
+    category_id=None,
+    insert_image_at_top=True,
+    context_image_path=None,
+    context_marker=None
+):
+    """
+    글쓰기 페이지에서 제목/본문/카테고리/이미지 입력 후 '완료'까지
+    Fill title/body/category/images then click Done
+    """
     driver.get(write_url)
     wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
-    # 임시저장 alert 처리
-    # Handle(처리) draft alert(임시저장 알림)
     handle_any_alert(driver, accept=draft_alert_accept, timeout=2)
 
-    # ===== 제목 입력 =====
-    # Type(입력) title(제목)
+    # ===== 카테고리 선택 (Category) =====
+    if category_id and str(category_id).strip() != "0":
+        select_category_by_id(driver, wait, str(category_id).strip())
+
+    # ===== 제목 입력 (Title) =====
     for _ in range(3):
         try:
             title = wait.until(EC.element_to_be_clickable((By.ID, "post-title-inp")))
@@ -353,74 +590,147 @@ def write_post(driver, wait, write_url, draft_alert_accept, title_text, body_tex
         except UnexpectedAlertPresentException:
             handle_any_alert(driver, accept=draft_alert_accept, timeout=5)
     else:
-        raise RuntimeError("제목 입력 실패 (Title input failed(실패))")
+        raise RuntimeError("제목 입력 실패 (Title input failed)")
 
-    # ===== 본문 입력 =====
-    # Type(입력) body(본문) with iframe(아이프레임) + fallback(대체) strategy(전략)
+    # ===== 본문 입력 (Body) =====
     ok = False
     for _ in range(3):
         try:
-            # 1) iframe 기반 입력 시도
-            # Try(시도) iframe-based(아이프레임 기반) input
             ok = _try_input_body_via_iframe(driver, wait, body_text, draft_alert_accept)
             if ok:
                 break
-
-            # 2) contenteditable(div) 직접 입력 시도
-            # Try direct(직접) contenteditable(편집가능) input
             ok = _try_input_body_via_contenteditable(driver, wait, body_text, draft_alert_accept)
             if ok:
                 break
-
         except UnexpectedAlertPresentException:
             handle_any_alert(driver, accept=draft_alert_accept, timeout=5)
             continue
 
     if not ok:
-        # 여기까지 오면 에디터 구조가 완전히 달라진 것
-        # If we reach here(여기까지 오면), editor DOM(에디터 DOM) likely changed(변경됨)
-        raise TimeoutException("본문 입력용 iframe/contenteditable 요소를 찾지 못함 (Cannot find editor input target(입력 대상))")
+        raise TimeoutException("본문 입력용 iframe/contenteditable 요소를 찾지 못함 (Cannot find editor input target)")
 
-    # ===== 이미지 업로드/삽입 (완료 버튼 누르기 전에!) =====
-    # Upload(업로드) and insert(삽입) images before clicking Done(완료)
-    if image_paths:
+
+# ===== 이미지 최상단 삽입을 원하면: 본문 입력 후, 커서를 최상단으로 옮긴 뒤 넣는 게 가장 안정(본문 입력이 기존 내용을 지울 수 있음) =====
+    if image_paths and insert_image_at_top:
+        try:
+            move_editor_caret_to_top(driver, wait)
+        except Exception:
+            pass
+
         for p in image_paths:
+            print("p:=============",p)
             try:
-                ok_img = upload_and_insert_image(driver, wait, p, sleep_after_upload=2.5)
+                ok_img = upload_and_insert_image(driver, p, timeout=180, sleep_after_upload=2.5)
                 if not ok_img:
-                    # 이미지 업로드에 실패해도 글은 계속 진행할지 결정한다
-                    # Decide(결정) whether to continue publishing(발행 계속) when image upload(이미지 업로드) fails(실패)
                     if require_image_upload:
                         raise RuntimeError(f"이미지 업로드/삽입 실패: {p}")
-                    else:
-                        print(f"[WARN] 이미지 업로드 실패 → 이미지 없이 진행: {p}")
+                    print(f"[WARN] 이미지 업로드 실패 → 이미지 없이 진행: {p}")
             except Exception as e:
-                # 이미지 업로드 예외도 치명 여부를 옵션으로 제어한다
-                # Control(제어) fatality(치명 여부) of upload exception(업로드 예외) via option(옵션)
                 if require_image_upload:
                     raise RuntimeError(f"이미지 업로드/삽입 예외: {p} / {repr(e)}")
-                else:
-                    print(f"[WARN] 이미지 업로드 예외 → 이미지 없이 진행: {p} / {repr(e)}")
-# ===== 완료 클릭 -> 발행 레이어 열기 =====
-    # Click Done(완료) to open publish layer(발행 레이어)
+                print(f"[WARN] 이미지 업로드 예외 → 이미지 없이 진행: {p} / {repr(e)}")
+
+    
+
+    
+
+    # ===== 배경·맥락 이미지: 마커 위치에 삽입 =====
+    if context_image_path and context_marker:
+        try:
+            ok_mark = move_editor_caret_to_marker(driver, wait, context_marker)
+            if not ok_mark:
+                print(f"[WARN] context marker not found -> skip context image (marker={context_marker})")
+            else:
+                ok_ctx = upload_and_insert_image(
+                    driver,
+                    context_image_path,
+                    timeout=180,
+                    sleep_after_upload=2.5
+                )
+                if not ok_ctx:
+                    if require_image_upload:
+                        raise RuntimeError(
+                            f"배경·맥락 이미지 업로드/삽입 실패: {context_image_path}"
+                        )
+                    print(
+                        f"[WARN] 배경·맥락 이미지 업로드 실패 → 이미지 없이 진행: {context_image_path}"
+                    )
+        except Exception as e:
+            if require_image_upload:
+                raise
+            print(
+                f"[WARN] 배경·맥락 이미지 업로드 예외 → 이미지 없이 진행: {context_image_path} / {e!r}"
+            )
+
+    # ===== 이미지가 있는데 '최상단'이 아니라면: 본문 입력 후 삽입 =====
+    if image_paths and not insert_image_at_top:
+        for p in image_paths:
+            try:
+                ok_img = upload_and_insert_image(driver, p, timeout=180, sleep_after_upload=2.5)
+                if not ok_img:
+                    if require_image_upload:
+                        raise RuntimeError(f"이미지 업로드/삽입 실패: {p}")
+                    print(f"[WARN] 이미지 업로드 실패 → 이미지 없이 진행: {p}")
+            except Exception as e:
+                if require_image_upload:
+                    raise RuntimeError(f"이미지 업로드/삽입 예외: {p} / {repr(e)}")
+                print(f"[WARN] 이미지 업로드 예외 → 이미지 없이 진행: {p} / {repr(e)}")
+
+    # ===== 완료 클릭 -> 발행 레이어 열기 =====
     handle_any_alert(driver, accept=draft_alert_accept, timeout=1)
     ok_done = click_done_to_open_publish_layer(driver, wait)
     if not ok_done:
-        raise RuntimeError("완료 버튼을 못 찾음 (Done button not found(찾지 못함))")
+        raise RuntimeError("완료 버튼을 못 찾음 (Done button not found)")
 
     return True
 
 
 def publish_with_visibility(driver, wait, draft_alert_accept, visibility_id):
-    # 발행 레이어에서 비공개(open0)/공개(open20)/보호(open15) 선택
-    # Select visibility(공개 설정) on publish layer(발행 레이어)
+    """
+    발행 레이어에서 공개 범위 선택 후 발행
+    Select visibility then publish
+    """
     handle_any_alert(driver, accept=draft_alert_accept, timeout=2)
 
-    wait.until(EC.element_to_be_clickable((By.ID, visibility_id))).click()
-    print(f"✅ 공개설정 선택: {visibility_id}")
+    # NOTE(KO): 티스토리 발행 레이어는 DOM/애니메이션 때문에
+    #           element_to_be_clickable이 간헐적으로 TimeoutException을 유발한다.
+    #           -> presence 대기 후 JS 클릭을 병행.
+    # NOTE(EN): Publish layer can be flaky; use presence + JS click fallback.
 
-    # 공개 발행 버튼 (확정)
-    # Click publish button(발행 버튼) to confirm(확정)
-    wait.until(EC.element_to_be_clickable((By.ID, "publish-btn"))).click()
+    vid = (visibility_id or "").strip()
+    if not vid:
+        raise RuntimeError("VISIBILITY_ID가 비어있음")
+
+    handle_any_alert(driver, accept=draft_alert_accept, timeout=2)
+
+    # 1) presence 먼저
+    try:
+        el = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, vid)))
+    except TimeoutException:
+        # radio가 늦게 렌더링되는 경우: publish-layer 내부에서 재탐색
+        el = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, f"input#{vid}[type='radio']"))
+        )
+
+    # 2) 클릭 시도(일반 클릭 -> JS 클릭)
+    try:
+        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, vid))).click()
+    except Exception:
+        driver.execute_script("arguments[0].scrollIntoView({block:'center'});", el)
+        driver.execute_script("arguments[0].click();", el)
+
+    print(f"✅ 공개설정 선택: {vid}")
+
+    # 발행 버튼
+    try:
+        btn = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "publish-btn")))
+        try:
+            WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.ID, "publish-btn"))).click()
+        except Exception:
+            driver.execute_script("arguments[0].scrollIntoView({block:'center'});", btn)
+            driver.execute_script("arguments[0].click();", btn)
+    except Exception as e:
+        raise TimeoutException(f"publish-btn 클릭 실패: {e!r}")
+
     print("✅ 발행 완료(publish-btn 클릭)")
     return True

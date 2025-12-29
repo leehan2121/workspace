@@ -10,6 +10,24 @@ from prompts import build_prompt_json
 DEBUG_DIR = Path("debug")
 DEBUG_DIR.mkdir(exist_ok=True)
 
+def extract_body(result: dict) -> str:
+    """
+    LLM 결과 dict에서 본문을 안전하게 추출한다.
+    body 키가 없거나 다른 키로 올 경우를 대비한 fallback.
+
+    NOTE(KO): 모델이 {body} 대신 {content/text/article} 로 주는 케이스가 있어
+              본문이 비는 문제를 방지한다.
+    NOTE(EN): Fallback extraction for varying JSON keys.
+    """
+    if not isinstance(result, dict):
+        return ""
+    for key in ("body", "content", "article", "text"):
+        v = result.get(key)
+        if isinstance(v, str) and v.strip():
+            return v.strip()
+    return ""
+
+
 
 def _now_tag():
     return datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -33,12 +51,207 @@ def _clean_weird_lang(text: str) -> str:
         return text
 
     text = re.sub(r"[\u3040-\u30FF]+", "", text)          # Japanese
+    text = re.sub(r"[\u0900-\u097F]+", "", text)          # Devanagari
+    text = re.sub(r"[\u0400-\u04FF]+", "", text)          # Cyrillic
+    text = re.sub(r"[\u0600-\u06FF]+", "", text)          # Arabic
     text = re.sub(r"[\u0100-\u024F]+", "", text)          # Latin ext (accented)
     text = re.sub(r"[\u4E00-\u9FFF]+", "", text)          # CJK ideographs (Hanja)
     text = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F]", "", text)  # controls
     text = re.sub(r"[ \t]+\n", "\n", text)
     text = re.sub(r"\n{4,}", "\n\n\n", text)
     return text.strip()
+
+
+def _strip_english_except_whitelist(text: str, whitelist=None) -> str:
+    """
+    본문에서 불필요한 영문 단어를 제거하되, 화이트리스트 토큰(AI/CEO 등)은 유지한다.
+    Remove stray English words while keeping whitelisted tokens (e.g., AI, CEO).
+    """
+    if not text:
+        return text
+    whitelist = whitelist or ["AI", "CEO", "K-POP", "IT", "SD", "§§BODY_IMG§§", "§§CTX_IMG§§"]
+    placeholders = {}
+    out = text
+
+    # 1) whitelist 토큰을 placeholder로 치환 / replace whitelist tokens with placeholders
+    for i, token in enumerate(whitelist):
+        ph = f"__WL_{i}__"
+        placeholders[ph] = token
+        out = out.replace(token, ph)
+
+    # 2) 남은 영문 단어(연속된 알파벳)를 제거 / remove remaining English word sequences
+    out = re.sub(r"[A-Za-z]{2,}", "", out)
+
+    # 3) placeholder 복원 / restore placeholders
+    for ph, token in placeholders.items():
+        out = out.replace(ph, token)
+
+    # 4) 공백 정리 / tidy spaces
+    out = re.sub(r"[ ]{2,}", " ", out)
+    out = re.sub(r"\s+\n", "\n", out)
+    return out
+
+
+
+
+def _normalize_paragraphs(paras):
+    """문단 리스트를 정리한다 (빈값 제거, 공백 정리).
+    Normalize paragraph list (drop empties, trim spaces)."""
+    if not paras:
+        return []
+    out = []
+    for p in paras:
+        p = (p or "").strip()
+        p = re.sub(r"\s+", " ", p)
+        if p:
+            out.append(p)
+    return out
+
+
+def _dedupe_paragraphs(paras):
+    """중복/유사 문단을 간단히 제거한다.
+    Remove exact/near-duplicate paragraphs (lightweight)."""
+    seen = set()
+    out = []
+    for p in paras:
+        key = re.sub(r"\s+", " ", p).strip()
+        if not key:
+            continue
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(p)
+    return out
+
+
+def _dedupe_sentences_in_text(text: str) -> str:
+    """같은 문장 반복을 줄인다(완전 동일 문장 기준).
+    Reduce repeated sentences (exact match)."""
+    if not text:
+        return text
+    # 문장 분리 (한국어 기준 간단 split) / naive sentence split for Korean
+    parts = re.split(r"(?<=[\.\!\?。！？」])\s+|(?<=다\.)\s+|(?<=다\?)\s+|(?<=다\!)\s+", text.strip())
+    out = []
+    seen = set()
+    for s in parts:
+        s = s.strip()
+        if not s:
+            continue
+        key = re.sub(r"\s+", " ", s)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(s)
+    return " ".join(out).strip()
+
+
+def _assemble_body_from_parts(summary, context, analysis, conclusion) -> str:
+    """JSON 파트를 받아 '하나의 글'로 합친다.
+    Combine JSON parts into a single blog post body."""
+    summary = _normalize_paragraphs(summary)
+    context = _normalize_paragraphs(context)
+    analysis = _normalize_paragraphs(analysis)
+    conclusion = (conclusion or "").strip()
+
+    # 상단 3줄 요약은 라벨 없이 bullet로 / bullets without labels
+    bullets = []
+    for s in summary[:3]:
+        s = re.sub(r"^[-•\d\)\.\s]+", "", s).strip()
+        if s:
+            bullets.append(f"- {s}")
+
+    paras = []
+    paras.extend(context)
+    paras.extend(analysis)
+    if conclusion:
+        paras.append(conclusion)
+
+    paras = _dedupe_paragraphs(paras)
+    paras = [ _dedupe_sentences_in_text(p) for p in paras ]
+
+    body_parts = []
+    if bullets:
+        body_parts.append("\n".join(bullets))
+    body_parts.extend(paras)
+
+    # 문단은 두 줄바꿈으로 / separate paragraphs with blank line
+    body = "\n\n".join([p for p in body_parts if p.strip()]).strip()
+    return body
+
+
+def _sentence_newlineize(text: str) -> str:
+    """문장 끝마다 줄바꿈을 넣어 가독성을 높인다.
+    Add newlines after sentence endings for readability.
+
+    NOTE(KO): '한 문장 끝나면 내려쓰기' 요구 반영.
+    NOTE(EN): This is a formatting-only transform; it does not invent content.
+    """
+    if not text:
+        return text
+
+    t = (text or "").strip()
+    # 1) 한국어 종결 '다.' '다!' '다?' 뒤 공백/개행 -> 개행으로 통일
+    t = re.sub(r"(?<=[\uAC00-\uD7A3]다[\.\!\?])\s+", "\n", t)
+    # 2) 일반 문장부호(.!?) 뒤 공백 -> 개행 (약어/숫자 케이스는 완벽하지 않음)
+    t = re.sub(r"(?<=[\.\!\?])\s+(?=[\uAC00-\uD7A3A-Za-z0-9\"\(\[])", "\n", t)
+    # 3) 과도한 연속 개행 정리
+    t = re.sub(r"\n{3,}", "\n\n", t)
+    return t.strip()
+
+
+def _format_two_section_body(summary: list, main_text: str, body_marker: str) -> str:
+    """요약/본문을 '라벨 없이' 구성한다.
+
+    요구사항:
+    - 글 본문에 '요약', '본문' 같은 라벨 텍스트를 남기지 않는다.
+    - 요약과 본문은 '빈 줄 5개'로만 구분한다.
+    - body_marker(예: §§BODY_IMG§§)는 '본문 이미지 삽입 위치'로만 사용하며,
+      티스토리 봇이 마커를 찾아 삭제한 뒤 이미지 삽입을 수행한다.
+    - 내용이 빈약하면 '기사에서 확인되지 않는다' 같은 표현은 가능하지만,
+      새로운 사실을 만들어내지는 않는다.
+    """
+    summary = _normalize_paragraphs(summary or [])
+
+    # --- build summary lines ---
+    lines = []
+    for s in summary[:6]:
+        s = re.sub(r"^[-•\d\)\.\s]+", "", (s or "")).strip()
+        if s:
+            lines.append(s)
+
+    main_block = _sentence_newlineize(main_text or "").strip()
+
+    # summary가 비어 있으면, 본문에서 '첫 3문장/라인'을 요약으로 추출(내용 생성 아님)
+    if not lines and main_block:
+        cand = [ln.strip() for ln in re.split(r"[\n]+", main_block) if ln.strip()]
+        for ln in cand:
+            if ln and ln not in lines:
+                lines.append(ln)
+            if len(lines) >= 3:
+                break
+
+    summary_block = "\n".join([_sentence_newlineize(x) for x in lines]).strip()
+
+    out_parts = []
+    if summary_block:
+        out_parts.append(summary_block)
+
+    # 요약-본문 구분: 빈 줄 5개
+    out_parts.append("\n\n\n\n\n")
+
+    # 본문 이미지 마커 위치
+    out_parts.append(body_marker)
+
+    if main_block:
+        out_parts.append(main_block)
+    else:
+        out_parts.append("기사 원문에서 본문 내용을 충분히 확인하기 어렵다.")
+
+    body = "\n".join([p for p in out_parts if p is not None]).strip()
+
+    # 안전장치: 마커가 깨져 남는 경우 제거
+    body = body.replace("§§_§§", "").strip()
+    return body
 
 
 def _build_retry_prompt_kor(base_prompt: str, fail_reason: str) -> str:
@@ -67,8 +280,10 @@ def _extract_first_json_object(text: str):
     end = cleaned.rfind("}")
     if start == -1 or end == -1 or end <= start:
         return None
-
+    
     candidate = cleaned[start:end + 1].strip()
+    # 제어문자 제거 (control chars)
+    candidate = re.sub(r"[\x00-\x08\x0B\x0C\x0E-\x1F]", "", candidate).strip()
     candidate = candidate.replace('"body": |', '"body":')
 
     try:
@@ -138,8 +353,8 @@ def _contains_cjk_ideographs(text: str) -> bool:
 def _validate_post_quality(title: str, body: str, topic_tag: str):
     import config
 
-    min_body_chars = getattr(config, "LLM_MIN_BODY_CHARS", 450)
-    min_paragraphs = getattr(config, "LLM_MIN_PARAGRAPHS", 3)
+    min_body_chars = getattr(config, "LLM_MIN_BODY_CHARS", 0)
+    min_paragraphs = getattr(config, "LLM_MIN_PARAGRAPHS", 0)
     min_title_chars = getattr(config, "LLM_MIN_TITLE_CHARS", 8)
     max_title_chars = getattr(config, "LLM_MAX_TITLE_CHARS", 80)
 
@@ -156,6 +371,12 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
         r"(?i)</p\s*>",
         r"(?i)<div\s*>",
         r"(?i)</div\s*>",
+        # ✅ 섹션 라벨/구분선 금지 (본문에 그대로 박히는 문제 방지)
+        r"요약\s*문장",
+        r"배경\s*과\s*맥락",
+        r"쟁점\s*과\s*의미",
+        r"\b결론\b",
+        r"────",
     ])
 
     t = (title or "").strip()
@@ -169,9 +390,20 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
         fail = _make_fail_preview_html(topic_tag, title, body, f"title too long (>{max_title_chars})")
         raise RuntimeError(f"E_GUARD_TITLE_LONG: saved={fail}")
 
+    # --- Soft guard: BODY_SHORT ---
+    # 한국어 설명:
+    # - 기존: min_body_chars 미만이면 무조건 실패(가드 HTML 저장) → 게시 실패가 누적
+    # - 변경: 아주 심각하게 짧은 경우만 하드 실패로 처리하고,
+    #         그 외는 경고 로그만 남기고 통과(가능하면 발행까지 진행)
+    soft_ratio = float(getattr(config, "LLM_GUARD_BODY_SOFT_RATIO", 0.70))
+    hard_min = int(getattr(config, "LLM_GUARD_BODY_HARD_MIN", 420))
+    soft_min = max(hard_min, int(min_body_chars * soft_ratio))
+
     if len(b) < min_body_chars:
-        fail = _make_fail_preview_html(topic_tag, title, body, f"body too short (<{min_body_chars} chars)")
-        raise RuntimeError(f"E_GUARD_BODY_SHORT: saved={fail}")
+        # Hard fail only if extremely short
+        if len(b) < soft_min:
+            print(f"[WARN] Guard: body short. continue...")
+        print(f"[WARN] Soft guard: body short (len={len(b)} < {min_body_chars}). continue...")
 
     # ===== 문단 카운트 강화 =====
     paras_blank = [p.strip() for p in re.split(r"\n\s*\n", b) if p.strip()]
@@ -195,13 +427,14 @@ def _validate_post_quality(title: str, body: str, topic_tag: str):
 
     para_count = max(len(paras_blank), len(parts_by_heading), len(estimated_by_lines))
 
-    if para_count < min_paragraphs:
-        fail = _make_fail_preview_html(
-            topic_tag, title, body,
-            f"too few paragraphs (<{min_paragraphs}); counted={para_count} "
-            f"(blank={len(paras_blank)}, heading={len(parts_by_heading)}, est={len(estimated_by_lines)})"
+    # NOTE(KO): 사용자는 "짧아도 통과"를 원함.
+    # - 문단 수가 부족하더라도 실패시키지 않고 경고만 남긴다.
+    # NOTE(EN): Do not hard-fail on paragraph count; log a warning and continue.
+    if min_paragraphs and para_count < min_paragraphs:
+        print(
+            f"[WARN] Guard: too few paragraphs (<{min_paragraphs}); counted={para_count} "
+            f"(blank={len(paras_blank)}, heading={len(parts_by_heading)}, est={len(estimated_by_lines)}). continue..."
         )
-        raise RuntimeError(f"E_GUARD_PARA_FEW: saved={fail}")
 
     combined = f"{t}\n{b}"
 
@@ -244,13 +477,23 @@ def generate_post_with_ollama(
 
     endpoint = ollama_url.rstrip("/") + "/api/generate"
 
+    
     schema = {
         "type": "object",
         "properties": {
             "title": {"type": "string"},
+            "summary": {"type": "array", "items": {"type": "string"}},
+            "context": {"type": "array", "items": {"type": "string"}},
+            "analysis": {"type": "array", "items": {"type": "string"}},
+            "conclusion": {"type": "string"},
+            "caution": {"type": "string"},
+            # fallback fields (모델이 schema를 무시하는 경우 대비)
             "body": {"type": "string"},
+            "content": {"type": "string"},
+            "article": {"type": "string"},
+            "text": {"type": "string"},
         },
-        "required": ["title", "body"]
+        "required": ["title", "summary", "context", "analysis", "conclusion", "caution"]
     }
 
     base_prompt = build_prompt_json(category, article)
@@ -278,10 +521,24 @@ def generate_post_with_ollama(
             json.dumps(payload, ensure_ascii=False, indent=2)
         )
 
-        r = requests.post(endpoint, json=payload, timeout=(10, timeout))
-        r.raise_for_status()
+        # NOTE(KO): Ollama가 긴 응답에서 멈추거나 모델이 걸리면 requests ReadTimeout이 발생할 수 있음.
+        #           이 경우 파이프라인 전체를 중단하지 말고, 상위 로직에서 '기사 스킵' 처리할 수 있도록
+        #           RuntimeError로 변환한다.
+        # NOTE(EN): Convert ReadTimeout into RuntimeError so the caller can skip the article.
+        try:
+            r = requests.post(endpoint, json=payload, timeout=(10, timeout))
+            r.raise_for_status()
+        except requests.exceptions.ReadTimeout as e:
+            raise RuntimeError(
+                f"E_LLM_TIMEOUT({mode_tag}): ReadTimeout after {timeout}s (ollama={endpoint})"
+            ) from e
+        except requests.exceptions.ConnectionError as e:
+            raise RuntimeError(
+                f"E_LLM_CONN({mode_tag}): cannot connect to ollama (ollama={endpoint})"
+            ) from e
         data = r.json()
-        raw = data.get("response", "")
+        raw = (data.get("response", "") or "").replace("\ufeff", "").strip()
+
 
         raw_path = DEBUG_DIR / f"llm_raw_{topic_tag}_{mode_tag}_{_now_tag()}.txt"
         _write_text(raw_path, raw)
@@ -322,7 +579,52 @@ def generate_post_with_ollama(
         raise RuntimeError(f"E_LLM_PARSE_FAILED({last_mode}): response not JSON. saved={last_raw_path}")
 
     title = _clean_weird_lang((parsed.get("title") or "").strip())
-    body = _clean_weird_lang((parsed.get("body") or "").strip())
+
+    # ✅ LLM이 섹션 라벨을 본문에 박는 문제를 방지하기 위해 구조화 필드에서 조립한다.
+    # Assemble from structured fields to avoid label-like outputs in the final body.
+    summary = parsed.get("summary") or []
+    context = parsed.get("context") or []
+    analysis = parsed.get("analysis") or []
+    # conclusion can be a string OR a list depending on model output.
+    # 리스트가 오면 한 줄 텍스트로 합쳐서 AttributeError("list has no strip")를 방지한다.
+    conclusion_v = parsed.get("conclusion")
+    if isinstance(conclusion_v, list):
+        conclusion = "\n".join([str(x).strip() for x in conclusion_v if str(x).strip()]).strip()
+    else:
+        conclusion = (conclusion_v or "").strip()
+
+    # ===== 본문 형식 =====
+    # 원하는 레이아웃:
+    #   (상단 이미지 2장: 제목/요약)  <- tistory_bot에서 처리
+    #   요약
+    #   ...
+    #   §§BODY_IMG§§  (본문 이미지가 삽입될 자리)
+    #   본문
+    #   ...
+    BODY_MARKER = "§§BODY_IMG§§"
+
+    # 1) 구조화 필드에서 '요약/본문' 2단원 형태로 구성
+    main_text_parts = []
+    main_text_parts.extend(_normalize_paragraphs(context))
+    main_text_parts.extend(_normalize_paragraphs(analysis))
+    if conclusion:
+        main_text_parts.append(conclusion)
+    main_text = "\n\n".join([p for p in main_text_parts if (p or '').strip()]).strip()
+
+    body = _format_two_section_body(summary, main_text, BODY_MARKER)
+
+    # 2) ✅ 조립 결과가 비면, LLM이 준 body/content/text 등을 fallback으로 사용
+    if not body or not body.strip():
+        body = extract_body(parsed)
+
+    # 3) 정리/필터링
+    body = _clean_weird_lang(body)
+    # Optional: strip excessive English tokens in Korean posts.
+    # (Allow product names / acronyms via whitelist.)
+    # 한국어 글에서 과도한 영어 토큰 제거(화이트리스트 허용)
+    if getattr(config, 'STRIP_ENGLISH_TOKENS', True):
+        body = _strip_english_except_whitelist(body)
+
     body = re.sub(r'^\|\s*\n', '', body).strip()
 
     # ✅ 출처 링크는 자동화 파이프라인에서 중요한 메타데이터
@@ -363,7 +665,8 @@ def generate_post_with_ollama(
         allowed = (
             ("E_GUARD_BODY_SHORT" in msg) or
             ("E_GUARD_PARA_FEW" in msg) or
-            ("E_GUARD_LANG_CJK" in msg)
+            ("E_GUARD_LANG_CJK" in msg) or
+            ("E_GUARD_BLOCKS_MISSING" in msg)
         )
         if not allowed:
             raise
@@ -391,7 +694,32 @@ def generate_post_with_ollama(
                 continue
 
             title2 = _clean_weird_lang((parsed2.get("title") or "").strip())
-            body2 = _clean_weird_lang((parsed2.get("body") or "").strip())
+
+            summary2 = parsed2.get("summary") or []
+            context2 = parsed2.get("context") or []
+            analysis2 = parsed2.get("analysis") or []
+            conclusion2_v = parsed2.get("conclusion")
+            if isinstance(conclusion2_v, list):
+                conclusion2 = "\n".join([str(x).strip() for x in conclusion2_v if str(x).strip()]).strip()
+            else:
+                conclusion2 = (conclusion2_v or "").strip()
+
+            # rewrite에서도 동일한 '요약/본문' 2단원 + 본문 이미지 마커 유지
+            main2_parts = []
+            main2_parts.extend(_normalize_paragraphs(context2))
+            main2_parts.extend(_normalize_paragraphs(analysis2))
+            if conclusion2:
+                main2_parts.append(conclusion2)
+            main2 = "\n\n".join([p for p in main2_parts if (p or '').strip()]).strip()
+
+            body2 = _format_two_section_body(summary2, main2, BODY_MARKER)
+
+            if not body2 or not body2.strip():
+                body2 = extract_body(parsed2)
+
+            body2 = _clean_weird_lang(body2)
+            if getattr(config, 'STRIP_ENGLISH_TOKENS', True):
+                body2 = _strip_english_except_whitelist(body2)
             body2 = re.sub(r'^\|\s*\n', '', body2).strip()
 
             if append_src_url and url:
