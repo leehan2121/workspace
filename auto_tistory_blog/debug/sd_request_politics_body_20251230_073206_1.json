@@ -1,9 +1,0 @@
-{
-  "prompt": "newspaper editorial illustration, documentary photo style, neutral tone, context scene, neutral illustration, no text, Korean news topic, no text, no letters. Title: 김정은 북한 국무위원장이 방사포 생산공장을 찾아 핵 탑재가 가능한 '전략적 공격수단'이라고 강조했다.. Key points: 김정은 북한 국무위원장이 방사포 생산공장을 찾아 핵 탑재가 가능한 '전략적 공격수단'이라고 강조했다. 김정은 북한 국무위원장이 방사포 생산공장을 찾아 핵 탑재가 가능한 '전략적 공격수단'이라고 강조했다.",
-  "negative_prompt": "nsfw, nude, porn, portrait, face, person, people, human, selfie, anime, manga, cartoon, text, letters, words, watermark, logo, caption, subtitle, gibberish, symbols, blurry, low quality",
-  "width": 768,
-  "height": 512,
-  "steps": 18,
-  "cfg_scale": 7.0,
-  "seed": -1
-}

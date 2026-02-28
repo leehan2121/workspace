@@ -1,5 +1,0 @@
-
-main.py 수정 요약:
-- RSS_SOURCES를 순회하며 여러 RSS 병합 수집
-- 중복 link 기준 제거
-- topic 기준 category 유지
